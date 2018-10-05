@@ -1,0 +1,3 @@
+Output of LSTM model after training for 6 epochs:
+test loss  2.55
+test ppl    12.80
