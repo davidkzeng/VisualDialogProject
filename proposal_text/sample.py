@@ -25,6 +25,8 @@ parser.add_argument('--cuda', action='store_true',
                     help='use CUDA')
 parser.add_argument('--load', type=str, default='model.pt',
                     help='path to load the final model')
+parser.add_argument('--task', type=str, default='sample',
+                    help='task to perform with model (sample, eval_answer)')
 args = parser.parse_args()
 
 # Set the random seed manually for reproducibility.
@@ -79,6 +81,13 @@ eval_batch_size = 10
 # val_data = batchify(corpus.valid, eval_batch_size)
 test_data = batchify(corpus.test, eval_batch_size)
 
+def repackage_hidden(h):
+    """Wraps hidden states in new Tensors, to detach them from their history."""
+    if isinstance(h, torch.Tensor):
+        return h.detach()
+    else:
+        return tuple(repackage_hidden(v) for v in h)
+
 # get_batch subdivides the source data into chunks of length args.bptt.
 # If source is equal to the example output of the batchify function, with
 # a bptt-limit of 2, we'd get the following two Variables for i = 0:
@@ -131,12 +140,43 @@ def sample(data_source):
             samples[i,:] = topi
             # set data to predicted next words for next iteration
             data = torch.cat((data,topi))
+            hidden = repackage_hidden(hidden)
         for i in range(10):
             sample = ""
             for j in range(20):
                 sample += (corpus.dictionary.idx2word[int(samples[j][i])] + " ")
             print(sample)
     return samples
+
+criterion = nn.CrossEntropyLoss()
+def evaluate(data_source):
+    # Turn on evaluation mode which disables dropout.
+    model.eval()
+    error = 0.
+    ntokens = len(corpus.dictionary)
+    hidden = model.init_hidden(eval_batch_size)
+    ctr = 0
+    with torch.no_grad():
+        for i in range(0, data_source.size(0) - 1, args.bptt):
+            data, targets = get_batch(data_source, i)
+            output, hidden = model(data, hidden)
+            topv, topi = output.topk(1,dim=2)
+            # topi contains index of top predicted next word
+            topi = topi.view(1,10)
+            if i == 0:
+              print("data size", data.size())
+              print("targets size", targets.size())
+              print("output size", output.size())
+              print("topi size", topi.size())
+            for j in range(10):
+              word = corpus.dictionary.idx2word[data[0][j]]
+              if word[-1] == "?":
+                ctr += 1
+                if topi[0][j] != targets[j]:
+                  error += 1
+            hidden = repackage_hidden(hidden)
+    print("ctr", ctr)
+    print("error of word after answer (count = " + str(ctr) + ")", error / ctr)
 
 # Load the model.
 with open(args.load, 'rb') as f:
@@ -145,4 +185,7 @@ with open(args.load, 'rb') as f:
     # this makes them a continuous chunk, and will speed up forward pass
     model.rnn.flatten_parameters()
 
-sample(test_data)
+if args.task == "sample":
+  sample(test_data)
+elif args.task == "eval_answer":
+  evaluate(test_data)

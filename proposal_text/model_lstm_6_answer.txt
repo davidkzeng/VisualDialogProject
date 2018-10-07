@@ -1,0 +1,6 @@
+data size torch.Size([1, 10])
+targets size torch.Size([10])
+output size torch.Size([1, 10, 48885])
+topi size torch.Size([1, 10])
+ctr 43999
+error of word after answer (count = 43999) 0.6877883588263369
