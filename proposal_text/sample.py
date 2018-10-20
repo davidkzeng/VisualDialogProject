@@ -15,36 +15,18 @@ parser.add_argument('--data', type=str, default='./data/wikitext-2',
                     help='location of the data corpus')
 parser.add_argument('--model', type=str, default='LSTM',
                     help='type of recurrent net (RNN_TANH, RNN_RELU, LSTM, GRU)')
-parser.add_argument('--emsize', type=int, default=200,
-                    help='size of word embeddings')
-parser.add_argument('--nhid', type=int, default=200,
-                    help='number of hidden units per layer')
-parser.add_argument('--nlayers', type=int, default=2,
-                    help='number of layers')
-parser.add_argument('--lr', type=float, default=20,
-                    help='initial learning rate')
-parser.add_argument('--clip', type=float, default=0.25,
-                    help='gradient clipping')
-parser.add_argument('--epochs', type=int, default=40,
-                    help='upper epoch limit')
 parser.add_argument('--batch_size', type=int, default=20, metavar='N',
                     help='batch size')
 parser.add_argument('--bptt', type=int, default=35,
                     help='sequence length')
-parser.add_argument('--dropout', type=float, default=0.2,
-                    help='dropout applied to layers (0 = no dropout)')
-parser.add_argument('--tied', action='store_true',
-                    help='tie the word embedding and softmax weights')
 parser.add_argument('--seed', type=int, default=1111,
                     help='random seed')
 parser.add_argument('--cuda', action='store_true',
                     help='use CUDA')
-parser.add_argument('--log-interval', type=int, default=200, metavar='N',
-                    help='report interval')
-parser.add_argument('--save', type=str, default='model.pt',
-                    help='path to save the final model')
-parser.add_argument('--onnx-export', type=str, default='',
-                    help='path to export the final model in onnx format')
+parser.add_argument('--load', type=str, default='model.pt',
+                    help='path to load the final model')
+parser.add_argument('--task', type=str, default='sample',
+                    help='task to perform with model (sample, eval_answer)')
 args = parser.parse_args()
 
 # Set the random seed manually for reproducibility.
@@ -81,36 +63,23 @@ def batchify(data, bsz):
     words = [""] * 70
     for i in range(70):
         words[i] = corpus.dictionary.idx2word[data[i]]
-    print("batchify words",words)
-    print("batchify data",data[:100])
+    # print("batchify words",words)
+    # print("batchify data",data[:100])
     # Evenly divide the data across the bsz batches.
     data = data.view(bsz, -1).t().contiguous()
-    print("batchify data size", data.size())
-    print("batchify data reshaped", data[:3])
+    # print("batchify data size", data.size())
+    # print("batchify data reshaped", data[:3])
     words = [[""] * data.size(1)] * 3
     for i in range(3):
         for j in range(data.size(1)):
             words[i][j] = corpus.dictionary.idx2word[data[i][j]]
-    print("batchify words reshaped",words)
+    # print("batchify words reshaped",words)
     return data.to(device)
 
 eval_batch_size = 10
-train_data = batchify(corpus.train, args.batch_size)
-val_data = batchify(corpus.valid, eval_batch_size)
+# train_data = batchify(corpus.train, args.batch_size)
+# val_data = batchify(corpus.valid, eval_batch_size)
 test_data = batchify(corpus.test, eval_batch_size)
-
-###############################################################################
-# Build the model
-###############################################################################
-
-ntokens = len(corpus.dictionary)
-model = model.RNNModel(args.model, ntokens, args.emsize, args.nhid, args.nlayers, args.dropout, args.tied).to(device)
-
-criterion = nn.CrossEntropyLoss()
-
-###############################################################################
-# Training code
-###############################################################################
 
 def repackage_hidden(h):
     """Wraps hidden states in new Tensors, to detach them from their history."""
@@ -118,7 +87,6 @@ def repackage_hidden(h):
         return h.detach()
     else:
         return tuple(repackage_hidden(v) for v in h)
-
 
 # get_batch subdivides the source data into chunks of length args.bptt.
 # If source is equal to the example output of the batchify function, with
@@ -134,6 +102,7 @@ def get_batch(source, i):
     seq_len = min(args.bptt, len(source) - 1 - i)
     data = source[i:i+seq_len]
     target = source[i+1:i+1+seq_len].view(-1)
+    """
     if i == 0:
         data_words = [[""] * data.size(1)] * data.size(0)
         targets_words = [[""] * data.size(1)] * data.size(0)
@@ -146,147 +115,77 @@ def get_batch(source, i):
                 targets_words[j][k] = corpus.dictionary.idx2word[target_unflat[j][k]]
         print("data words",data_words)
         print("targets words",targets_words)
+        """
     return data, target
 
-
-def evaluate(data_source):
-    # Turn on evaluation mode which disables dropout.
-    model.eval()
-    total_loss = 0.
-    ntokens = len(corpus.dictionary)
-    hidden = model.init_hidden(eval_batch_size)
-    with torch.no_grad():
-        for i in range(0, data_source.size(0) - 1, args.bptt):
-            data, targets = get_batch(data_source, i)
-            if i == 0:
-                print("data size",data.size())
-                print("targets size",targets.size())
-            output, hidden = model(data, hidden)
-            if i == 0:
-                print("output size",output.size())
-            output_flat = output.view(-1, ntokens)
-            if i == 0:
-                print("output_flat size",output_flat.size())
-            total_loss += len(data) * criterion(output_flat, targets).item()
-            hidden = repackage_hidden(hidden)
-    return total_loss / len(data_source)
-
 # call with bptt=1
-# python sample.py --cuda --epochs 0 --data ../../../visdial_text --model GRU
-# --save model_gru_6.pt --bptt 1
+# python sample.py --cuda --data ../../../visdial_text --model GRU
+# --load model_gru_6.pt --bptt 1
 def sample(data_source):
     print("in sample!!!!")
     # Turn on evaluation mode which disables dropout.
     model.eval()
     hidden = model.init_hidden(eval_batch_size)
-    data, targets = get_batch(data_source, 0)
-    samples = torch.zeros(20,10)
-    samples[0,:] = data
     with torch.no_grad():
+      for data_idx in range(0, 100, 10):
+        data, targets = get_batch(data_source, data_idx)
+        samples = torch.zeros(20,10)
+        samples[0,:] = data
         for i in range(1,20):
             output, hidden = model(data, hidden)
             topv, topi = output.topk(1,dim=2)
             # topi contains index of top predicted next word
-            topi = topi.view(data.size())
+            topi = topi[-1,:,:].view(1,10)
             # append to sampled sentences
             samples[i,:] = topi
             # set data to predicted next words for next iteration
-            data = topi
-    for i in range(10):
-        sample = ""
-        for j in range(20):
-            sample += (corpus.dictionary.idx2word[int(samples[j][i])] + " ")
-        print(sample)
+            data = torch.cat((data,topi))
+            hidden = repackage_hidden(hidden)
+        for i in range(10):
+            sample = ""
+            for j in range(20):
+                sample += (corpus.dictionary.idx2word[int(samples[j][i])] + " ")
+            print(sample)
     return samples
 
-
-def train():
-    # Turn on training mode which enables dropout.
-    model.train()
-    total_loss = 0.
-    start_time = time.time()
-    ntokens = len(corpus.dictionary)
-    hidden = model.init_hidden(args.batch_size)
-    for batch, i in enumerate(range(0, train_data.size(0) - 1, args.bptt)):
-        data, targets = get_batch(train_data, i)
-        # Starting each batch, we detach the hidden state from how it was previously produced.
-        # If we didn't, the model would try backpropagating all the way to start of the dataset.
-        hidden = repackage_hidden(hidden)
-        model.zero_grad()
-        output, hidden = model(data, hidden)
-        loss = criterion(output.view(-1, ntokens), targets)
-        loss.backward()
-
-        # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
-        torch.nn.utils.clip_grad_norm_(model.parameters(), args.clip)
-        for p in model.parameters():
-            p.data.add_(-lr, p.grad.data)
-
-        total_loss += loss.item()
-
-        if batch % args.log_interval == 0 and batch > 0:
-            cur_loss = total_loss / args.log_interval
-            elapsed = time.time() - start_time
-            print('| epoch {:3d} | {:5d}/{:5d} batches | lr {:02.2f} | ms/batch {:5.2f} | '
-                    'loss {:5.2f} | ppl {:8.2f}'.format(
-                epoch, batch, len(train_data) // args.bptt, lr,
-                elapsed * 1000 / args.log_interval, cur_loss, math.exp(cur_loss)))
-            total_loss = 0
-            start_time = time.time()
-
-
-def export_onnx(path, batch_size, seq_len):
-    print('The model is also exported in ONNX format at {}'.
-          format(os.path.realpath(args.onnx_export)))
+criterion = nn.CrossEntropyLoss()
+def evaluate(data_source):
+    # Turn on evaluation mode which disables dropout.
     model.eval()
-    dummy_input = torch.LongTensor(seq_len * batch_size).zero_().view(-1, batch_size).to(device)
-    hidden = model.init_hidden(batch_size)
-    torch.onnx.export(model, (dummy_input, hidden), path)
+    error = 0.
+    ntokens = len(corpus.dictionary)
+    hidden = model.init_hidden(eval_batch_size)
+    ctr = 0
+    with torch.no_grad():
+        for i in range(0, data_source.size(0) - 1, args.bptt):
+            data, targets = get_batch(data_source, i)
+            output, hidden = model(data, hidden)
+            topv, topi = output.topk(1,dim=2)
+            # topi contains index of top predicted next word
+            topi = topi.view(1,10)
+            if i == 0:
+              print("data size", data.size())
+              print("targets size", targets.size())
+              print("output size", output.size())
+              print("topi size", topi.size())
+            for j in range(10):
+              word = corpus.dictionary.idx2word[data[0][j]]
+              if word[-1] == "?":
+                ctr += 1
+                if topi[0][j] != targets[j]:
+                  error += 1
+            hidden = repackage_hidden(hidden)
+    print("ctr", ctr)
+    print("error of word after answer (count = " + str(ctr) + ")", error / ctr)
 
-
-# Loop over epochs.
-lr = args.lr
-best_val_loss = None
-
-# At any point you can hit Ctrl + C to break out of training early.
-try:
-    for epoch in range(1, args.epochs+1):
-        epoch_start_time = time.time()
-        train()
-        val_loss = evaluate(val_data)
-        print('-' * 89)
-        print('| end of epoch {:3d} | time: {:5.2f}s | valid loss {:5.2f} | '
-                'valid ppl {:8.2f}'.format(epoch, (time.time() - epoch_start_time),
-                                           val_loss, math.exp(val_loss)))
-        print('-' * 89)
-        # Save the model if the validation loss is the best we've seen so far.
-        if not best_val_loss or val_loss < best_val_loss:
-            with open(args.save, 'wb') as f:
-                torch.save(model, f)
-            best_val_loss = val_loss
-        else:
-            # Anneal the learning rate if no improvement has been seen in the validation dataset.
-            lr /= 4.0
-except KeyboardInterrupt:
-    print('-' * 89)
-    print('Exiting from training early')
-
-# Load the best saved model.
-with open(args.save, 'rb') as f:
+# Load the model.
+with open(args.load, 'rb') as f:
     model = torch.load(f)
     # after load the rnn params are not a continuous chunk of memory
     # this makes them a continuous chunk, and will speed up forward pass
     model.rnn.flatten_parameters()
 
-# Run on test data.
-# test_loss = evaluate(test_data)
-# print('=' * 89)
-# print('| End of training | test loss {:5.2f} | test ppl {:8.2f}'.format(
-#     test_loss, math.exp(test_loss)))
-# print('=' * 89)
-
-sample(test_data)
-
-if len(args.onnx_export) > 0:
-    # Export the model in ONNX format.
-    export_onnx(args.onnx_export, batch_size=1, seq_len=args.bptt)
+if args.task == "sample":
+  sample(test_data)
+elif args.task == "eval_answer":
+  evaluate(test_data)
