@@ -1,2 +1,4 @@
 **/data/*
 **/dialogs/*
+**/__pycache__/*
+baseline/visdial/checkpoints/*
