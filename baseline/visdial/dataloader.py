@@ -24,6 +24,7 @@ class VisDialDataset(Dataset):
                                 help='JSON file with image paths and vocab')
         parser.add_argument('-img_norm', default=1, choices=[1, 0],
                                 help='normalize the image feature. 1=yes, 0=no')
+        parser.add_argument('-size_limit', type=int, default=-1, help='maximum size of dataset')
         return parser
 
     def __init__(self, args, subsets):
@@ -118,6 +119,10 @@ class VisDialDataset(Dataset):
         if args.overfit:
             self.data[dtype + '_img_fv'] = self.data[dtype + '_img_fv'][:5]
             self.data[dtype + '_img_fnames'] = self.data[dtype + '_img_fnames'][:5]
+        if args.size_limit > 0:
+            size_limit = min(args.size_limit, list(self.data[dtype + '_img_fv'].shape)[0])
+            self.data[dtype + '_img_fv'] = self.data[dtype + '_img_fv'][:size_limit]
+            self.data[dtype + '_img_fnames'] = self.data[dtype + '_img_fnames'][:size_limit]
 
         self.num_data_points = {}
         for dtype in subsets:
@@ -177,7 +182,7 @@ class VisDialDataset(Dataset):
 
         # get options tokens
         opt_inds = self.data[dtype + '_opt'][idx]
-        opt_size = list(opt_inds.size())    
+        opt_size = list(opt_inds.size())
         new_size = torch.Size(opt_size + [-1])
         ind_vector = opt_inds.view(-1)
 
@@ -233,7 +238,7 @@ class VisDialDataset(Dataset):
     #-------------------------------------------------------------------------
 
     def _process_history(self, dtype):
-        """Process caption as well as history. Optionally, concatenate history 
+        """Process caption as well as history. Optionally, concatenate history
         for lf-encoder."""
         captions = self.data[dtype + '_cap']
         questions = self.data[dtype + '_ques']
