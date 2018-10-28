@@ -20,7 +20,7 @@ VisDialDataset.add_cmdline_args(parser)
 LateFusionEncoder.add_cmdline_args(parser)
 
 parser.add_argument_group('Encoder Decoder choice arguments')
-parser.add_argument('-encoder', default='lf-ques-im-hist', choices=['lf-ques-im-hist'],
+parser.add_argument('-encoder', default='lf-ques-im-hist', choices=['lf-ques-im-hist', 'hre-ques-im-hist'],
                         help='Encoder to use for training')
 parser.add_argument('-decoder', default='disc', choices=['disc'],
                         help='Decoder to use for training')
@@ -102,7 +102,7 @@ for key in {'num_data_points', 'vocab_size', 'max_ques_count',
     setattr(model_args, key, getattr(dataset, key))
 
 # iterations per epoch
-setattr(args, 'iter_per_epoch', 
+setattr(args, 'iter_per_epoch',
     math.ceil(dataset.num_data_points['train'] / args.batch_size))
 print("{} iter per epoch.".format(args.iter_per_epoch))
 
