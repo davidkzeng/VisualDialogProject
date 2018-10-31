@@ -29,8 +29,7 @@ class HierarchicalRecurrentEncoder(nn.Module):
 
         self.word_embed = nn.Embedding(args.vocab_size, args.embed_size, padding_idx=0)
         ques_img_feature_size = args.embed_size + args.img_feature_size
-        ques_img_hidden_size = args.rnn_hidden_size + args.img_feature_size
-        self.ques_img_rnn = nn.LSTM(ques_img_feature_size, ques_img_hidden_size,
+        self.ques_img_rnn = nn.LSTM(ques_img_feature_size, args.rnn_hidden_size,
                                 args.num_layers,
                                 batch_first=True, dropout=args.dropout)
         self.ques_img_rnn = DynamicRNN(self.ques_img_rnn)
@@ -39,7 +38,7 @@ class HierarchicalRecurrentEncoder(nn.Module):
                         batch_first=True, dropout=args.dropout)
         self.hist_rnn = DynamicRNN(self.hist_rnn)
 
-        fusion_size = args.img_feature_size + args.rnn_hidden_size * 2
+        fusion_size = args.rnn_hidden_size * 2
         self.fusion = nn.Linear(fusion_size, args.rnn_hidden_size)
 
         """
@@ -51,7 +50,7 @@ class HierarchicalRecurrentEncoder(nn.Module):
         """
         self.dialog_rnn = nn.LSTM(args.rnn_hidden_size, args.rnn_hidden_size, args.num_layers,
                         batch_first=True, dropout=args.dropout)
-        self.dropout = nn.Dropout(p=args.dropout)
+        # self.dropout = nn.Dropout(p=args.dropout)
 
 
 
@@ -83,7 +82,8 @@ class HierarchicalRecurrentEncoder(nn.Module):
         hist_embed = self.hist_rnn(hist_embed, batch['hist_len'])
 
         fused_vector = torch.cat((ques_img_encode, hist_embed), 1)
-        fused_vector = self.dropout(fused_vector)
+        # Dropout not used in the torch implementation of HRE
+        # fused_vector = self.dropout(fused_vector)
 
         # Copied the tanh over from lf.py but unclear if needed since this is an intermediate layer
         # fused_embedding = F.tanh(self.fusion(fused_vector))
