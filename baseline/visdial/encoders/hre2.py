@@ -92,8 +92,12 @@ class HierarchicalRecurrentEncoder(nn.Module):
         fused_embedding = fused_embedding.view(-1, round_size, fused_embedding.size(1))
         # fused_embedding_size = torch.full((fused_embedding.size(0),), round_size)
 
+        # LSTM expects dimensions to be (seq_len, batch, input_size)
         fused_embedding = fused_embedding.permute(1, 0, 2)
         output, final = self.dialog_rnn(fused_embedding, None)
+
+        # LSTM outputs tensor with dimensions (seq_len, batch, hidden_size)
+        output = output.permute(1, 0, 2)
         output = output.contiguous().view(-1, output.size(2))
         output = torch.tanh(output)
 
