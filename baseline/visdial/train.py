@@ -40,7 +40,7 @@ parser.add_argument('-gpuid', default=0, type=int, help='GPU id to use')
 parser.add_argument_group('Checkpointing related arguments')
 parser.add_argument('-load_path', default='', help='Checkpoint to load path from')
 parser.add_argument('-save_path', default='checkpoints/', help='Path to save checkpoints')
-parser.add_argument('-save_step', default=2, type=int,
+parser.add_argument('-save_step', default=1, type=int,
                         help='Save checkpoint after every save_step epochs')
 
 # ----------------------------------------------------------------------------
