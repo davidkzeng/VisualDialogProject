@@ -11,7 +11,7 @@ from torch.optim import lr_scheduler
 from torch.utils.data import DataLoader
 
 from dataloader import VisDialDataset
-from encoders import Encoder, LateFusionEncoder
+from encoders import Encoder, LateFusionEncoder, EncoderParams
 from decoders import Decoder
 
 
@@ -75,9 +75,10 @@ if args.load_path != '':
 
     # this is required by dataloader
     args.img_norm = model_args.img_norm
+encoder_params = EncoderParams(model_args)
 
 # set this because only late fusion encoder is supported yet
-args.concat_history = True
+args.concat_history = encoder_params['concat_history']
 
 for arg in vars(args):
     print('{:<20}: {}'.format(arg, getattr(args, arg)))
@@ -111,6 +112,7 @@ print("{} iter per epoch.".format(args.iter_per_epoch))
 # ----------------------------------------------------------------------------
 
 encoder = Encoder(model_args)
+
 decoder = Decoder(model_args, encoder)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(list(encoder.parameters()) + list(decoder.parameters()),

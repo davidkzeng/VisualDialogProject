@@ -29,7 +29,8 @@ class HierarchicalRecurrentEncoder(nn.Module):
 
         self.word_embed = nn.Embedding(args.vocab_size, args.embed_size, padding_idx=0)
         ques_img_feature_size = args.embed_size + args.img_feature_size
-        self.ques_img_rnn = nn.LSTM(ques_img_feature_size, args.rnn_hidden_size + args.img_feature_size,
+        ques_img_hidden_size = args.rnn_hidden_size + args.img_feature_size
+        self.ques_img_rnn = nn.LSTM(ques_img_feature_size, ques_img_hidden_size,
                                 args.num_layers,
                                 batch_first=True, dropout=args.dropout)
         self.ques_img_rnn = DynamicRNN(self.ques_img_rnn)
@@ -50,6 +51,7 @@ class HierarchicalRecurrentEncoder(nn.Module):
         """
         self.dialog_rnn = nn.LSTM(args.rnn_hidden_size, args.rnn_hidden_size, args.num_layers,
                         batch_first=True, dropout=args.dropout)
+        self.dropout = nn.Dropout(p=args.dropout)
 
 
 
@@ -68,7 +70,31 @@ class HierarchicalRecurrentEncoder(nn.Module):
         # repeat image feature vectors to be provided for every round
         img = img.view(batch_size, 1, 1, -1)
         img = img.repeat(1, round_size, ques_size, 1)
-        print(img.size(), ques_embed.size(), hist.size(), ques_len.size())
+        # print(img.size(), ques_embed.size(), hist.size(), ques_len.size())
 
         ques_img = torch.cat((img, ques_embed), 3)
-        print(ques_img.size())
+        ques_img = ques_img.view(-1, ques_size, ques_img.size(3))
+
+        ques_img_encode = self.ques_img_rnn(ques_img, ques_len)
+
+        # embed history
+        hist = hist.view(-1, hist.size(2))
+        hist_embed = self.word_embed(hist)
+        hist_embed = self.hist_rnn(hist_embed, batch['hist_len'])
+
+        fused_vector = torch.cat((ques_img_encode, hist_embed), 1)
+        fused_vector = self.dropout(fused_vector)
+
+        # Copied the tanh over from lf.py but unclear if needed since this is an intermediate layer
+        # fused_embedding = F.tanh(self.fusion(fused_vector))
+
+        fused_embedding = self.fusion(fused_vector)
+        fused_embedding = fused_embedding.view(-1, round_size, fused_embedding.size(1))
+        # fused_embedding_size = torch.full((fused_embedding.size(0),), round_size)
+
+        fused_embedding = fused_embedding.permute(1, 0, 2)
+        output, final = self.dialog_rnn(fused_embedding, None)
+        output = output.contiguous().view(-1, output.size(2))
+        output = torch.tanh(output)
+
+        return output

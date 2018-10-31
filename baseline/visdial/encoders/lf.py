@@ -63,6 +63,7 @@ class LateFusionEncoder(nn.Module):
         ques = ques.view(-1, ques.size(2))
         print(ques.size())
         ques_embed = self.word_embed(ques)
+        print(ques_embed.size(), batch['ques_len'].size())
         ques_embed = self.ques_rnn(ques_embed, batch['ques_len'])
 
         # embed history

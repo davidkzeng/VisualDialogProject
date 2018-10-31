@@ -32,9 +32,8 @@ class DynamicRNN(nn.Module):
         sorted_seq_input = seq_input.index_select(0, fwd_order)
         packed_seq_input = pack_padded_sequence(
             sorted_seq_input, lengths=sorted_len, batch_first=True)
-
         if initial_state is not None:
-            hx = initialState
+            hx = initial_state
             sorted_hx = [x.index_select(1, fwd_order) for x in hx]
             assert hx[0].size(0) == self.rnn_model.num_layers
         else:
@@ -46,6 +45,7 @@ class DynamicRNN(nn.Module):
 
     @staticmethod
     def _get_sorted_order(lens):
+        # Note: This method always views the passed in lens as a 1-d tensor 
         sorted_len, fwd_order = torch.sort(lens.contiguous().view(-1), 0, descending=True)
         _, bwd_order = torch.sort(fwd_order)
         if isinstance(sorted_len, Variable):

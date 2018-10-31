@@ -11,7 +11,7 @@ from torch.autograd import Variable
 from torch.utils.data import DataLoader
 
 from dataloader import VisDialDataset
-from encoders import Encoder
+from encoders import Encoder, EncoderParams
 from decoders import Decoder
 from utils import process_ranks, scores_to_ranks, get_gt_ranks
 
@@ -66,12 +66,13 @@ components = torch.load(args.load_path)
 model_args = components['model_args']
 model_args.gpuid = args.gpuid
 model_args.batch_size = args.batch_size
+encoder_params = EncoderParams(model_args)
 
 # this is required by dataloader
 args.img_norm = model_args.img_norm
 
 # set this because only late fusion encoder is supported yet
-args.concat_history = True
+args.concat_history = encoder_params['concat_history']
 
 for arg in vars(args):
     print('{:<20}: {}'.format(arg, getattr(args, arg)))
