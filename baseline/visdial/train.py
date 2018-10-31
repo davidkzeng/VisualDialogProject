@@ -11,7 +11,7 @@ from torch.optim import lr_scheduler
 from torch.utils.data import DataLoader
 
 from dataloader import VisDialDataset
-from encoders import Encoder, LateFusionEncoder
+from encoders import Encoder, LateFusionEncoder, EncoderParams
 from decoders import Decoder
 
 
@@ -20,7 +20,7 @@ VisDialDataset.add_cmdline_args(parser)
 LateFusionEncoder.add_cmdline_args(parser)
 
 parser.add_argument_group('Encoder Decoder choice arguments')
-parser.add_argument('-encoder', default='lf-ques-im-hist', choices=['lf-ques-im-hist'],
+parser.add_argument('-encoder', default='lf-ques-im-hist', choices=['lf-ques-im-hist', 'hre-ques-im-hist'],
                         help='Encoder to use for training')
 parser.add_argument('-decoder', default='disc', choices=['disc'],
                         help='Decoder to use for training')
@@ -75,9 +75,10 @@ if args.load_path != '':
 
     # this is required by dataloader
     args.img_norm = model_args.img_norm
+encoder_params = EncoderParams(model_args)
 
 # set this because only late fusion encoder is supported yet
-args.concat_history = True
+args.concat_history = encoder_params['concat_history']
 
 for arg in vars(args):
     print('{:<20}: {}'.format(arg, getattr(args, arg)))
@@ -102,7 +103,7 @@ for key in {'num_data_points', 'vocab_size', 'max_ques_count',
     setattr(model_args, key, getattr(dataset, key))
 
 # iterations per epoch
-setattr(args, 'iter_per_epoch', 
+setattr(args, 'iter_per_epoch',
     math.ceil(dataset.num_data_points['train'] / args.batch_size))
 print("{} iter per epoch.".format(args.iter_per_epoch))
 
@@ -111,6 +112,7 @@ print("{} iter per epoch.".format(args.iter_per_epoch))
 # ----------------------------------------------------------------------------
 
 encoder = Encoder(model_args)
+
 decoder = Decoder(model_args, encoder)
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(list(encoder.parameters()) + list(decoder.parameters()),

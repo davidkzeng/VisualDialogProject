@@ -53,7 +53,7 @@ class LateFusionEncoder(nn.Module):
         img = batch['img_feat']
         ques = batch['ques']
         hist = batch['hist']
-
+        print(img.size())
         # repeat image feature vectors to be provided for every round
         img = img.view(-1, 1, self.args.img_feature_size)
         img = img.repeat(1, self.args.max_ques_count, 1)
@@ -61,7 +61,9 @@ class LateFusionEncoder(nn.Module):
 
         # embed questions
         ques = ques.view(-1, ques.size(2))
+        print(ques.size())
         ques_embed = self.word_embed(ques)
+        print(ques_embed.size(), batch['ques_len'].size())
         ques_embed = self.ques_rnn(ques_embed, batch['ques_len'])
 
         # embed history
@@ -73,4 +75,6 @@ class LateFusionEncoder(nn.Module):
         fused_vector = self.dropout(fused_vector)
 
         fused_embedding = F.tanh(self.fusion(fused_vector))
+
+        print(fused_embedding.size())
         return fused_embedding
