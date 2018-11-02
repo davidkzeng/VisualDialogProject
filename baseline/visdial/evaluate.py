@@ -124,9 +124,10 @@ if args.use_gt:
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
             if not isinstance(batch[key], list):
-                batch[key] = Variable(batch[key], volatile=True)
-                if args.gpuid >= 0:
-                    batch[key] = batch[key].cuda()
+                with torch.no_grad():
+                    batch[key] = Variable(batch[key])
+                    if args.gpuid >= 0:
+                        batch[key] = batch[key].cuda()
 
         enc_out = encoder(batch)
         dec_out = decoder(enc_out, batch)
@@ -144,9 +145,10 @@ else:
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
             if not isinstance(batch[key], list):
-                batch[key] = Variable(batch[key], volatile=True)
-                if args.gpuid >= 0:
-                    batch[key] = batch[key].cuda()
+                with torch.no_grad():
+                    batch[key] = Variable(batch[key])
+                    if args.gpuid >= 0:
+                        batch[key] = batch[key].cuda()
 
         enc_out = encoder(batch)
         dec_out = decoder(enc_out, batch)
