@@ -12,6 +12,8 @@ class LateFusionEncoder(nn.Module):
         parser.add_argument_group('Encoder specific arguments')
         parser.add_argument('-img_feature_size', default=4096,
                                 help='Channel size of image feature')
+        parser.add_argument('-img_embed_size', default=512,
+                                help='Embed size for image')
         parser.add_argument('-embed_size', default=300,
                                 help='Size of the input word embedding')
         parser.add_argument('-rnn_hidden_size', default=512,
