@@ -11,7 +11,7 @@ from torch.optim import lr_scheduler
 from torch.utils.data import DataLoader
 
 from dataloader import VisDialDataset
-from encoders import Encoder, LateFusionEncoder, EncoderParams
+from encoders import Encoder, LateFusionEncoder, EncoderParams, HierarchicalRecurrentEncoder
 from decoders import Decoder
 
 
