@@ -115,7 +115,6 @@ print("Evaluation start time: {}".format(
     datetime.datetime.strftime(datetime.datetime.utcnow(), '%d-%b-%Y-%H:%M:%S')))
 encoder.eval()
 decoder.eval()
-
 if args.use_gt:
     # ------------------------------------------------------------------------
     # calculate automatic metrics and finish

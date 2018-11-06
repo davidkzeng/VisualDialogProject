@@ -85,6 +85,10 @@ class VisDialDataset(Dataset):
         }
 
         # processing every split in subsets
+        # We will redefine the subsets be:
+        # 'train': 50000 sampled examples from v1.0 Train (Possible larger)
+        # 'val' : 5000 sampled examples from v1.0 Train (non-intersecting with train)
+        # 'test' :  2064 sampled examples from v1.0 Val
         for dtype in subsets:  # dtype is in ['train', 'val', 'test']
             print("\nProcessing split [{}]...".format(dtype))
             # read the question, answer, option related information
