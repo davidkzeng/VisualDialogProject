@@ -127,14 +127,19 @@ if args.use_gt:
                     batch[key] = Variable(batch[key])
                     if args.gpuid >= 0:
                         batch[key] = batch[key].cuda()
-
+        #print(batch['type'])
         enc_out = encoder(batch)
         dec_out = decoder(enc_out, batch)
+        #print(dec_out[0])
         ranks = scores_to_ranks(dec_out.data)
+        #print(ranks[0])
         gt_ranks = get_gt_ranks(ranks, batch['ans_ind'].data)
+        #print(gt_ranks)
         all_ranks.append(gt_ranks)
     all_ranks = torch.cat(all_ranks, 0)
     process_ranks(all_ranks)
+    #for rank in all_ranks:
+    #     print(rank)
     gc.collect()
 else:
     # ------------------------------------------------------------------------

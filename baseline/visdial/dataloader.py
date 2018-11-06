@@ -1,6 +1,7 @@
 import os
 import json
 from six import iteritems
+import collections
 
 import h5py
 import numpy as np
@@ -135,7 +136,7 @@ class VisDialDataset(Dataset):
         print("\tMax no. of rounds: {}".format(self.max_ques_count))
         print("\tMax ques len: {}".format(self.max_ques_len))
         print("\tMax ans len: {}".format(self.max_ans_len))
-
+	
         # prepare history
         for dtype in subsets:
             self._process_history(dtype)
@@ -145,6 +146,37 @@ class VisDialDataset(Dataset):
             if dtype + '_ans_ind' in self.data:
                 self.data[dtype + '_ans_ind'] -= 1
 
+	# in val_ques first index is rounds, second index is question, third index is words
+        #print(self.data['val_ques'].size(0))
+        #print(self.data['val_ans'].size())
+        self.data['val_type'] = collections.defaultdict(dict) 
+        for i in range(self.data['val_ques'].size(0)):
+            for j in range(self.data['val_num_rounds'][i]):
+                is_color = False
+                is_yesno = False
+                question = ""
+                for k in range(self.data['val_ques_len'][i][j]):
+                    word = self.ind2word[self.data['val_ques'][i][j][k].item()]
+                    question = question + " " + word
+                    if (word == "color"):
+                        is_color = True
+                answer = ""
+                for k in range(self.data['val_ans_len'][i][j]):
+                    word = self.ind2word[self.data['val_ans'][i][j][k].item()]
+                    answer = answer + " " + word
+                    if (word == "yes" or word == "no"):
+                        is_yesno = True
+                #if i < 20:
+                #    print(question)
+                #    print(answer)
+                #    print(is_yesno)
+                if (is_yesno):
+                    self.data['val_type'][i][j] = "yn"
+                elif (is_color):
+                    self.data['val_type'][i][j] = "color"
+                else: 
+                    self.data['val_type'][i][j] = "other"
+		
         # default pytorch loader dtype is set to train
         if 'train' in subsets:
             self._split = 'train'
@@ -184,6 +216,10 @@ class VisDialDataset(Dataset):
         item['hist_len'] = self.data[dtype + '_hist_len'][idx]
         item['hist'] = self.data[dtype + '_hist'][idx]
 
+        # get type tokens
+        item['type'] = self.data[dtype + '_type'][idx]
+        
+
         # get options tokens
         opt_inds = self.data[dtype + '_opt'][idx]
         opt_size = list(opt_inds.size())
@@ -219,7 +255,7 @@ class VisDialDataset(Dataset):
         merged_batch = {key: [d[key] for d in batch] for key in batch[0]}
         out = {}
         for key in merged_batch:
-            if key in {'index', 'num_rounds', 'img_fnames'}:
+            if key in {'index', 'num_rounds', 'img_fnames', 'type'}:
                 out[key] = merged_batch[key]
             elif key in {'cap_len'}:
                 out[key] = torch.Tensor(merged_batch[key]).long()
@@ -232,7 +268,7 @@ class VisDialDataset(Dataset):
         out['opt'] = out['opt'][:, :, :, :torch.max(out['opt_len'])].contiguous()
 
         batch_keys = ['img_fnames', 'num_rounds', 'img_feat', 'hist',
-                      'hist_len', 'ques', 'ques_len', 'opt', 'opt_len']
+                      'hist_len', 'ques', 'ques_len', 'opt', 'opt_len','type']
         if dtype != 'test':
             batch_keys.append('ans_ind')
         return {key: out[key] for key in batch_keys}
