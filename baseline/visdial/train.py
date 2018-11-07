@@ -20,7 +20,7 @@ VisDialDataset.add_cmdline_args(parser)
 LateFusionEncoder.add_cmdline_args(parser)
 
 parser.add_argument_group('Encoder Decoder choice arguments')
-parser.add_argument('-encoder', default='lf-ques-im-hist', choices=['lf-ques-im-hist', 'hre-ques-im-hist'],
+parser.add_argument('-encoder', default='lf-ques-im-hist', choices=['lf-ques-im-hist', 'hre-ques-im-hist', 'lf-ques-im-hist-short'],
                         help='Encoder to use for training')
 parser.add_argument('-decoder', default='disc', choices=['disc'],
                         help='Decoder to use for training')
@@ -79,6 +79,7 @@ encoder_params = EncoderParams(model_args)
 
 # set this because only late fusion encoder is supported yet
 args.concat_history = encoder_params['concat_history']
+args.partial_concat_history = encoder_params['partial_concat_history']
 
 for arg in vars(args):
     print('{:<20}: {}'.format(arg, getattr(args, arg)))

@@ -6,19 +6,22 @@ name_enc_map = {
     'lf-ques-im-hist': {
     	'encoder': LateFusionEncoder,
     	'params' : {
-            'concat_history' : True
+            'concat_history' : True,
+            'partial_concat_history' : False
     	}
     }, 
-    'lf-ques-im-hist-ablate': {
+    'lf-ques-im-hist-short': {
         'encoder' : LateFusionShortHistEncoder,
         'params' : {
-            'concat_history' : False
+            'concat_history' : False,
+            'partial_concat_history' : True
         }
     },
     'hre-ques-im-hist': {
     	'encoder': HierarchicalRecurrentEncoder, 
     	'params' : {
-            'concat_history' : False
+            'concat_history' : False,
+            'partial_concat_history' : False
     	}
     },
 }
