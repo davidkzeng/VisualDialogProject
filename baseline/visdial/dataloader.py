@@ -26,6 +26,8 @@ class VisDialDataset(Dataset):
         parser.add_argument('-img_norm', default=1, choices=[1, 0],
                                 help='normalize the image feature. 1=yes, 0=no')
         parser.add_argument('-size_limit', type=int, default=-1, help='maximum size of dataset')
+        parser.add_argument('-breakdown_analysis', action='store_true',
+                                help='break down statistics by question type')
         return parser
 
     def __init__(self, args, subsets):
@@ -146,36 +148,37 @@ class VisDialDataset(Dataset):
             if dtype + '_ans_ind' in self.data:
                 self.data[dtype + '_ans_ind'] -= 1
 
-	# in val_ques first index is rounds, second index is question, third index is words
-        #print(self.data['val_ques'].size(0))
-        #print(self.data['val_ans'].size())
-        self.data['val_type'] = collections.defaultdict(dict) 
-        for i in range(self.data['val_ques'].size(0)):
-            for j in range(self.data['val_num_rounds'][i]):
-                is_color = False
-                is_yesno = False
-                question = ""
-                for k in range(self.data['val_ques_len'][i][j]):
-                    word = self.ind2word[self.data['val_ques'][i][j][k].item()]
-                    question = question + " " + word
-                    if (word == "color"):
-                        is_color = True
-                answer = ""
-                for k in range(self.data['val_ans_len'][i][j]):
-                    word = self.ind2word[self.data['val_ans'][i][j][k].item()]
-                    answer = answer + " " + word
-                    if (word == "yes" or word == "no"):
-                        is_yesno = True
-                #if i < 20:
-                #    print(question)
-                #    print(answer)
-                #    print(is_yesno)
-                if (is_yesno):
-                    self.data['val_type'][i][j] = "yn"
-                elif (is_color):
-                    self.data['val_type'][i][j] = "color"
-                else: 
-                    self.data['val_type'][i][j] = "other"
+        if args.breakdown_analysis:
+            # in val_ques first index is rounds, second index is question, third index is words
+            # print(self.data['val_ques'].size(0))
+            # print(self.data['val_ans'].size())
+            self.data['val_type'] = collections.defaultdict(dict) 
+            for i in range(self.data['val_ques'].size(0)):
+                for j in range(self.data['val_num_rounds'][i]):
+                    is_color = False
+                    is_yesno = False
+                    question = ""
+                    for k in range(self.data['val_ques_len'][i][j]):
+                        word = self.ind2word[self.data['val_ques'][i][j][k].item()]
+                        question = question + " " + word
+                        if (word == "color"):
+                            is_color = True
+                    answer = ""
+                    for k in range(self.data['val_ans_len'][i][j]):
+                        word = self.ind2word[self.data['val_ans'][i][j][k].item()]
+                        answer = answer + " " + word
+                        if (word == "yes" or word == "no"):
+                            is_yesno = True
+                    #if i < 20:
+                    #    print(question)
+                    #    print(answer)
+                    #    print(is_yesno)
+                    if (is_yesno):
+                        self.data['val_type'][i][j] = "yn"
+                    elif (is_color):
+                        self.data['val_type'][i][j] = "color"
+                    else: 
+                        self.data['val_type'][i][j] = "other"
 		
         # default pytorch loader dtype is set to train
         if 'train' in subsets:
@@ -217,7 +220,7 @@ class VisDialDataset(Dataset):
         item['hist'] = self.data[dtype + '_hist'][idx]
 
         # get type tokens
-        item['type'] = self.data[dtype + '_type'][idx]
+        item['type'] =  self.data[dtype + '_type'][idx] if (dtype + '_type') in self.data else ''
         
 
         # get options tokens
