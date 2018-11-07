@@ -157,6 +157,7 @@ class VisDialDataset(Dataset):
                 for j in range(self.data['val_num_rounds'][i]):
                     is_color = False
                     is_yesno = False
+                    is_count = False
                     question = ""
                     for k in range(self.data['val_ques_len'][i][j]):
                         word = self.ind2word[self.data['val_ques'][i][j][k].item()]
@@ -169,6 +170,8 @@ class VisDialDataset(Dataset):
                         answer = answer + " " + word
                         if (word == "yes" or word == "no"):
                             is_yesno = True
+                    if (any(char.isdigit() for char in answer)):
+                        is_count = True
                     #if i < 20:
                     #    print(question)
                     #    print(answer)
@@ -177,6 +180,8 @@ class VisDialDataset(Dataset):
                         self.data['val_type'][i][j] = "yn"
                     elif (is_color):
                         self.data['val_type'][i][j] = "color"
+                    elif (is_count):
+                        self.data['val_type'][i][j] = "count"
                     else: 
                         self.data['val_type'][i][j] = "other"
 		
