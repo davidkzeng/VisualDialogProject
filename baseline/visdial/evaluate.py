@@ -73,6 +73,7 @@ args.img_norm = model_args.img_norm
 
 # set this because only late fusion encoder is supported yet
 args.concat_history = encoder_params['concat_history']
+args.partial_concat_history = encoder_params['partial_concat_history']
 
 for arg in vars(args):
     print('{:<20}: {}'.format(arg, getattr(args, arg)))
