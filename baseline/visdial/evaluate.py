@@ -120,6 +120,7 @@ if args.use_gt:
     # calculate automatic metrics and finish
     # ------------------------------------------------------------------------
     all_ranks = []
+    all_labels = []
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
             if not isinstance(batch[key], list):
@@ -136,8 +137,40 @@ if args.use_gt:
         gt_ranks = get_gt_ranks(ranks, batch['ans_ind'].data)
         #print(gt_ranks)
         all_ranks.append(gt_ranks)
+        for j in range(len(batch['type'])):
+            for k in range(len(batch['type'][j])):
+                all_labels.append(batch['type'][j][k])
+             
     all_ranks = torch.cat(all_ranks, 0)
+    #print (all_labels)
+    yes_no_ranks = []
+    color_ranks = []
+    other_ranks = []
+    count_ranks = []
+    for j in range(len(all_ranks)):
+        if (all_labels[j] == "yn"): 
+            yes_no_ranks.append(all_ranks[j])
+        if (all_labels[j] == "color"):
+            color_ranks.append(all_ranks[j])
+        if (all_labels[j] == "other"):
+            other_ranks.append(all_ranks[j])
+        if (all_labels[j] == "count"):
+            count_ranks.append(all_ranks[j])
+
+    yes_no_ranks = torch.tensor(yes_no_ranks)
+    color_ranks = torch.tensor(color_ranks)
+    count_ranks = torch.tensor(count_ranks)
+    other_ranks = torch.tensor(other_ranks)
     process_ranks(all_ranks)
+    print("Yes No stats")
+    process_ranks(yes_no_ranks)
+    print("Color stats")
+    process_ranks(color_ranks)
+    print("Count stats")
+    process_ranks(count_ranks)
+    print("Other stats")
+    process_ranks(other_ranks)
+
     #for rank in all_ranks:
     #     print(rank)
     gc.collect()
