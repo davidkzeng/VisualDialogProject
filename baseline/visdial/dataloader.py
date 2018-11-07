@@ -301,6 +301,9 @@ class VisDialDataset(Dataset):
         if self.args.concat_history:
             self.max_hist_len = min(num_rounds * (max_ques_len + max_ans_len), 300)
             history = torch.zeros(num_convs, num_rounds, self.max_hist_len).long()
+        elif self.args.partial_concat_history:
+            self.max_hist_len = min(3 * (max_ques_len + max_ans_len), 300)
+            history = torch.zeros(num_convs, num_rounds, self.max_hist_len).long()
         else:
             history = torch.zeros(num_convs, num_rounds, max_ques_len + max_ans_len).long()
         hist_len = torch.zeros(num_convs, num_rounds).long()
@@ -329,6 +332,17 @@ class VisDialDataset(Dataset):
                             history[th_id][round_id][hlen + qlen + 1:hlen + qlen + alen + 1] \
                                 = answers[th_id][round_id - 1][:alen]
                         hlen = hlen + qlen + alen + 1
+                    elif self.args.partial_concat_history:
+                        clen = max_ques_len + max_ans_len
+                        history[th_id][round_id][:clen] \
+                            = captions[th_id][:clen]
+                        history[th_id][round_id][clen] = self.word2ind['<END>']
+                        if qlen > 0:
+                            history[th_id][round_id][clen + 1:clen + 1 + qlen] = questions[th_id][round_id - 1][:qlen]
+                        if alen > 0:
+                            history[th_id][round_id][clen + 1 + qlen:clen + 1 + qlen + alen] \
+                                = answers[th_id][round_id - 1][:alen]
+                        hlen = clen + 1 + alen + qlen
                     # else, history is just previous round question-answer pair
                     else:
                         if qlen > 0:

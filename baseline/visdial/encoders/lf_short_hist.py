@@ -55,7 +55,6 @@ class LateFusionShortHistEncoder(nn.Module):
         img = batch['img_feat']
         ques = batch['ques']
         hist = batch['hist']
-        print(hist.size())
         # repeat image feature vectors to be provided for every round
         img = img.view(-1, 1, self.args.img_feature_size)
         img = img.repeat(1, self.args.max_ques_count, 1)
