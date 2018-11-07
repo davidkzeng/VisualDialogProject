@@ -13,7 +13,7 @@ from torch.utils.data import DataLoader
 from dataloader import VisDialDataset
 from encoders import Encoder, EncoderParams
 from decoders import Decoder
-from utils import process_ranks, scores_to_ranks, get_gt_ranks
+from utils import process_ranks, scores_to_ranks, get_gt_ranks, convert_to_string
 
 
 parser = argparse.ArgumentParser()
@@ -87,6 +87,7 @@ dataloader = DataLoader(dataset,
                         batch_size=args.batch_size,
                         shuffle=False,
                         collate_fn=dataset.collate_fn)
+ind2word = dataset.ind2word
 
 # iterations per epoch
 setattr(args, 'iter_per_epoch',
@@ -136,6 +137,27 @@ if args.use_gt:
         #print(ranks[0])
         gt_ranks = get_gt_ranks(ranks, batch['ans_ind'].data)
         #print(gt_ranks)
+        
+        batch_size = batch['ques'].size(0)
+        round_length = batch['ques'].size(1)
+       
+        count = 0
+        for b in range(batch_size):
+            for r in range(round_length):
+                ques_string = convert_to_string(batch['ques'][b][r], ind2word)
+                ans_ind = batch['ans_ind'][b][r]
+                gt_ans = convert_to_string(batch['opt'][b][r][ans_ind], ind2word)
+                gt_rank = ranks[count][ans_ind]
+                top_ranked_ind = None
+                for ind in range(ranks.size(1)):
+                    if ranks[count][ind] == 1:
+                        top_ranked_ind = ind
+                top_rank_ans = convert_to_string(batch['opt'][b][r][top_ranked_ind], ind2word)
+                image_fname = batch['img_fnames'][b]
+                if gt_rank > 1:
+                    print("=====================\n%s\n%d %s\n%s\n%s" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname))
+                count += 1
+
         all_ranks.append(gt_ranks)
     all_ranks = torch.cat(all_ranks, 0)
     process_ranks(all_ranks)

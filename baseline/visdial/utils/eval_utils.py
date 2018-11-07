@@ -48,3 +48,14 @@ def scores_to_ranks(scores):
             ranks[i][ranked_idx[i][j]] = j
     ranks += 1
     return ranks
+
+def convert_to_string(embedding, ind2word):
+    embedding = [int(y) for y in embedding]
+    string_embedding = [(ind2word[y] if y in ind2word else '') for y in embedding]
+    cutoff = len(string_embedding)
+    for i, s in enumerate(string_embedding):
+        if s == '':
+            cutoff = i
+            break
+    string_embedding = string_embedding[:cutoff]
+    return ' '.join(word for word in string_embedding)
