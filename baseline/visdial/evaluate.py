@@ -214,11 +214,13 @@ else:
         dec_out = decoder(enc_out, batch)
         ranks = scores_to_ranks(dec_out.data)
         ranks = ranks.view(-1, 10, 100)
-
+        ranks = ranks.to(torch.device("cpu"))
+        ranks = ranks.numpy().tolist()
+ 
         for i in range(len(batch['img_fnames'])):
             # cast into types explicitly to ensure no errors in schema
             if args.split == 'test':
-                ranks_json.append({
+               ranks_json.append({
                     'image_id': int(batch['img_fnames'][i][-16:-4]),
                     'round_id': int(batch['num_rounds'][i]),
                     'ranks': list(ranks[i][batch['num_rounds'][i] - 1])
