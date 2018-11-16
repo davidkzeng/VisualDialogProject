@@ -1,0 +1,5065 @@
+input_img           : data/data_img.h5
+input_ques          : data/visdial_data.h5
+input_json          : data/visdial_params.json
+img_norm            : 1
+size_limit          : 100
+breakdown_analysis  : True
+load_path           : checkpoints/model_epoch_12.pth
+split               : val
+use_gt              : True
+batch_size          : 12
+gpuid               : 0
+overfit             : False
+save_ranks          : False
+save_path           : logs/ranks.json
+concat_history      : True
+partial_concat_history: False
+Dataloader loading json file: data/visdial_params.json
+Vocab size with <START>, <END>: 11322
+Dataloader loading h5 file: data/visdial_data.h5
+Dataloader loading h5 file: data/data_img.h5
+
+Processing split [val]...
+Reading image features...
+Normalizing image features...
+[val] no. of threads: 100
+	Max no. of rounds: 10
+	Max ques len: 20
+	Max ans len: 20
+9 iter per epoch.
+Loaded model from checkpoints/model_epoch_12.pth
+Evaluation start time: 07-Nov-2018-03:47:34
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is it a professional photo ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is it well lit ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is it daytime ?
+22 i do n't see windows
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+does this look like an adults bedroom ?
+17 maybe
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is the room clean ?
+7 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+can you tell what kind of computer it is ?
+14 no not really
+no
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is it a flat screen ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+what 's the desk made out of ?
+3 cheap plastic or wood
+wood
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is there a computer chair ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000185565.jpg
+=====================
+is this in a park ?
+23 yes , i believe it is
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+are there others around ?
+2 no , she is alone
+no , there are others
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+does she have a collection bucket ?
+7 no
+no , there is only 1
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+is her hair long ?
+1 yes , pretty long
+yes , pretty long
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+is she wearing a dress ?
+18 i do n't think so , hard to tell
+no , she definitely does not have a dress
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+does she have shoes on ?
+2 yes , flip flops
+yes , sneakers
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+is there grass nearby ?
+20 yes , everywhere
+no grass , they are on a sidewalk
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+is it a sunny day ?
+3 yes
+yes , it looks sunny
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+are there trees ?
+5 in the background there are trees
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+is the guitar new ?
+6 i do n't think so
+no new just took
+VisualDialog_val2018/VisualDialog_val2018_000000284024.jpg
+=====================
+is this in the bathroom ?
+2 yes
+no , my guess would be in the living room facing a tv
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+does he look sad ?
+2 he looks puzzled
+no
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+how old is he ?
+28 my best guess would be between 18 and 25
+he looks to be in his 20s
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+puzzled like he drank to much last night and isn ’ t sure where he is ?
+2 he is facing a mirror and looking down at something i can not see
+he is holding it with 1 hand
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+does the bathroom appear to be nice ?
+71 i can only see the mirror and a part of the sink
+it looks good
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+does he have a beard ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+is he wearing a shirt ?
+5 no
+i can only see his upper body and he is shirtless
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+is he wearing glasses ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+is he wearing a watch ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+any tattoos ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000574189.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+how old does the woman look ?
+31 maybe late 20 's to early 30 's
+in her 20 's
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+are there any other people ?
+15 no , just her and the bird
+no
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+are there any animals ?
+9 just the bird
+no
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+what is she feeding the bird ?
+20 i ca n't tell , but it looks like a small rodent
+it is blurry
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+is she wearing a hat ?
+4 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+what color is her shirt ?
+61 mauve
+black
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+what color is her hat ?
+30 blonde
+black
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+what kind of bird is it ?
+1 a very large black bird with a white ring around his neck
+a very large black bird with a white ring around his neck
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+what else do you see ?
+19 it appears to be at a zoo there are trees behind her
+some green felt , a ribbon , and the vases
+VisualDialog_val2018/VisualDialog_val2018_000000148816.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+is this a wedding picture ?
+20 maybe
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+is the couple male and female ?
+2 yes
+yes , 1 female and 1 male
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+is the cake 1 or more tiers ?
+18 no
+links
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+can you see other people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+is this inside ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+what color is the cake ?
+17 white with blue lettering , but hard to see it
+multi - blue , red , yellow some green
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+anything written on the cake ?
+22 you can not see it
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+any other decorations on the cake ?
+29 not that i can see
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+can you see any plates ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088394.jpg
+=====================
+is she alone ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is she wearing a skirt ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+what color is the skirt ?
+3 black
+black with pink underneath
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+what color are her shoes ?
+1 ca n't see her feet
+ca n't see her feet
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is her hair pulled back ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is she on the left or right ?
+1 left
+left
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is her hair in a ponytail ?
+2 yes
+yes and pulled back
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is she walking ?
+5 no , standing still
+kinda walking and getting her ball
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is she bent down ?
+18 a little
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+is it sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000255061.jpg
+=====================
+what color is the jet ?
+3 white and blue
+white
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+is it a commercial plane ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+can the sky be seen ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+are there any clouds ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+do you see any other planes in the picture ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+can you see anything else other than the plane ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+is the plane crashing ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+is the plane above any bodies of water ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+are those bodies of water lakes ?
+15 possibly
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+is there any text on the plane ?
+17 not that i can see
+no
+VisualDialog_val2018/VisualDialog_val2018_000000036690.jpg
+=====================
+do you see a lot of people ?
+2 just 3
+i see only 2 people
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+what is the tennis player wearing ?
+2 white tennis dress
+white shirt and shoes and navy blue shorts
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+what color is her tennis racket ?
+8 black
+black and white
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+is she wearing a hat ?
+2 a visor
+no
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+is she close to the net ?
+3 no
+no , bouncing the ball
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+do you see another player ?
+3 no
+1 player in the background
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+do you see a tennis bag ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+do you see trees ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+do you see anything next to her ?
+5 nothing
+no
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+does she look mad ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000076113.jpg
+=====================
+what kind of food ?
+1 looks like fried chicken and some rice and sauce
+looks like fried chicken and some rice and sauce
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+what color are the plates ?
+14 they are orange
+white
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+what color are the bowls ?
+11 also orange
+light brown they look like they might be whole wheat buns
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+are there any drinks ?
+2 no drinks are visible
+no drinks
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+are there any people ?
+3 no people are visible
+no 1 is present in the picture
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+what color is the table ?
+3 the table is white
+the table is brown
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+is this in a kitchen ?
+2 it looks like a domestic kitchen
+it seems to be in a restaurant
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+is there a tablecloth on the table ?
+16 i ca n't tell for sure
+no , you can only see the top of the table
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+is there any silverware ?
+37 yes all around
+a fork
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+can you see any windows ?
+2 no windows are visible
+no
+VisualDialog_val2018/VisualDialog_val2018_000000112857.jpg
+=====================
+can you see the tub ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+is the toilet dirty ?
+4 no it looks clean
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+is the seat up ?
+2 it does n't look like there is a seat
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+can you see a sink ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+can you see water in the tank ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+can you see the floor ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+is there a window ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+what color is the floor ?
+12 brown
+the floor is brown tile
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+is it tile ?
+8 i think so
+old vintage brick
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+is it dirty ?
+22 yes , it 's in an abandoned building
+no clean
+VisualDialog_val2018/VisualDialog_val2018_000000296319.jpg
+=====================
+does it look like the truck is picking up or delivering ?
+4 it 's just sitting in a parking lot
+looks like a rope and anchor on the front floating
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+what color is the truck ?
+1 the truck is orange , black , and white
+the truck is orange , black , and white
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+is the driver of the truck nearby ?
+36 i ca n't see anyone in the picture
+no
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+is the picture in color ?
+7 yes , the picture is in color
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+is there a time stamp on the photo ?
+2 no
+yes , there is 1 truck , but i can only see a little of the back end of it
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+can you tell about what time of day it is ?
+2 it looks like it is maybe early morning
+yes i can tell whether it is day time outside
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+are they parked near a store ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+are there any tree 's or grass ?
+1 yes , there are trees
+yes , there are trees
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+are there any animals around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+are they in a parking lot or on a road ?
+2 in a parking lot
+it is paved
+VisualDialog_val2018/VisualDialog_val2018_000000067272.jpg
+=====================
+is this in a public setting ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+can you see the type of pizza ?
+30 appears to be cheese and a deep dish
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+how many males and how many females ?
+3 3 of each
+both females
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+any windows visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+what are they drinking ?
+2 sodas , water and beer
+they are drinking wine no food in sight
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+are they dressed for warm weather ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+are there other tables visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+are the wait staff present ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+do they have plates or eating from box ?
+4 neither
+no
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+what color is the table ?
+2 checkered tablecloth
+it is covered with a white tablecloth
+VisualDialog_val2018/VisualDialog_val2018_000000347725.jpg
+=====================
+color picture ?
+16 yes in color
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+any people in the picture ?
+41 yes i believe
+no
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+can you see any animals ?
+4 no animals
+no
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+are the people facing the camera ?
+4 no this is an air view shot
+no they are not
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+is it daytime ?
+3 yes it is daytime
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+can you see the sky ?
+32 ca n't see sky it is looking down on the buses
+yes it is a little cloudy
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+is the picture from a drone ?
+26 i do n't know maybe from tall building
+no
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+can you see a building ?
+2 yes 2 buildings
+i only see a side of the building
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+are they big ?
+7 yes numerous levels
+no they are smaller
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+can you see a pole ?
+1 yes a street pole
+yes a street pole
+VisualDialog_val2018/VisualDialog_val2018_000000345606.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+any other people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+how many discs are shown ?
+2 1
+2
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+what color disk ?
+18 yellow
+white
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+is the man old or young ?
+2 young
+older
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+is he wearing glasses ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+is he wearing a hat ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+is the sky seen ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+is there grass ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+is there trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000240212.jpg
+=====================
+boy or girl ?
+1 boy
+boy
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+how old is he ?
+27 6 looks like
+grown
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+is he talking on the phone ?
+23 yea
+no just holding it
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+is it a smartphone ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+is it raining ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+can you see the sky ?
+8 no ground shot
+no
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+is it day time ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+can you see adults ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+can you see animals ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000128578.jpg
+=====================
+what color is the tablet ?
+9 black and silver
+black
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+is it on a desk ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+is it on a table ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+what color is the table ?
+1 white
+white
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+are there other objects on the table ?
+4 yes
+some books , a phone , it 's relatively cluttered
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+what is 1 other object ?
+6 cell
+new looking
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+is there a person in the picture ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+is the tablet on ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+what color is the screen ?
+1 white
+white
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+is there any text on the screen ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239030.jpg
+=====================
+what color is the church ?
+8 the photo is a little dark but i would say beige
+greystone
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+do you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+can you see any trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+can you tell what season it is ?
+5 it 's a little cloudy so maybe fall
+no
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+do you see any cars ?
+7 no there are no cars
+no
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+does the church have a bell tower ?
+2 it looks like a small bell tower
+no it 's a church
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+is the church brick ?
+1 it looks made of stone
+it looks made of stone
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+is it a large church ?
+4 i can only see the top half
+it looks small , it 's hard to tell
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+do the clouds look like storm clouds ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000555125.jpg
+=====================
+what color are the dogs ?
+1 1 of the dog is white and the other dog is light brown
+1 of the dog is white and the other dog is light brown
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+can you tell what breed they are ?
+1 i ca n't really tell what breed they are , perhaps german shepherd
+i ca n't really tell what breed they are , perhaps german shepherd
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+are they both wearing a hat ?
+1 only 1 is wearing a hat
+only 1 is wearing a hat
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+are there any people around ?
+7 there are no people around
+no
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+do you see any buildings ?
+6 i do n't see any buildings at all
+yes i can see a house
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+is it outside ?
+1 yes , it is outside
+yes , it is outside
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+is it a sunny day ?
+10 it seems more like it 's in the evening
+it seems to be evening
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+are they standing in grass ?
+1 no , they are standing on dirt
+no , they are standing on dirt
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+are they looking at each other ?
+1 no , they are facing away from each other
+no , they are facing away from each other
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+do they seem like they like each other ?
+62 ca n't tell
+no , but they 're touching each other
+VisualDialog_val2018/VisualDialog_val2018_000000064527.jpg
+=====================
+is it on a table ?
+18 i think it
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+is there any silverware ?
+2 no
+yes , a fork and a butter knife
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+can you see a tablecloth ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+is it a bright picture ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+can you see a window ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+are there any people ?
+6 no , close up picture
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+is it inside ?
+6 i think so
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+has the cake been cut ?
+31 it is a slice on a plate
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+what kind of nuts ?
+4 i ca n't tell but it looks delicious
+coca cola
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+what color is the plate ?
+1 white
+white
+VisualDialog_val2018/VisualDialog_val2018_000000029869.jpg
+=====================
+is he handsome ?
+12 i ca n't tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+is he young ?
+5 it looks like he probably is
+i ca n't see his face
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+what color shorts ?
+1 he is wearing black pants
+he is wearing black pants
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+any other people ?
+2 no
+i can see 1 other person
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+is it rough on the water ?
+37 looks like it might be
+yes , it 's in the water
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+is it a sunny day ?
+26 yes it appears to be
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+any sharks ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+does he have sunglasses on ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+wearing a hat ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+could he be a model ?
+6 probably
+no
+VisualDialog_val2018/VisualDialog_val2018_000000029737.jpg
+=====================
+are there any people ?
+4 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+how many people are there ?
+46 i ca n't tell
+2
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+what are they doing ?
+1 sitting on the boats
+sitting on the boats
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+is this near a beach ?
+3 yes
+there is no beach in the picture
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+are they big boats ?
+16 1 is
+there are boats
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+what color is the chair ?
+4 white
+black
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+what kind of chair is it ?
+14 beach
+wooden
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+what is it made out of ?
+1 wood
+wood
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+is it a nice day ?
+2 overcast
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000033878.jpg
+=====================
+can you see any people ?
+3 part of a person
+no
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+man or woman ?
+4 i ca n't tell
+i think male but i 'm not totally sure because they are in the distance
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+how many dogs ?
+3 just 1
+2
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+is the dog big or small ?
+10 medium
+big dog
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+inside or outside ?
+5 hard to tell but i think outside
+outside
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+does the dog look happy ?
+8 kind of
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+can you see the ground ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+what color is the skateboard ?
+1 black
+black
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+anything else interesting about the photo ?
+1 the dog is looking up at the person with his tongue out
+the dog is looking up at the person with his tongue out
+VisualDialog_val2018/VisualDialog_val2018_000000267272.jpg
+=====================
+can you see people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+is it a color picture ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+can you see the sky ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+does it look like a nice day ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+are there animals ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+can you count the boats ?
+3 over 8
+no
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+how big are the boats ?
+1 some small and large
+some small and large
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+are they sail boats ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+do you see ropes ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+do you see names ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000221035.jpg
+=====================
+is the bathroom huge ?
+5 no , just a toilet stall size
+it looks average size
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+what assorted items are there ?
+1 toilet roll dispenser , flusher , handle bars , hole in the ground and something i ca n't tell what
+toilet roll dispenser , flusher , handle bars , hole in the ground and something i ca n't tell what
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+is the toilet white ?
+25 the hole in the ground is white yes
+yes , and white
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+can you see tiles on the floor ?
+12 yes
+yes , looks like carpet
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+what color ?
+41 black and burgundy
+white , with silver knobs
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+is the toilet lid open or closed ?
+8 there is no lid , just a hole in the ground style toilet
+1 is open 1 is closed
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+do you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+are the lights on ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+is it well dim ?
+2 lighting is n't very bright
+it has some shadows , but most of it is lit well
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+is the toilet dispenser silver ?
+10 stainless steel , yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000200319.jpg
+=====================
+are there any people on the boat ?
+6 i ca n't tell i ca n't see any
+no
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+are there any other boats on the water ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+is it a river ?
+4 i ca n't tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+is there snow on the mountains ?
+10 no , there is not
+no
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+are there trees on the mountains ?
+1 yes , there are
+yes , there are
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+are the leaves green ?
+1 yes , they are green
+yes , they are green
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+can you see any animals ?
+2 yes , i can see a bird
+no , no animals
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+is the water calm or rough ?
+2 the water is calm
+pretty calm
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+what color is the bird ?
+2 the bird is gray
+it is black
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+is it a seagull ?
+10 yes , it looks like a seagull
+no it is more medium-sized
+VisualDialog_val2018/VisualDialog_val2018_000000307868.jpg
+=====================
+is it light outside ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+are there other people around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+what color is the persons skies ?
+7 white
+they are skiing
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+can you tell which brand ?
+12 no i ca n't
+no
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+what color is the persons trousers ?
+11 red
+black and red
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+what about their jacket ?
+13 black
+they are yellow
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+what color is their glasses ?
+22 red and white
+the man has a red jacket and the woman has a black jacket
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+do they look happy ?
+7 i ca n't tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+does it look like that they have speed ?
+17 not really
+no
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+what color is the persons ski sticks ?
+23 yellow i think
+1 is red and the other black
+VisualDialog_val2018/VisualDialog_val2018_000000214573.jpg
+=====================
+what color is the plate ?
+1 white
+white
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+what kind of food on the plate ?
+1 a piece of cookie and bread or cake
+a piece of cookie and bread or cake
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+is this at a restaurant ?
+10 i do n't think so
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+is the cookie chocolate chip ?
+7 yes , i think so
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+is the plate on a table ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+are there any utensils ?
+3 yes
+the tip of a fork
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+is there anything to drink ?
+7 i see 3 cups
+no
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+is the room well lit ?
+4 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+what color are the cups ?
+4 blue and a white cup
+white
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+what color is the table ?
+19 tan
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000137772.jpg
+=====================
+is the animal alive ?
+34 i certainly hope not
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+is it a stuffed animal ?
+12 i do n't think so , but it 's hard to tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+can you see any people ?
+10 nobody around
+no
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+can you tell where the picture was taken ?
+2 seems like a museum or gallery
+it is at a window and it is on the back of some sort of chair
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+does the scene seem to be some sort of artwork ?
+7 that 's what i 'm guessing
+no , not really
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+is it attractive in a artsy UNK way or no ?
+1 not attractive at all very creepy
+not attractive at all very creepy
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+can you make out what the hopefully not alive animal is supposed to be ?
+1 i 'm going with a camel
+i 'm going with a camel
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+can you see how many UNK ?
+13 no , just his incredibly creepy smile and legs
+0
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+what color is the suitcase ?
+29 black and red
+black
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+is it leather or some other sort of material ?
+1 probably leather
+probably leather
+VisualDialog_val2018/VisualDialog_val2018_000000117081.jpg
+=====================
+is this in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+how old does the girl look ?
+3 around 3
+about 2
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is this inside ?
+18 yes , i believe so
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+are there other people around ?
+2 no
+you can see 1 other child cut off in the background
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is the room well lit ?
+2 yes
+the room is lit a little
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is the girl sitting ?
+2 yes
+yes , she 's the only person in the photo
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is the pizza on a plate ?
+2 yes
+no , the hotdogs are in the cardboard hot dog holders
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is the girl looking at the camera ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is she at a table ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+what type of pizza is it ?
+1 looks like cheese and sauce
+looks like cheese and sauce
+VisualDialog_val2018/VisualDialog_val2018_000000099643.jpg
+=====================
+is it crowded ?
+13 it is not
+no only some of them
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+is it in black and white ?
+4 no
+no , it is in color
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+is it sunny ?
+4 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+are there trees ?
+29 there are not
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+are there houses ?
+4 there are not
+no
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+are there a lot of street signs ?
+8 no
+there are a couple by it
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+is it raining ?
+6 it is cloudy , but no rain
+no , it is not
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+can you see the sun ?
+4 i can not
+no
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+are the people happy ?
+5 they do not appear to be
+they appear to be
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+do some people have hats ?
+3 no
+i can not tell
+VisualDialog_val2018/VisualDialog_val2018_000000240413.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+are there people in the picture ?
+2 no people
+no
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+are there designs in the bathroom ?
+13 no , but the paint is chipped
+it is a full green suit like a UNK
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+are there any towels on the towel rack ?
+8 no , but a black bag is
+no
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+is the towel rack gold ?
+81 wood
+no silver
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+are there holes in the UNK bag ?
+11 it has mesh pockets but no real hole
+no
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+are there broken pieces of the toilet on the ground ?
+3 yes , the toilet is in several large pieces
+on top of the toilet water tank
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+is the color of the toilet light green or dark green ?
+8 it 's more of a dirty white color the walls are a light green
+dark green
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+is the floor made of tiles ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+is it light or dark in the bathroom ?
+4 it 's light
+it 's light , but not what i 'd call bright
+VisualDialog_val2018/VisualDialog_val2018_000000059107.jpg
+=====================
+how many people ?
+15 like 10
+i can make out 5
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+boys or girls ?
+1 appears to be mostly boys
+appears to be mostly boys
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+what color is the building ?
+37 it has a worn out brown color
+red brick with green doors
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+is it a house ?
+21 no
+yes a busy downtown area
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+what are the people doing ?
+7 waiting in line
+walking
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+what color is the truck ?
+4 maroon color
+white
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+can you see the sky ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+is it sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+are there any clouds ?
+3 yes
+yes , a few
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+is it a paved road ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000249833.jpg
+=====================
+is there grass ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+is the horse wearing a saddle ?
+12 i think so really dark
+no
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+is there any other animals ?
+4 no other animals
+no
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+are there any trees ?
+5 no trees
+many trees in background
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+can you see the riders face ?
+5 no i ca n't see his face
+no
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+what color is the horse ?
+19 it appears black
+the horse is brown
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+is it dusk or nighttime ?
+29 very dark out cloudy
+it looks like late afternoon
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+can you see stars ?
+1 no stars
+no stars
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+is the rider wearing a hat ?
+4 yes a helmet
+yes a beanie knit hat
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+is the horse facing the camera ?
+1 yes the horse is facing the camera
+yes the horse is facing the camera
+VisualDialog_val2018/VisualDialog_val2018_000000258193.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+how many skiers can you see ?
+8 11
+6
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+are the male and female ?
+23 male
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+are they all wearing goggles ?
+5 can not tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+are they the same age group ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+are they facing the camera ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+can you see the lifts ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+can you see any buildings ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+is it snowing ?
+5 it look like it
+no
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+is it sunny ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000023817.jpg
+=====================
+is the man in a bathroom ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+is the man looking in a mirror ?
+36 not that i can see
+no
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+can you only see his face ?
+1 his face and his chest are visible
+his face and his chest are visible
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+are you looking at him from the front ?
+4 yes
+he 's looking to the left
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+is he wearing a t-shirt ?
+6 no he is without clothes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+does he have short hair ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+which hand is he holding the toothbrush with ?
+1 his left
+his left
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+what color toothbrush is it ?
+3 blue and white
+white
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+is the toothbrush in his mouth , or is he just holding it ?
+1 he is brushing his teeth
+he is brushing his teeth
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+is he making a facial expression ?
+2 no
+yes he is eating sub
+VisualDialog_val2018/VisualDialog_val2018_000000384075.jpg
+=====================
+is there only 1 bird ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+what color is it ?
+1 looks green and yellow
+looks green and yellow
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+does it look older ?
+14 it 's hard to tell
+looks distracted
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+does it have a nest ?
+8 not that is visible
+no
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+are there any trees nearby ?
+3 i can only see the branches the bird is in
+i see the trunk of a tree
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+is it sunny out ?
+2 i think so , but the sky is blurry in the background
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+do you think the bird wants to travel ?
+44 it looks content where it is
+probably , yes
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+is there any other animals around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+do you think this is in someone ’ s yard ?
+1 it could be
+it could be
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+could it be at a park ?
+13 yes it could
+it looks like it
+VisualDialog_val2018/VisualDialog_val2018_000000416756.jpg
+=====================
+does the picture match the caption ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+is it colored ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+are people visible ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+what color is the wine ?
+1 red
+red
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+how many people are there ?
+8 about 4
+1
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+are they indoors ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+is it day time ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+is it sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+are there clouds ?
+3 ca n't tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+are there animals around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000275254.jpg
+=====================
+how many giraffes are there ?
+2 3
+there are 4 giraffes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+are they all adults ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+do you see grass ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+are there any trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+is it sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+do the trees have any leaves on them ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+are there any other animals visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+are the giraffes heads up ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+is the sky clear ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+does it look dry ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000244832.jpg
+=====================
+are there any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+is it daytime ?
+2 yes it is
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+can you see the sky ?
+2 yes i can
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+is the sun up ?
+2 is it pretty cloudy
+the sun is out
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+are there any buildings ?
+8 in the background i see 1
+yes there are buildings
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+are there any birds in the sky ?
+7 0 i see
+no
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+is there a fence ?
+37 no i just see a wall in the background
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+can you see any trees ?
+11 i see 1
+yes there are trees
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+what color is the wall ?
+3 concrete color
+possibly white or pale yellow
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+is the trees tall ?
+6 a little taller than the building
+they look average height
+VisualDialog_val2018/VisualDialog_val2018_000000454063.jpg
+=====================
+is it colored ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+is it a professional photo ?
+4 it could be
+no
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+is it a close up ?
+12 not completely
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+what time is it ?
+4 daytime
+it is flat
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+are there any people in the image ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+what is in the background ?
+1 lots of trees and bushes
+lots of trees and bushes
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+can you see any animals ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+can you see the sky ?
+12 a little bit
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+are there clouds in the image ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+what is so distinct in the image ?
+6 a little bench
+trees and the river bank
+VisualDialog_val2018/VisualDialog_val2018_000000052542.jpg
+=====================
+are there any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is the kitchen visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is the counter visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+what color is the microwave ?
+6 brown and black
+black
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+what kind of surface is the microwave on ?
+1 grass
+grass
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is it outdoors ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is the sky visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+does it look old ?
+3 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is there dirt visible ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is the time visible on microwave ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000239836.jpg
+=====================
+is it a royal blue color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+is it modern or vintage ?
+2 vintage
+modern
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+does it have rounded edges or square ?
+1 rounded
+rounded
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+are the doors open or closed ?
+1 closed
+closed
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+does it have a silver handle ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+is it in a kitchen ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+do you see other appliances ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+do you see a brand name on the fridge ?
+4 yes but can not read it
+no
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+can you see the floor ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+is there wallpaper on the walls ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000162655.jpg
+=====================
+is the traffic light a craft ?
+2 more like a toy
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+is it old ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+is there a lot of plants ?
+38 i only see 2
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+are they in pots ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+what color are they ?
+2 green
+multicolor pinks and blues
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+do you know the type ?
+38 1 fern and 1 UNK
+no
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+is it inside or outside ?
+1 inside
+inside
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+can you tell what room ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+any furniture ?
+1 just a shelf
+just a shelf
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000209271.jpg
+=====================
+are there other people around ?
+10 i can see 1 more arm in the background
+no , only 1 man
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+are there candles on the cake ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+is there a tablecloth on the table ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+can you see any windows ?
+5 yes , 1
+no
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+what color is the man 's hair ?
+1 brown
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+can you see a tree through the window ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+is the knife sharp ?
+8 i guess it is
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+is he wearing short sleeves or long sleeves ?
+1 long sleeves
+long sleeves
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+is the cake big ?
+31 quite small
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+is the man smiling ?
+12 yes he is
+no
+VisualDialog_val2018/VisualDialog_val2018_000000186922.jpg
+=====================
+does the picture match the caption ?
+46 exactly as stated
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+is it colored ?
+2 the photo is in color
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+what color is the person ?
+11 caucasian
+he is a white man
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+what color is his hair ?
+12 blonde
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+does he have a helmet on ?
+4 no helmet on
+no
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+are there trees ?
+2 lots of trees
+a few palm trees
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+what color is the board ?
+12 grayish black blue
+blue and pink cover is on it
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+do the trees have leaves on them ?
+6 correct mostly green
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+is there snow on the ground ?
+10 no season seems like springtime
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+what is the man wearing ?
+1 long sleeves shirt and light blue jeans
+long sleeves shirt and light blue jeans
+VisualDialog_val2018/VisualDialog_val2018_000000467669.jpg
+=====================
+what color is the cat ?
+8 the cat is orange
+orange
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+is the water turned on ?
+20 no it 's off
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+is it a big cat ?
+23 it is , yes
+normal size
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+does it have long hair ?
+30 short hair but the tail is very puffy with long fur
+no it does not
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+is it looking at the camera ?
+22 it is , yes
+yes , the cat is looking right at the camera
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+does it have a collar ?
+1 no collar
+no collar
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+can you see the tub ?
+14 i ca n't
+no you ca n't
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+can you see the mirror ?
+1 i can see the bottom of the mirror
+i can see the bottom of the mirror
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+is there a person ?
+3 no people
+i can see small parts of 2 people
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+is the counter white ?
+2 it 's a marble color , white and brown
+it 's just gray
+VisualDialog_val2018/VisualDialog_val2018_000000304354.jpg
+=====================
+is this inside or outside ?
+1 inside
+inside
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+do you see people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+is this a school ?
+3 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+do you see a chalkboard ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+do you see a teachers desk ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+how many chairs are there ?
+23 i see 8
+2
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+are they all wooden ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+do you see a closet ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+is the light on ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+do you see benches ?
+3 yes , the chairs are like benches
+no
+VisualDialog_val2018/VisualDialog_val2018_000000202577.jpg
+=====================
+what are the men wearing ?
+4 racing gear
+white shirts
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+are there people watching them ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+are they on a track ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+do they have helmets on ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+are the bikes big ?
+3 yes
+3 of them are huge and 1 is really small
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+are the bikes different colors ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+what color are the bikes ?
+1 black
+black
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+can you see all of the track ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+is it a long track ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+is there a big audience ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000550190.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+is this outdoors ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+is this at a park maybe ?
+1 yes , or a big backyard
+yes , or a big backyard
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+is the dog big or little ?
+17 little , less than a year old
+big
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+what color is he she ?
+2 brown
+black
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+what color is the frisbee ?
+1 red
+red
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+any people around ?
+3 no , no people
+no
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+can you see other houses around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+any trees visible ?
+4 yes , some
+no
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+any cars visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000101728.jpg
+=====================
+is the bucket metal ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+is it big or small ?
+1 small
+small
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+are any of the scissors plastic ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+are they wet ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+is it on a table ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+is the table wooden ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+can you see a light ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+any other crafting stuff ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+is there window ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+any children around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000443580.jpg
+=====================
+is the cow large or small ?
+1 large
+large
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+does the cow have an ear tag ?
+2 no
+it has no mane
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+what color is the building ?
+8 white
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+is the photo professional ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+does the grass look well groomed ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+are there any trees in the photo ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+are there any fences surrounding the cow ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+does is look sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+can you see the sky in the picture ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+can you see windows in the building ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000165033.jpg
+=====================
+how many people are there ?
+8 3 people
+a bunch of people but 4 main people up close
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+is there a father and mother ?
+39 ca n't tell from the picture
+no
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+are they building a sand castle ?
+12 no just 1 kid playing in the sand
+no sand
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+are there big waves ?
+43 no the sea is not visible
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+are there other people visible ?
+2 no other people are visible
+in the far background
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+what is in the background ?
+3 trees and buildings
+buildings houses like a village
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+how many are adults ?
+8 1 adult
+i can see 4 people from here
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+what time of day is it ?
+8 it looks like midday
+unknown but it is daytime
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+what is the other child doing ?
+29 looks like she 's on a phone
+walking around
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+what is the adult doing ?
+5 just sitting relaxing
+he is standing on top of a streetlight
+VisualDialog_val2018/VisualDialog_val2018_000000560666.jpg
+=====================
+what color is the UNK ?
+1 brown
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+do you see a barn ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+are there any people ?
+2 no people
+no
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+is it night or day ?
+1 day
+day
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+is that the only horse in the picture ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+are there any other animals ?
+3 no other animals
+no just horses
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+is there trees and grass ?
+15 i see some grass
+no trees
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+what is the weather like ?
+8 it looks sunny and clear
+sunny
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+is there any clouds in the sky ?
+23 not that i can see
+no it 's overcast
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+does the horse have a saddle on ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000361734.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+is there any people in the picture ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+what color is the boat ?
+1 white and brown
+white and brown
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+is the boat big ?
+3 slightly yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+is the boat dirty ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+is it a sailboat ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+does the boat have a name ?
+3 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+what is the name ?
+3 UNK
+UNK UNK del UNK
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+where is the boat located ?
+1 on the shore
+on the shore
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+is there anything on the boat ?
+12 no it 's a tug boat with windows more so
+no
+VisualDialog_val2018/VisualDialog_val2018_000000470934.jpg
+=====================
+is it in an office ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+how big is the desk ?
+9 small
+small just enough room for the monitor and keyboard
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+are there pcs ?
+17 a laptop than a desktop
+no
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+is the desk messy ?
+6 not really
+no
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+is anything written on a paper ?
+23 doesn ’ t look like it
+no
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+what else is in the room other than a desk ?
+1 blinds , a window it 's a close up of the computers so you ca n't see much else
+blinds , a window it 's a close up of the computers so you ca n't see much else
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+what else is on the desk ?
+1 a monitor and a keyboard
+a monitor and a keyboard
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+are the computers on ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+what color is the pen ?
+29 clear w a blue cap
+white
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+what can you see on the screens ?
+1 windows explorer in 1 and a web page on the other
+windows explorer in 1 and a web page on the other
+VisualDialog_val2018/VisualDialog_val2018_000000005246.jpg
+=====================
+is the man older ?
+7 young in 30
+he 's older , maybe late 40s early 50s
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+are there others in the photo ?
+6 no just him
+yes there are 4 other people
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is the man smiling ?
+30 yes just a little grin
+no he looks serious
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is this meant to be a funny photo ?
+4 yes supposed to be funny
+no
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is the kitchen modern ?
+13 vintage
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is the photo older ?
+1 no new just took
+no new just took
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is the kitchen clean ?
+1 no very messy
+no very messy
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is there a window in the kitchen ?
+6 no window to the outside
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is there a door ?
+40 to his left side
+no
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is there a sink ?
+4 yes to his right side
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000516027.jpg
+=====================
+is the light lit up ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+are there cars ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is this a city area ?
+30 maybe , i 'm not sure
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is there people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is it daytime ?
+5 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is there a street sign ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is it dark ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is the light metal ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+can you see buildings ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+can you see any trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175667.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is there any people ?
+2 no , only the giraffe
+no
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is this at a zoo ?
+3 yes
+yes , probably
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is there a fence ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is it indoors ?
+3 no , it 's outside
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is it a small or large giraffe ?
+1 a big giraffe
+a big giraffe
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is it night ?
+1 no , it 's daytime
+no , it 's daytime
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is it standing ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+'is there any signs around ?
+5 no , only the giraffe
+there are no signs
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is there a watering source ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000273024.jpg
+=====================
+is there anything in the garage ?
+3 the living room is in the garage
+there is a weird screen and a few electronics coming out of it
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+are there people in there ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+is the stuff set up , or is it piled in there ?
+1 there is stuff set up
+there is stuff set up
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+can you see the outside , or just inside ?
+2 you can see to the outside from the inside
+inside
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+are there any pets in there ?
+4 no
+no , i do n't see pets
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+is it sunny outside ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+is there any snow ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+can you see grass ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+can you see a mailbox ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+is there any lamps in the living room garage ?
+12 yes 1
+the living room is in the garage
+VisualDialog_val2018/VisualDialog_val2018_000000178855.jpg
+=====================
+is this a resort do you think ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+are there a lot of trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+does the snow look fresh ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+can you see more than 5 people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+are they wearing helmets ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+what color are their jackets ?
+6 blue , red , black , grey and green
+red , green , grey , black
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+can you tell their ages ?
+2 no
+between UNK
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+can you tell if they 're male or female ?
+7 i believe both
+no
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+are they all in the act of skiing down the hill ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+is it sunny out ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000440253.jpg
+=====================
+is it a smartphone ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+can you tell what brand ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+can you see the screen ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+what color is the wine ?
+3 white
+red
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+is she sitting by herself ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+is this in a restaurant ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+can you see any food on the table ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+does she have long hair ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+what is she wearing ?
+1 white button up shirt
+white button up shirt
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+does she have on jewelry ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000097915.jpg
+=====================
+how old are the girls ?
+26 teens
+teenagers
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+is there anything in the image besides the girls ?
+8 yes , some cars
+no
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+what color are their shirts ?
+4 1 is yellow , 1 is white
+1 looks black and white and the other black and navy blue
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+what color are their shorts ?
+1 blue on one , white on 1
+blue on one , white on 1
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+can you see the street ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+is there a parking lot ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+is there a fence ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+what color is their hair ?
+4 both dirty blonde
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+can you see a ball ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+are there any bleachers ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000093950.jpg
+=====================
+is it there with spoons ?
+5 no spoons
+no
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+white plates ?
+6 no
+no it 's white
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+are the veggies green ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+is there a banana ?
+1 no banana , just a orange
+no banana , just a orange
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+is there a grape ?
+4 do n't think so , very blurry picture
+no
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+count the fruits for me ?
+1 i can t , they are in a bowl , i can t count just 1 full orange
+i can t , they are in a bowl , i can t count just 1 full orange
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+is there a stove nearby ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+is there a human in the photo ?
+7 no people , just some bowls and a orange
+no
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+is it sunny ?
+8 yes , sunshine over the bowls
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+is there a sink nearby ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000098602.jpg
+=====================
+are there any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+what color is the cup ?
+30 blue
+transparent glass
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+what color are the toothbrushes ?
+10 red and blue
+green
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+is the sink visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+is a cabinet visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+are they adult toothbrushes ?
+5 they look like it
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+is the ground visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+is there a mirror there ?
+20 yes , i can see the corner of it
+no
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+it a close up ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+is the counter visible ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000567604.jpg
+=====================
+is the elephant a baby ?
+3 no
+i think it 's probably a young elephant it does n't appear to be very big
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+is he eating from a tree ?
+4 no the ground
+no
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+are they outside ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+is there grass ?
+3 yes
+yes grass
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+are there trees around ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+is it sunny ?
+52 it is hard to tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+is the food in his mouth ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+do the leaves look fresh ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+is the other elephant watching him ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+what color is the grass ?
+1 green
+green
+VisualDialog_val2018/VisualDialog_val2018_000000147455.jpg
+=====================
+any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+how many lemons ?
+4 1
+4
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+is it large ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+is the fruit ripe ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+has it been sliced ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+is there a plate ?
+7 ca n't tell
+no
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+what is the other fruit ?
+3 apple peach
+apples and pears
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+is this on a table ?
+10 ca n't tell it is a very close up shot
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+is this in a kitchen ?
+1 ca n't tell
+ca n't tell
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+indoors ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000295627.jpg
+=====================
+is this a bathroom in a house ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+is it a clean bathroom ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+is there any signs anywhere ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+what color is the tile ?
+7 grey
+white
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+what color are the walls ?
+43 natural wood
+white
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+is there any windows ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+is there a mirror ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+is there a light switch ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+are there any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+is the light on ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000222337.jpg
+=====================
+what color is the tennis court ?
+1 green
+green
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+is there only 1 man ?
+3 playing , yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+what is he wearing ?
+2 white t shirt black shorts there are spectators
+long sleeve shirt , shorts , leggings , shoes , hat
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+what color is the ball ?
+8 green
+there is no ball
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+can you see the name brand of the racket ?
+2 no
+no name but i do know who it is
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+what color is it ?
+27 silver
+white
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+are there a lot of people watching ?
+13 6
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+can you see the other person ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+can you see his shoes ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+what brand are they ?
+2 can not tell
+ca n't tell
+VisualDialog_val2018/VisualDialog_val2018_000000095009.jpg
+=====================
+is this photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+is this outdoors ?
+3 no a beach
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+is the surfer male or female ?
+52 i meant yes , it was outdoors ca n't tell on the surfer
+male
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+is he she wearing shorts ?
+1 no a wetsuit
+no a wetsuit
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+is the surfboard big ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+what color is the wetsuit ?
+1 black
+black
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+what color is the surfboard ?
+7 blue
+white
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+how many chairs are there ?
+22 quite a few at least a dozen
+there 's a lot
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+is it sunny out ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+can you see the water ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000454168.jpg
+=====================
+is there just 1 giraffe ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is it sunny out ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is this in the wild ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is it in a zoo ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+do you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is there a fence ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+what is the fence made out of ?
+2 wood and wire
+wood
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is there any water nearby ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is it grass and dirt ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+is it warm outside ?
+13 i ca n't tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000562109.jpg
+=====================
+any people ?
+3 no people
+no
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+is the kitchen modern ?
+16 it seems to be
+yes and modern
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+can you see a fridge ?
+1 no fridge
+no fridge
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+see an oven ?
+13 yes a gas range
+there is no pan on the stove
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+do you see the walls inside ?
+12 i can only see cabinets and the stove area
+no , but it is in a garage , with the door up
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+are the glass doors clean ?
+4 very clean
+yes the bathroom is clean looking
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+are the cabinets made of wood ?
+2 they are and have metal parts too
+looks like wood , yes
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+what color are they ?
+21 brown wood grain
+top is black sides are chrome
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+what color stove ?
+3 it is stainless
+white
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+is it a well lit kitchen ?
+3 it is well lit
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000441404.jpg
+=====================
+is this an indoor or outdoor scene ?
+3 it is indoor ,
+indoors
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is the man sitting down in a chair ?
+4 no
+he is sitting
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is the dog sitting or laying on the floor ?
+43 no
+sitting
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is the man standing ?
+4 no
+no he is sitting
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+are the man and the dog on a couch ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is the man in a bed ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is the dog in bed too ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+what color is the bedspread or sheets ?
+16 they are tan
+white
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+can you see any pillows ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is anyone else in the scene ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000193310.jpg
+=====================
+is this a single person bathroom ?
+15 yes , it is
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is there toilet paper ?
+2 not that i can see
+yes , there is
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+what color is the toilet ?
+1 it is white
+it is white
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is the seat up or down ?
+3 there is n't a seat at all
+down
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is there a soap dispenser ?
+4 yes , there is
+i can not tell if the dispenser UNK water
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+are there paper towels ?
+5 there is a UNK to dry your hands
+yes , there are 3
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is it a stand alone sink or is there a counter ?
+3 it is molded into the wall
+he is under the sink but that is where the pipes to the faucet are , so probably he is
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is there a mirror ?
+3 yes , there is
+there are 2 mirrors
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is it big or small ?
+1 it is a long full length mirror
+it is a long full length mirror
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+what color are the walls ?
+8 they are beige
+the towels are white
+VisualDialog_val2018/VisualDialog_val2018_000000174225.jpg
+=====================
+is it daytime ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+can you see the sky ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+are there clouds ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+is it raining ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+can you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+can you see trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+can you see grass ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+what color are the numbers ?
+15 white
+black
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+can you see any cows ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+is there a dog ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223134.jpg
+=====================
+what color is the plane ?
+3 red , blue , white and silver
+it 's red , white , and blue
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+is it daytime ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+are there clouds in the sky ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+can you see a city below ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+what color is the sky ?
+8 bluish white
+blue
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+can you see any water below ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+what direction is the plane facing ?
+1 left
+left
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+can you see windows on the plane ?
+10 yes barely
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+are there birds in the sky ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+are there any other planes ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000393347.jpg
+=====================
+are there any vegetables in the picture ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+what kind of veggies ?
+1 a salad with lettuce and tomatoes and celery and other relish
+a salad with lettuce and tomatoes and celery and other relish
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+is the picture in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+does the food look good ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+does it make you hungry ?
+18 a little
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+do you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+do you see any chairs ?
+25 no it is a menu
+no
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+do you see the table ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+is it a big menu ?
+19 has less than 10 items , so not really
+normal size
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+do you see the prices ?
+2 no
+the donuts are
+VisualDialog_val2018/VisualDialog_val2018_000000347381.jpg
+=====================
+what color is the apple ?
+5 mostly red with some yellow
+red
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+does the apple have a bite taken out of it ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+can you see the stem or leaf on the apple ?
+3 i see a little stem very slightly
+not up close , but the leaves are green
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+what color is the table ?
+2 brown
+the table is brown
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+does it look more like a coffee table or desk ?
+2 like a kitchen table actually
+i can see only a part of the table
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+is there anything else on the table ?
+34 what seems to be an ipad
+no
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+can you see a wall behind the table or what 's the angle of the photo ?
+7 no
+it is an up close view
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+can you see the floor ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+is the ipad turned on ?
+27 i ca n't tell it appears to be see through
+no
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+does the table have dark or UNK grain ?
+10 its wood
+no
+VisualDialog_val2018/VisualDialog_val2018_000000485732.jpg
+=====================
+is there a shower curtain ?
+2 no
+no it is just solid white from the angle i am seeing it
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+do you see any towels ?
+5 yes just 1
+no
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+would you say the tub is clean ?
+2 very clean
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+is the shower separate from the tub ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+does the shower have a glass door ?
+3 no
+i ca n't tell if there are doors
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+is there tile around the tub ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+what color is the tile ?
+8 brown
+white tile
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+do you see shampoo ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+would you enjoy the bathroom you see ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+is there water in the tub ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000546554.jpg
+=====================
+is the plate on a table ?
+15 looks like a counter
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+is this a paper plate ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+is this homemade ?
+11 hard to tell
+no
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+any people around ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+what color is the plate ?
+2 white with brown trim
+white
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+is this a large slice of cake ?
+13 a little big
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+anything else on the counter ?
+21 some metal items
+a big bowl of salad , cups , beer and plastic ware
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+is the fork still clean ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+what color is the counter ?
+10 grey
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+any chair present ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000286929.jpg
+=====================
+are the windows open ?
+4 the curtains are slightly pulled back
+no
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+are there drapes or curtains ?
+71 not sure
+i do n't see any but i do see the pull cord for window blinds
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+what color are the curtains ?
+17 gray
+white
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+is there a couch ?
+4 you can see part of 1
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+what color is the couch ?
+32 cream maybe
+the rug is multiple colors in stripes
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+is anyone in the room ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+is there a mirror ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+are there any pets ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+does the bike have a bell ?
+5 it does not look like it
+no
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+does the bike have a basket ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000062551.jpg
+=====================
+is there any person in the photo ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+does the sandwich have meat ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+is the sandwich cut in half ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+what kind of vegetables are there ?
+1 carrots
+carrots
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+is the plate white ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+is this in a restaurant or at home ?
+7 ca n't tell
+i think home
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+does it have a drink next to it ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+can you see a table ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+are the carrots chopped ?
+7 sliced lengthwise
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+is there anything else on the plate ?
+5 just the sandwich and vegetables
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146227.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+how many players are there ?
+10 i see 2
+there are 2 players and an umpire
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+is it sunny out ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+is anyone holding a bat ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+can you see a ball ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+is there an umpire ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+what color are the players uniforms ?
+1 the catcher is wearing red and white
+the catcher is wearing red and white
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+can you see their hats ?
+3 no , they are both wearing helmets
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+what color are the helmets ?
+1 1 is red 1 is black
+1 is red 1 is black
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+can you see bleachers ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175827.jpg
+=====================
+how big is the train ?
+1 it is quite small 4 small cars
+it is quite small 4 small cars
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+what color is the train ?
+29 brown
+the engine is blue and yellow
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is the train small ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is it daytime ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is the train moving ?
+12 possibly , hard to tell but probable
+no
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is the train on a track ?
+2 yes
+no , in front of railroad track
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is the train real or is it a model ?
+1 it appears to be real
+it appears to be real
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is the train in a cold or hot place ?
+1 the grass and trees are green so i would say hot
+the grass and trees are green so i would say hot
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+does the train appear to be flying ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000175345.jpg
+=====================
+is smoke coming from the train ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+what time of the day is it ?
+24 no idea
+daytime
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+can you see any humans on the train ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+can you see the cargo in the back of the train ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+is there grass around ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+are there any rocks around ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+is the grass tall ?
+6 some
+no
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+is there any graffiti on the train ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+can you see the train tracks ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+what ’ s color are the train tracks ?
+10 metal
+yellow blue and gray
+VisualDialog_val2018/VisualDialog_val2018_000000150108.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+is this in a zoo ?
+18 maybe
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+do you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+any trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+is there any grass ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+is there any water ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+do you see the elephants tusks ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+is the baby small ?
+4 1 is small
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+is there a fence ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+are the elephants facing the camera ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000296756.jpg
+=====================
+what kind of shop is it ?
+1 looks like a motorcycle shop or a mechanic 's shop
+looks like a motorcycle shop or a mechanic 's shop
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+what color are the man 's clothes ?
+1 black polo shirt and grey pants
+black polo shirt and grey pants
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+what kind of clothes is the man wearing ?
+1 black polo shirt and grey pants
+black polo shirt and grey pants
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+are there any other people in the picture ?
+4 yes , 3 others
+no
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+is the motorcycle large ?
+7 medium sized
+it seems average sized
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+how many men and women are in the picture with the man ?
+1 2 other men and a woman
+2 other men and a woman
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+what are they doing in the image ?
+10 the 2 men are talking to the guy on the bike and the woman is looking at the bike
+walking around or sitting at the tables
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+are there any animals in the picture ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+what kind of shop is this ?
+5 a mechanic shop maybe
+bicycle goods store
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+is it daytime or nighttime ?
+28 can not tell
+daytime
+VisualDialog_val2018/VisualDialog_val2018_000000295705.jpg
+=====================
+how many cows are there ?
+22 more than 10 it is hard to see some of them
+around 9
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+does the photo look vintage ?
+28 slightly
+no , it 's a really old photo
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+are there any people near ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+does the grass look healthy and well kept ?
+31 no the photo is n't in color though
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+do you see any barns ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+are there any farming tools ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+can you tell what the weather is like ?
+1 appears to be slightly cloudy
+appears to be slightly cloudy
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+are there any calves present ?
+5 possibly it is hard to tell
+some look younger but not sure
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+does the land look expensive ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+are there any hills ?
+25 0 seen
+no
+VisualDialog_val2018/VisualDialog_val2018_000000111491.jpg
+=====================
+is this a toy train set ?
+3 no
+no it 's not a toy train
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+is it sunny out ?
+15 no , it looks cloudy
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+are there signs on the platform ?
+6 no , i ca n't see any
+no
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+how many cars on the train do you see ?
+21 i think there are 4
+i do n't see any people
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+do you see any people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+is the train stopped ?
+6 i am not sure , it looks like it is moving
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+what color is the wall ?
+1 it is a stone wall that has green and gray and brown
+it is a stone wall that has green and gray and brown
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+do you see any trees ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+is the train close up or at a distance ?
+2 it is close up
+close
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+can you see inside the windows ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000455297.jpg
+=====================
+color pic ?
+6 yes
+brown black and white
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+inside ?
+3 unable to tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+on a plate ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+is the sandwich cut in half ?
+1 the sandwich is cut
+the sandwich is cut
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+is the pancake brown ?
+2 yes
+yes very dark brown
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+any syrup on the table got ta have the syrup ?
+13 the person is holding the plate , so no syrup and no table
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+male or female ?
+2 unable to tell , i just see a hand
+i can not tell
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+is it hairy ?
+4 i see a side angle of fingers so i ca n't tell
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+is the plate paper ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+is it white ?
+4 yes , with floral designs
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000223379.jpg
+=====================
+how many chickens are there ?
+22 3 or 4 chickens
+3
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+are they all mostly the same color ?
+17 they are
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+is the bench wood or metal ?
+1 appears to be wood
+appears to be wood
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+what color is the bench ?
+6 light colored
+it is dark colored
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+does the bench have arm rest ?
+9 it does not that i can see
+no , just 1
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+is the bench sitting on grass ?
+20 it looks as if it is
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+does it seem to be a public place ?
+3 it does not appear to be
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+a farm ?
+46 possibly , it looks as if there is a flower bed in the background with another chicken or 2
+i can not tell
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+are there any other animals in the picture ?
+10 not that i can see
+no
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+what color are the flowers ?
+70 0 now , it appears to be late fall
+pink , white , and peach flowers
+VisualDialog_val2018/VisualDialog_val2018_000000146821.jpg
+=====================
+lots of cheese ?
+2 yes
+it looks okay there are a lot of toppings on it
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+are there people ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+any store UNK ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+see any windows ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+can you see the floor ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+dan you see any lights ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+how many rows of cheese ?
+56 they are on shelves approx 5
+4
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+is it bags of cheese ?
+15 i don ’ t see any bags
+no
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+does it look fresh ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+would you buy it ?
+6 oh yeah
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000044219.jpg
+=====================
+is the luggage large ?
+13 no , medium
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+does it have a handle ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+is it brown ?
+1 no , black
+no , black
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+is it in a bedroom ?
+32 not sure
+no , it looks like a room in a home
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+do you see any pictures on the walls ?
+2 no pictures
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+do you see any windows ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+do you see any lamps ?
+2 no
+no , this is just a photo of 3 phones sitting on a table or desk , taken from above
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+do see any animals ?
+3 no animals
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+can you see any chairs ?
+2 yes 1 part of a chair
+no
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+is there carpet on the floor ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000088393.jpg
+=====================
+is he outside ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+can you see anyone else ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+what is he wearing ?
+6 he is wearing a hat , t-shirt , shorts , socks and shoes
+shorts and a t-shirt
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+is he on a tennis court ?
+7 looks like it
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+is it sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+are there trees ?
+49 i do n't think so
+no
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+how old does he appear ?
+44 likely middle aged but hard to tell
+late teens early 20s
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+what color is his hair ?
+13 i ca n't tell because of the hat
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+what is his race ?
+2 caucasian
+white
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+what color is the racket ?
+3 black trim and red in the middle with white wrapped around the handle
+black and yellow
+VisualDialog_val2018/VisualDialog_val2018_000000141126.jpg
+=====================
+is this in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+can you see a wall or fence ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+can you see the net ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+is there a crowd ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+is it outside ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+is the court on grass ?
+1 court
+court
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+UNK the mean wearing shorts ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+are they wearing shirts ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+how many people are playing ?
+4 2 visible
+1
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+can you see the scoreboard ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000306813.jpg
+=====================
+is the room dark ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+are there any windows ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+is it day time ?
+2 no
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+are there other people in the room besides the girl ?
+3 no just her
+no
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+how old is the girl ?
+17 about 12
+maybe under 1 year old
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+what color is the girl 's hair ?
+10 bleach blonde with red UNK
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+what color is the girl 's skin ?
+1 white
+white
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+can you tell what she is reading ?
+4 a UNK
+no
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+what color is the bed ?
+8 UNK frames blue comforter
+white
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+are the floors made of wood ?
+3 ca n't see them
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000337029.jpg
+=====================
+what age are the children ?
+1 they seem to be around 6-8
+they seem to be around 6-8
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+are they smiling ?
+2 yes they are smiling
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+do you see any candle ?
+1 there is a candle
+there is a candle
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+what age is the woman ?
+9 she looks to be about 50ish
+i would say 30 's
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+is she smiling ?
+2 she is smiling
+she is not smiling
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+what color is her hair ?
+1 it is blonde
+it is blonde
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+is she wearing glasses ?
+4 yes she is
+yes 1 lady behind the counter is wearing glasses
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+what color are children hair ?
+1 2 of them are brown the other is blonde
+2 of them are brown the other is blonde
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+how many candles are there ?
+1 only 1 candle
+only 1 candle
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+do you see any text ?
+1 there are no text
+there are no text
+VisualDialog_val2018/VisualDialog_val2018_000000225491.jpg
+=====================
+is the beach on the ocean ?
+24 no , it 's next to it
+yes it 's the ocean
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+what color is the sand ?
+6 brown
+tan
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+what color is the water ?
+17 dark
+orangish , brown , and green
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+is the donkey small ?
+4 it is a cow
+no , it 's small
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+what color is the donkey ?
+1 brown
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+is it a sunny day ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+are there any people is there anyone in the water ?
+13 0
+no
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+is there anything in the sky ?
+1 clouds
+clouds
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+any other animals ?
+2 no , just the cow
+no
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+is he happy ?
+28 i do n't think so
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000187087.jpg
+=====================
+is the photo in color ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+does the photo look professional ?
+7 no ,
+no
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+is it daytime ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+is it sunny ?
+1 yes
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+are there people ?
+5 no , no people
+no
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+are there animals ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+can you see any signs ?
+1 yes , a stop sign and a railroad crossing sign
+yes , a stop sign and a railroad crossing sign
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+can you see the leaves of the tree ?
+1 not up close , but the leaves are green
+not up close , but the leaves are green
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+are there any cars ?
+2 no
+no , just trucks
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+are there any buildings ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000129947.jpg
+=====================
+what else is on the desk ?
+3 there is a mouse , speaker , ipod touch , headphones hanging above , photos on the wall
+looks like there are 3 ovens , and maybe warming drawers
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+what color is the computer ?
+1 photo is black and white but the computer appears white
+photo is black and white but the computer appears white
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+is there any people in the picture ?
+2 no people
+no
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+what are the photos on the wall ?
+96 there is many of them they are all of people
+picture of art
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+does this appear to be in a house ?
+7 yes in a house
+yes
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+can you see any windows ?
+6 no windows but entry way which might be a door there or hallway
+maybe since there is a curtain to 1 side
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+is there anything on the computer screen ?
+1 yes the main screen with icons and a image on the screen
+yes the main screen with icons and a image on the screen
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+can you see the time on the computer ?
+8 no i ca n't just the image
+no it 's too far away
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+are any of the other electronics on ?
+1 yes the ipod touch is on
+yes the ipod touch is on
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+what color is the desk ?
+2 the desk looks metal
+the desk is not too visible but it looks to be an oak color
+VisualDialog_val2018/VisualDialog_val2018_000000410397.jpg
+=====================
+are there other people besides the man ?
+3 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+can you tell how old the man is ?
+1 mid to late 30s
+mid to late 30s
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+how many people are there ?
+26 i only see 1 other hand that is not the man 's
+a bunch of people but 4 main people up close
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+is this in a restaurant ?
+1 looks like a wine shop
+looks like a wine shop
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+what color is the wine ?
+1 red
+red
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+is there a bottle on the table ?
+2 yes
+no
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+is there food on the table ?
+2 no
+not in the picture but there are drinks
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+is the man wearing glasses ?
+1 no
+no
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+what color is his hair ?
+1 brown
+brown
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+=====================
+does the table have a tablecloth on it ?
+7 ca n't tell
+no
+VisualDialog_val2018/VisualDialog_val2018_000000305118.jpg
+	No. questions: 1000
+	r@1: 0.432
+	r@5: 0.722
+	r@10: 0.828
+	meanR: 6.373000144958496
+	meanRR: 0.5683879256248474
+Yes No stats
+	No. questions: 581
+	r@1: 0.576592082616179
+	r@5: 0.8743545611015491
+	r@10: 0.9294320137693631
+	meanR: 3.296041250228882
+	meanRR: 0.7111548781394958
+Color stats
+	No. questions: 108
+	r@1: 0.2962962962962963
+	r@5: 0.5
+	r@10: 0.7037037037037037
+	meanR: 9.69444465637207
+	meanRR: 0.4118797481060028
+Count stats
+	No. questions: 51
+	r@1: 0.1568627450980392
+	r@5: 0.37254901960784315
+	r@10: 0.6078431372549019
+	meanR: 12.72549057006836
+	meanRR: 0.27923721075057983
+Other stats
+	No. questions: 260
+	r@1: 0.21923076923076923
+	r@5: 0.5423076923076923
+	r@10: 0.6961538461538461
+	meanR: 10.623077392578125
+	meanRR: 0.3710879385471344

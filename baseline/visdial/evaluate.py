@@ -36,7 +36,8 @@ parser.add_argument('-save_ranks', action='store_true',
                         help='Whether to save retrieved ranks')
 parser.add_argument('-save_path', default='logs/ranks.json',
                         help='Path of json file to save ranks')
-
+parser.add_argument('-print_failures', action='store_true',
+			help='Print text of failure cases')
 # ----------------------------------------------------------------------------
 # input arguments and options
 # ----------------------------------------------------------------------------
@@ -138,26 +139,27 @@ if args.use_gt:
         #print(ranks[0])
         gt_ranks = get_gt_ranks(ranks, batch['ans_ind'].data)
         #print(gt_ranks)
-        
-        batch_size = batch['ques'].size(0)
-        round_length = batch['ques'].size(1)
        
-        count = 0
-        for b in range(batch_size):
-            for r in range(round_length):
-                ques_string = convert_to_string(batch['ques'][b][r], ind2word)
-                ans_ind = batch['ans_ind'][b][r]
-                gt_ans = convert_to_string(batch['opt'][b][r][ans_ind], ind2word)
-                gt_rank = ranks[count][ans_ind]
-                top_ranked_ind = None
-                for ind in range(ranks.size(1)):
-                    if ranks[count][ind] == 1:
-                        top_ranked_ind = ind
-                top_rank_ans = convert_to_string(batch['opt'][b][r][top_ranked_ind], ind2word)
-                image_fname = batch['img_fnames'][b]
-                if gt_rank > 1:
-                    print("=====================\n%s\n%d %s\n%s\n%s" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname))
-                count += 1
+        if args.print_failures: 
+            batch_size = batch['ques'].size(0)
+            round_length = batch['ques'].size(1)
+               
+            count = 0
+            for b in range(batch_size):
+                for r in range(round_length):
+                    ques_string = convert_to_string(batch['ques'][b][r], ind2word)
+                    ans_ind = batch['ans_ind'][b][r]
+                    gt_ans = convert_to_string(batch['opt'][b][r][ans_ind], ind2word)
+                    gt_rank = ranks[count][ans_ind]
+                    top_ranked_ind = None
+                    for ind in range(ranks.size(1)):
+                        if ranks[count][ind] == 1:
+                            top_ranked_ind = ind
+                    top_rank_ans = convert_to_string(batch['opt'][b][r][top_ranked_ind], ind2word)
+                    image_fname = batch['img_fnames'][b]
+                    if gt_rank > 1:
+                        print("=====================\n%s\n%d %s\n%s\n%s" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname))
+                    count += 1
 
         all_ranks.append(gt_ranks)
         for j in range(len(batch['type'])):
@@ -166,35 +168,37 @@ if args.use_gt:
              
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
-    yes_no_ranks = []
-    color_ranks = []
-    other_ranks = []
-    count_ranks = []
-    for j in range(len(all_ranks)):
-        if (all_labels[j] == "yn"): 
-            yes_no_ranks.append(all_ranks[j])
-        if (all_labels[j] == "color"):
-            color_ranks.append(all_ranks[j])
-        if (all_labels[j] == "other"):
-            other_ranks.append(all_ranks[j])
-        if (all_labels[j] == "count"):
-            count_ranks.append(all_ranks[j])
+    if args.breakdown_analysis:
+        yes_no_ranks = []
+        color_ranks = []
+        other_ranks = []
+        count_ranks = []
+        for j in range(len(all_ranks)):
+            if (all_labels[j] == "yn"): 
+                yes_no_ranks.append(all_ranks[j])
+            if (all_labels[j] == "color"):
+                color_ranks.append(all_ranks[j])
+            if (all_labels[j] == "other"):
+                other_ranks.append(all_ranks[j])
+            if (all_labels[j] == "count"):
+                count_ranks.append(all_ranks[j])
 
-    yes_no_ranks = torch.tensor(yes_no_ranks)
-    color_ranks = torch.tensor(color_ranks)
-    count_ranks = torch.tensor(count_ranks)
-    other_ranks = torch.tensor(other_ranks)
-    process_ranks(all_ranks)
-    print("Yes No stats")
-    process_ranks(yes_no_ranks)
-    print("Color stats")
-    process_ranks(color_ranks)
-    print("Count stats")
-    process_ranks(count_ranks)
-    print("Other stats")
-    process_ranks(other_ranks)
-
-    #for rank in all_ranks:
+        yes_no_ranks = torch.tensor(yes_no_ranks)
+        color_ranks = torch.tensor(color_ranks)
+        count_ranks = torch.tensor(count_ranks)
+        other_ranks = torch.tensor(other_ranks)
+        process_ranks(all_ranks)
+        print("Yes No stats")
+        process_ranks(yes_no_ranks)
+        print("Color stats")
+        process_ranks(color_ranks)
+        print("Count stats")
+        process_ranks(count_ranks)
+        print("Other stats")
+        process_ranks(other_ranks)
+    else:
+        process_ranks(all_ranks)
+    # for rank in all_ranks:
     #     print(rank)
     gc.collect()
 else:
