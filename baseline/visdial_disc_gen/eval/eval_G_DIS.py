@@ -207,11 +207,13 @@ def eval():
                     ans_length).t().size())
                 print("opt_answerT size", opt_answerT.size())
 
+            """
             ques_txt = decode_txt(itow, questionL[:,rnd,:].t())
             for j in range(batch_size):
                 tmp_tans = opt_answerT[j,rnd,int(gt_id[j]),:]
                 tans_txt = decode_txt(itow, tmp_tans.view(tmp_tans.size()[0],1))
                 print('Q: %s --A: %s' % (ques_txt[j], tans_txt[0]))
+            """
 
         i += 1
         sys.stdout.write('Evaluating: {:d}/{:d}  \r' \
@@ -344,16 +346,16 @@ def sample():
                 tans_txt = decode_txt(itow, tmp_tans.view(tmp_tans.size()[0],1))
                 top_ans_txt = decode_txt(itow, top_ans.view(top_ans.size()[0],1))
 
-                if "color" in ques_txt[j]:
-                    rank_color += [rank_data[j]]
-                if "how many" in ques_txt[j] or any(char.isdigit() for char in tans_txt[0]):
-                    rank_count += [rank_data[j]]
                 if "yes" in tans_txt[0] or "no" in tans_txt[0]:
                     rank_yn += [rank_data[j]]
+                elif "color" in ques_txt[j]:
+                    rank_color += [rank_data[j]]
+                elif "how many" in ques_txt[j] or any(char.isdigit() for char in tans_txt[0]):
+                    rank_count += [rank_data[j]]
 
-                if (rnd == 0 or rnd == 9) and i % 10 == 0:
-                    print('img_id: %d Q: %s --A: %s -- Sampled from candidate answers: %s rank of A: %d, Sampled: %s'
-                        %(img_id_data[j], ques_txt[j], tans_txt[0], top_ans_txt[0], rank_data[j], ans_sample_txt[j]))
+                # if i % 25 == 0:
+                #     print('rnd: %d img_id: %d Q: %s --A: %s -- Sampled from candidate answers: %s rank of A: %d, Sampled: %s'
+                #         %(rnd, img_id_data[j], ques_txt[j], tans_txt[0], top_ans_txt[0], rank_data[j], ans_sample_txt[j]))
 
             # pdb.set_trace()
         i += 1
@@ -367,8 +369,8 @@ def sample():
                 R10 = np.sum(np.array(rank_tmp)<=10) / float(len(rank_tmp))
                 ave = np.sum(np.array(rank_tmp)) / float(len(rank_tmp))
                 mrr = np.sum(1/(np.array(rank_tmp, dtype='float'))) / float(len(rank_tmp))
-                print ('%d/%d %s: mrr: %f R1: %f R5 %f R10 %f Mean %f' %(i,
-                    len(dataloader_val), name, mrr, R1, R5, R10, ave))
+                print ('%d/%d %s (%d out of %d): mrr: %f R1: %f R5 %f R10 %f Mean %f' %(i,
+                    len(dataloader_val), name, len(rank_tmp), i*50, mrr, R1, R5, R10, ave))
             for (r,rank_tmp) in enumerate(rank_round):
                 if len(rank_tmp) > 0:
                     R1 = np.sum(np.array(rank_tmp)==1) / float(len(rank_tmp))
@@ -411,7 +413,7 @@ gt_index = Variable(gt_index, volatile = True)
 his_input = Variable(his_input)
 img_input = Variable(img_input)
 
-sample()
+# sample()
 
 rank_all = eval()
 R1 = np.sum(np.array(rank_all)==1) / float(len(rank_all))
