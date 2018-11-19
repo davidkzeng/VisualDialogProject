@@ -4,6 +4,8 @@ import gc
 import json
 import math
 import os
+import wmd
+import spacy
 from tqdm import tqdm
 
 import torch
@@ -62,6 +64,22 @@ if args.gpuid >= 0:
 # ----------------------------------------------------------------------------
 # read saved model and args
 # ----------------------------------------------------------------------------
+
+# test code
+
+print ("Testing WMD")
+nlp = spacy.load('en_core_web_lg')
+doc1 = nlp("Politician speaks to the media in Illinois.")
+doc2 = nlp("The president greets the press in Chicago.")
+doc3 = nlp("Bla Bla Bla asdfs can't speak")
+doc4 = nlp("Politician speaks to the media in Illinois.")
+doc5 = nlp("no")
+doc6 = nlp("1")
+print(doc1.similarity(doc2))
+print(doc2.similarity(doc1))
+print(doc1.similarity(doc3))
+print(doc1.similarity(doc4))
+print(doc5.similarity(doc6))
 
 components = torch.load(args.load_path)
 model_args = components['model_args']
@@ -124,6 +142,8 @@ if args.use_gt:
     # ------------------------------------------------------------------------
     all_ranks = []
     all_labels = []
+    total_count = 0
+    total_sim = 0
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
             if not isinstance(batch[key], list):
@@ -157,9 +177,16 @@ if args.use_gt:
                             top_ranked_ind = ind
                     top_rank_ans = convert_to_string(batch['opt'][b][r][top_ranked_ind], ind2word)
                     image_fname = batch['img_fnames'][b]
+                    gt_doc = nlp(gt_ans)
+                    top_rank_doc = nlp(top_rank_ans)
+                    #print(gt_ans)
+                    #print(top_rank_ans)
+                    sim = gt_doc.similarity(top_rank_doc)
                     if gt_rank > 1:
-                        print("=====================\n%s\n%d %s\n%s\n%s" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname))
+                        print("=====================\n%s\n%d %s\n%s\n%s\n%f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
+                    total_sim += sim
                     count += 1
+                    total_count += 1
 
         all_ranks.append(gt_ranks)
         for j in range(len(batch['type'])):
@@ -168,6 +195,9 @@ if args.use_gt:
              
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
+    avg_sim = total_sim / total_count
+    print("Average similarity")
+    print(avg_sim)
     if args.breakdown_analysis:
         yes_no_ranks = []
         color_ranks = []
