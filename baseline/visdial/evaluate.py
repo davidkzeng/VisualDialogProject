@@ -40,6 +40,8 @@ parser.add_argument('-save_path', default='logs/ranks.json',
                         help='Path of json file to save ranks')
 parser.add_argument('-print_failures', action='store_true',
 			help='Print text of failure cases')
+parser.add_argument('-compute_similarity', action='store_true',
+            help='Computer similarity of ground truth and model top ranked result')
 # ----------------------------------------------------------------------------
 # input arguments and options
 # ----------------------------------------------------------------------------
@@ -64,22 +66,6 @@ if args.gpuid >= 0:
 # ----------------------------------------------------------------------------
 # read saved model and args
 # ----------------------------------------------------------------------------
-
-# test code
-
-print ("Testing WMD")
-nlp = spacy.load('en_core_web_lg')
-doc1 = nlp("Politician speaks to the media in Illinois.")
-doc2 = nlp("The president greets the press in Chicago.")
-doc3 = nlp("Bla Bla Bla asdfs can't speak")
-doc4 = nlp("Politician speaks to the media in Illinois.")
-doc5 = nlp("no")
-doc6 = nlp("1")
-print(doc1.similarity(doc2))
-print(doc2.similarity(doc1))
-print(doc1.similarity(doc3))
-print(doc1.similarity(doc4))
-print(doc5.similarity(doc6))
 
 components = torch.load(args.load_path)
 model_args = components['model_args']
@@ -132,6 +118,12 @@ if args.gpuid >= 0:
 # evaluation
 # ----------------------------------------------------------------------------
 
+# Word Mover's Distance model
+wmd_nlp = spacy.load('en_core_web_lg')
+wmd_nlp.add_pipe(wmd.WMD.SpacySimilarityHook(wmd_nlp), last=True)
+# spaCy English model
+nlp = spacy.load('en_core_web_lg')
+
 print("Evaluation start time: {}".format(
     datetime.datetime.strftime(datetime.datetime.utcnow(), '%d-%b-%Y-%H:%M:%S')))
 encoder.eval()
@@ -144,6 +136,8 @@ if args.use_gt:
     all_labels = []
     total_count = 0
     total_sim = 0
+    total_wmd = 0
+    wmd_count = 0
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
             if not isinstance(batch[key], list):
@@ -160,7 +154,7 @@ if args.use_gt:
         gt_ranks = get_gt_ranks(ranks, batch['ans_ind'].data)
         #print(gt_ranks)
        
-        if args.print_failures: 
+        if args.print_failures or args.compute_similarity: 
             batch_size = batch['ques'].size(0)
             round_length = batch['ques'].size(1)
                
@@ -179,11 +173,21 @@ if args.use_gt:
                     image_fname = batch['img_fnames'][b]
                     gt_doc = nlp(gt_ans)
                     top_rank_doc = nlp(top_rank_ans)
-                    #print(gt_ans)
-                    #print(top_rank_ans)
                     sim = gt_doc.similarity(top_rank_doc)
-                    if gt_rank > 1:
-                        print("=====================\n%s\n%d %s\n%s\n%s\n%f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
+                    total_sim += sim
+                    total_count += 1
+
+                    # wmd implementation does not allow for digits within answers so they are excluded from calculations
+                    if (not(any(char.isdigit() for char in gt_ans) or any(char.isdigit() for char in top_rank_ans))):
+                        wmd_gt_doc = wmd_nlp(gt_ans)
+                        wmd_top_rank_doc = wmd_nlp(top_rank_ans)
+                        wmd_sim = wmd_gt_doc.similarity(wmd_top_rank_doc) 
+                        total_wmd += wmd_sim
+                        wmd_count += 1 
+                        if (gt_rank > 1 and args.print_failures):
+                            print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
+                    elif args.print_failures:
+                        print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
                     total_sim += sim
                     count += 1
                     total_count += 1
@@ -196,8 +200,9 @@ if args.use_gt:
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
     avg_sim = total_sim / total_count
-    print("Average similarity")
-    print(avg_sim)
+    print("Average similarity: %f", avg_sim)
+    avg_wmd = wmd_sim / wmd_count
+    print("Average Word Mover's Distance: %f", avg_wmd)
     if args.breakdown_analysis:
         yes_no_ranks = []
         color_ranks = []
