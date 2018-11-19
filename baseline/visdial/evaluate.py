@@ -184,9 +184,9 @@ if args.use_gt:
                         wmd_sim = wmd_gt_doc.similarity(wmd_top_rank_doc) 
                         total_wmd += wmd_sim
                         wmd_count += 1 
-                        if (gt_rank > 1 and args.print_failures):
+                        if (gt_rank >= 1 and args.print_failures):
                             print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
-                    elif args.print_failures:
+                    elif (gt_rank > 1 and args.print_failures):
                         print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
                     total_sim += sim
                     count += 1
@@ -200,9 +200,9 @@ if args.use_gt:
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
     avg_sim = total_sim / total_count
-    print("Average similarity: %f", avg_sim)
-    avg_wmd = wmd_sim / wmd_count
-    print("Average Word Mover's Distance: %f", avg_wmd)
+    print("Average similarity: %f" % (avg_sim))
+    avg_wmd = total_wmd / wmd_count
+    print("Average Word Mover's Distance: %f" % (avg_wmd))
     if args.breakdown_analysis:
         yes_no_ranks = []
         color_ranks = []
