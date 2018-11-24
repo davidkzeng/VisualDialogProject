@@ -184,7 +184,7 @@ if args.use_gt:
                         wmd_sim = wmd_gt_doc.similarity(wmd_top_rank_doc) 
                         total_wmd += wmd_sim
                         wmd_count += 1 
-                        if (gt_rank >= 1 and args.print_failures):
+                        if (gt_rank > 1 and args.print_failures):
                             print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
                     elif (gt_rank > 1 and args.print_failures):
                         print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
