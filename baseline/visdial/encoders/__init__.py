@@ -1,6 +1,7 @@
 from .lf import LateFusionEncoder
 from .hre2 import HierarchicalRecurrentEncoder
 from .lf_short_hist import LateFusionShortHistEncoder
+# from .tent_att import TentativeAttentionEncoder
 
 name_enc_map = {
     'lf-ques-im-hist': {
@@ -23,7 +24,14 @@ name_enc_map = {
             'concat_history' : False,
             'partial_concat_history' : False
     	}
-    },
+    }
+    #'ta-ques-im-hist': {
+    #    'encoder' : TentativeAttentionEncoder,
+    #    'params' : {
+    #        'concat_history' : False,
+    #        'partial_concat_history' : False
+    #    }
+    #}
 }
 
 def Encoder(model_args):

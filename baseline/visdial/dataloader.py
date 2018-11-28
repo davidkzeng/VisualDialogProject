@@ -17,11 +17,11 @@ class VisDialDataset(Dataset):
     @staticmethod
     def add_cmdline_args(parser):
         parser.add_argument_group('Dataloader specific arguments')
-        parser.add_argument('-input_img', default='data/data_img.h5',
+        parser.add_argument('-input_img', default='data/0.9/data_img.h5',
                                 help='HDF5 file with image features')
-        parser.add_argument('-input_ques', default='data/visdial_data.h5',
+        parser.add_argument('-input_ques', default='data/0.9/visdial_data.h5',
                                 help='HDF5 file with preprocessed questions')
-        parser.add_argument('-input_json', default='data/visdial_params.json',
+        parser.add_argument('-input_json', default='data/0.9/visdial_params.json',
                                 help='JSON file with image paths and vocab')
         parser.add_argument('-img_norm', default=1, choices=[1, 0],
                                 help='normalize the image feature. 1=yes, 0=no')
@@ -89,20 +89,25 @@ class VisDialDataset(Dataset):
 
         # processing every split in subsets
         # We will redefine the subsets be:
-        # 'train': 50000 sampled examples from v1.0 Train (Possible larger)
-        # 'val' : 5000 sampled examples from v1.0 Train (non-intersecting with train)
-        # 'test' :  2064 sampled examples from v1.0 Val
+        # 'train': 70000 sampled examples from v1.0
+        # 'val': 12783 examples from v1.0
+        # 'test' : actual 'val'
+        if len(subsets) > 0:
+            print('Not supported yet')
+            break
+        split_map = { 'train': 'train', 'val': 'train', 'test': 'val' }
         for dtype in subsets:  # dtype is in ['train', 'val', 'test']
+            underlying_dtype = split_map[dtype]
             print("\nProcessing split [{}]...".format(dtype))
             # read the question, answer, option related information
             for load_label, save_label in iteritems(io_map):
-                if load_label.format(dtype) not in ques_file:
+                if load_label.format(underlying_dtype) not in ques_file:
                     continue
-                self.data[save_label.format(dtype)] = torch.from_numpy(
+                self.data[save_label.format(underlying_dtype)] = torch.from_numpy(
                     np.array(ques_file[load_label.format(dtype)], dtype='int64'))
 
             print("Reading image features...")
-            img_feats = torch.from_numpy(np.array(img_file['images_' + dtype]))
+            img_feats = torch.from_numpy(np.array(img_file['images_' + underlying_dtype]))
 
             if args.img_norm:
                 print("Normalizing image features...")
@@ -121,6 +126,13 @@ class VisDialDataset(Dataset):
             self.max_ques_len = self.data[dtype + '_ques'].size(2)
             # maximum length of answer
             self.max_ans_len = self.data[dtype + '_ans'].size(2)
+
+        if subsets[0] == 'train':
+            for key in self.data:
+                self.data[key] = self.data[key][:70000]
+        elif subsets[0] == 'val':
+            for key in self.data:
+                self.data[key] = self.data[key][70000:]
 
         # reduce amount of data for preprocessing in fast mode
         if args.overfit:
