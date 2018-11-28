@@ -16,6 +16,7 @@ from dataloader import VisDialDataset
 from encoders import Encoder, EncoderParams
 from decoders import Decoder
 from utils import process_ranks, scores_to_ranks, get_gt_ranks, convert_to_string
+from num2words import num2words
 
 
 parser = argparse.ArgumentParser()
@@ -176,6 +177,23 @@ if args.use_gt:
                     sim = gt_doc.similarity(top_rank_doc)
                     total_sim += sim
                     total_count += 1
+                    
+                    # Converting numbers to their word representations
+                    gt_ans_temp = gt_ans
+                    gt_ans = ""
+                    for word in gt_ans_temp.split():
+                        if (word.isdigit()):
+                            gt_ans = gt_ans + num2words(int(word)) + " "
+                        else:
+                            gt_ans = gt_ans + word + " "
+
+                    top_rank_ans_temp = top_rank_ans
+                    top_rank_ans = ""
+                    for word in top_rank_ans_temp.split():
+                        if (word.isdigit()):
+                            top_rank_ans = top_rank_ans + num2words(int(word)) + " "
+                        else:
+                            top_rank_ans = top_rank_ans + word + " "
 
                     # wmd implementation does not allow for digits within answers so they are excluded from calculations
                     if (not(any(char.isdigit() for char in gt_ans) or any(char.isdigit() for char in top_rank_ans))):
