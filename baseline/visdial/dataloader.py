@@ -92,9 +92,9 @@ class VisDialDataset(Dataset):
         # 'train': 70000 sampled examples from v1.0
         # 'val': 12783 examples from v1.0
         # 'test' : actual 'val'
-        if len(subsets) > 0:
+        if len(subsets) > 1:
             print('Not supported yet')
-            break
+            return
         split_map = { 'train': 'train', 'val': 'train', 'test': 'val' }
         for dtype in subsets:  # dtype is in ['train', 'val', 'test']
             underlying_dtype = split_map[dtype]
@@ -129,10 +129,12 @@ class VisDialDataset(Dataset):
 
         if subsets[0] == 'train':
             for key in self.data:
-                self.data[key] = self.data[key][:70000]
+                if 'opt_list' not in key and 'opt_len' not in key:
+                    self.data[key] = self.data[key][:70000]
         elif subsets[0] == 'val':
             for key in self.data:
-                self.data[key] = self.data[key][70000:]
+                if 'opt_list' not in key and 'opt_len' not in key:
+                    self.data[key] = self.data[key][70000:]
 
         # reduce amount of data for preprocessing in fast mode
         if args.overfit:
