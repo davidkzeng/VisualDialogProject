@@ -4,9 +4,16 @@ import gc
 import json
 import math
 import os
+
 import wmd
 import spacy
 from tqdm import tqdm
+
+from metrics.pycocoevalcap.tokenizer.ptbtokenizer import PTBTokenizer
+from metrics.pycocoevalcap.bleu.bleu import Bleu
+from metrics.pycocoevalcap.meteor.meteor import Meteor
+from metrics.pycocoevalcap.rouge.rouge import Rouge
+from metrics.pycocoevalcap.cider.cider import Cider
 
 import torch
 from torch.autograd import Variable
@@ -160,6 +167,8 @@ if args.use_gt:
             round_length = batch['ques'].size(1)
                
             count = 0
+            tokenizer = PTBTokenizer()
+            scorers = [ (Bleu(4), "Bleu4") ]
             for b in range(batch_size):
                 for r in range(round_length):
                     ques_string = convert_to_string(batch['ques'][b][r], ind2word)
@@ -175,6 +184,11 @@ if args.use_gt:
                     gt_doc = nlp(gt_ans)
                     top_rank_doc = nlp(top_rank_ans)
                     sim = gt_doc.similarity(top_rank_doc)
+                    # gt_tokens = tokenizer.tokenize({ 1 : [{ u'caption' : gt_ans }] })
+                    # tr_tokens = tokenizer.tokenize({ 1 : [{ u'caption' : top_rank_ans }]})
+                    # _, bleu_scores = scorers[0][0].compute_score(gt_tokens, tr_tokens)
+                    # bleu_4 = bleu_scores[3]
+                    # print("bleu_4 %.3f" % bleu_4[0])
                     total_sim += sim
                     total_count += 1
                     

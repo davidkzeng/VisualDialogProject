@@ -301,7 +301,7 @@ class VisDialDataset(Dataset):
         item['type'] =  self.data[dtype + '_type'][idx] if (dtype + '_type') in self.data else ''
 
         #get sim tokens
-        item['sim'] = self.data[dtype + '_sim'][idx]
+        item['sim'] = self.data[dtype + '_sim'][idx] if (dtype + '_type') in self.data else torch.zeros([100], dtype=torch.float32)
         
 
         # get options tokens
