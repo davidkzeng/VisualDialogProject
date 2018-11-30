@@ -26,8 +26,8 @@ class Meteor:
         self.lock = threading.Lock()
 
     def compute_score(self, gts, res):
-        assert(gts.keys() == res.keys())
-        imgIds = gts.keys()
+        assert(list(gts.keys()) == list(res.keys()))
+        imgIds = list(gts.keys())
         scores = []
 
         eval_line = 'EVAL'
@@ -52,7 +52,8 @@ class Meteor:
         # SCORE ||| reference 1 words ||| reference n words ||| hypothesis words
         hypothesis_str = hypothesis_str.replace('|||','').replace('  ',' ')
         score_line = ' ||| '.join(('SCORE', ' ||| '.join(reference_list), hypothesis_str))
-        self.meteor_p.stdin.write('{}\n'.format(score_line))
+        score_line = score_line
+        self.meteor_p.stdin.write(('{}\n'.format(score_line)).encode())
         return self.meteor_p.stdout.readline().strip()
 
     def _score(self, hypothesis_str, reference_list):

@@ -145,6 +145,14 @@ if args.use_gt:
     total_count = 0
     total_sim = 0
     total_wmd = 0
+    total_metrics = {}
+    tokenizer = PTBTokenizer()
+    scorers = [ (Bleu(4), "Bleu4"),
+                # (Meteor(), "METEOR"),
+                (Rouge(), "ROUGE_L"),
+                (Cider(), "CIDEr") ]
+    for scorer in scorers:
+        total_metrics[scorer[1]] = 0
     wmd_count = 0
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
@@ -167,8 +175,8 @@ if args.use_gt:
             round_length = batch['ques'].size(1)
                
             count = 0
-            tokenizer = PTBTokenizer()
-            scorers = [ (Bleu(4), "Bleu4") ]
+            gts = {}
+            trs = {}
             for b in range(batch_size):
                 for r in range(round_length):
                     ques_string = convert_to_string(batch['ques'][b][r], ind2word)
@@ -184,11 +192,8 @@ if args.use_gt:
                     gt_doc = nlp(gt_ans)
                     top_rank_doc = nlp(top_rank_ans)
                     sim = gt_doc.similarity(top_rank_doc)
-                    # gt_tokens = tokenizer.tokenize({ 1 : [{ u'caption' : gt_ans }] })
-                    # tr_tokens = tokenizer.tokenize({ 1 : [{ u'caption' : top_rank_ans }]})
-                    # _, bleu_scores = scorers[0][0].compute_score(gt_tokens, tr_tokens)
-                    # bleu_4 = bleu_scores[3]
-                    # print("bleu_4 %.3f" % bleu_4[0])
+                    gts[b * r + r] = [{ u'caption' : gt_ans }]
+                    trs[b * r + r] = [{ u'caption' : top_rank_ans }]
                     total_sim += sim
                     total_count += 1
                     
@@ -217,13 +222,24 @@ if args.use_gt:
                         total_wmd += wmd_sim
                         wmd_count += 1 
                         if (gt_rank > 1 and args.print_failures):
-                            print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
+                            print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f"
+                                    % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
                     elif (gt_rank > 1 and args.print_failures):
-                        print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f" % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
+                        print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f"
+                                    % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
                     total_sim += sim
                     count += 1
                     total_count += 1
-
+            gt_tokens = tokenizer.tokenize(gts)
+            tr_tokens = tokenizer.tokenize(trs)
+            for scorer_name in scorers:
+                scorer, name = scorer_name
+                _, scores = scorer.compute_score(gt_tokens, tr_tokens)
+                if name == "Bleu4":
+                    scores = scores[3]
+                for score in scores:
+                    total_metrics[name] += score
+                
         all_ranks.append(gt_ranks)
         for j in range(len(batch['type'])):
             for k in range(len(batch['type'][j])):
@@ -232,6 +248,8 @@ if args.use_gt:
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
     avg_sim = total_sim / total_count
+    for k, v in total_metrics:
+        print("Average %s %.5f" % (k, v))
     print("Average similarity: %f" % (avg_sim))
     avg_wmd = total_wmd / wmd_count
     print("Average Word Mover's Distance: %f" % (avg_wmd))
