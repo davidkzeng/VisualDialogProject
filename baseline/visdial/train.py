@@ -116,6 +116,7 @@ encoder = Encoder(model_args)
 
 decoder = Decoder(model_args, encoder)
 criterion = nn.CrossEntropyLoss()
+#criterion = nn.KLDivLoss()
 optimizer = optim.Adam(list(encoder.parameters()) + list(decoder.parameters()),
                        lr=args.lr)
 scheduler = lr_scheduler.StepLR(optimizer, step_size=1, gamma=args.lr_decay_rate)
@@ -160,7 +161,13 @@ for epoch in range(1, model_args.num_epochs + 1):
         # --------------------------------------------------------------------
         enc_out = encoder(batch)
         dec_out = decoder(enc_out, batch)
+        print (batch['sim'].size())
+        #print (batch['sim'])
+        #print (batch['sim'].view(dec_out.size(0),dec_out.size(1)))
+        #print (batch['ans
+        #print (batch['ans_ind'])
         cur_loss = criterion(dec_out, batch['ans_ind'].view(-1))
+        #cur_loss = criterion(dec_out, batch['sim'].view(dec_out.size(0), dec_out.size(1)))
         cur_loss.backward()
 
         optimizer.step()

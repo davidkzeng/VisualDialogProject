@@ -220,21 +220,29 @@ class VisDialDataset(Dataset):
             test =[]
             for i in range(self.data['train_opt_list'].size(0)):
                 nlp_list[i] = convert_to_string(self.data['train_opt_list'][i],self.ind2word)
-                print (i)
-            i = 0 
             for doc in nlp.pipe(nlp_list):
                 test.append(doc)
-                i = i + 1
-                print(i)
+
+            ans_list = []
+            for i in range(self.data['train_ques'].size(0)):
+                for j in range(self.data['train_num_rounds'][i]):
+                    ans_list.append(convert_to_string(self.data['train_ans'][i][j], self.ind2word))
+            ans_nlp_list = []
+            for doc in nlp.pipe(ans_list):
+                ans_nlp_list.append(doc)
+    
             print("REACHES AFTER NLP")
-        
+
+            ans_index = 0
             #self.data['train_sim'] = torch.from_numpy(np.array([1,2,3]))
+            print(self.data['train_ques'].size(0))
             for i in range(self.data['train_ques'].size(0)):
                 self.data['train_sim'][i] = [None] * self.data['train_num_rounds'][i].item()
                 for j in range(self.data['train_num_rounds'][i]):
                     self.data['train_sim'][i][j] = [None] * self.data['train_opt'][i][j].size(0)
-                    answer = convert_to_string(self.data['train_ans'][i][j], self.ind2word)
-                    answer_nlp = nlp(answer)
+                    #answer = convert_to_string(self.data['train_ans'][i][j], self.ind2word)
+                    #answer_nlp = nlp(answer)
+                    answer_nlp = ans_nlp_list[ans_index]
                     #print(self.data['train_opt_list'].size())
                     for k in range(self.data['train_opt'][i][j].size(0)):
                         tens_ind = self.data['train_opt'][i][j][k].item()
@@ -247,17 +255,26 @@ class VisDialDataset(Dataset):
                         self.data['train_sim'][i][j][k] = similarity
                         #print (self.data['train_opt'][i][j][k])
                                                 
-                        
+                    ans_index = ans_index + 1    
                     '''
                     for k in range(self.data['train_ans_len'][i][j]):
                         word = self.ind2word[self.data['train_ans'][i][j][k].item()]
                         self.data['train_sim'][i] = [1,2,3]
                     '''
-                print (i)
+                #print (i)
             print("REACHES AFTER")
+
+            #generating probabilities
+            for i in range(len(self.data['train_sim'])):
+                for j in range(len(self.data['train_sim'][i])):
+                    sum1 = 0
+                    for k in range(len(self.data['train_sim'][i][j])):
+                        sum1 += self.data['train_sim'][i][j][k]
+                    for k in range(self.data['train_sim'][i][j].size(0)):
+                        self.data['train_sim'][i][j][k] = self.data['train_sim'][i][j][k] / sum1
+
             self.data['train_sim'] = torch.tensor(self.data['train_sim'])
 
-		
         # default pytorch loader dtype is set to train
         if 'train' in subsets:
             self._split = 'train'
