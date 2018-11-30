@@ -103,8 +103,8 @@ class VisDialDataset(Dataset):
             for load_label, save_label in iteritems(io_map):
                 if load_label.format(underlying_dtype) not in ques_file:
                     continue
-                self.data[save_label.format(underlying_dtype)] = torch.from_numpy(
-                    np.array(ques_file[load_label.format(dtype)], dtype='int64'))
+                self.data[save_label.format(dtype)] = torch.from_numpy(
+                    np.array(ques_file[load_label.format(underlying_dtype)], dtype='int64'))
 
             print("Reading image features...")
             img_feats = torch.from_numpy(np.array(img_file['images_' + underlying_dtype]))
@@ -115,7 +115,7 @@ class VisDialDataset(Dataset):
 
             # save image features
             self.data[dtype + '_img_fv'] = img_feats
-            img_fnames = getattr(self, 'unique_img_' + dtype)
+            img_fnames = getattr(self, 'unique_img_' + underlying_dtype)
             self.data[dtype + '_img_fnames'] = img_fnames
 
             # record some stats, will be transferred to encoder/decoder later
@@ -127,14 +127,18 @@ class VisDialDataset(Dataset):
             # maximum length of answer
             self.max_ans_len = self.data[dtype + '_ans'].size(2)
 
-        if subsets[0] == 'train':
-            for key in self.data:
-                if 'opt_list' not in key and 'opt_len' not in key:
+        ignore = ['opt_list', 'opt_len']
+        for key in self.data:
+            ignore_key = False
+            for ignore_string in ignore:
+                if ignore_string in key:
+                    ignore_key = True
+                    break
+            if not ignore_key:
+                if dtype == 'train':
                     self.data[key] = self.data[key][:70000]
-        elif subsets[0] == 'val':
-            for key in self.data:
-                if 'opt_list' not in key and 'opt_len' not in key:
-                    self.data[key] = self.data[key][70000:]
+                if dtype == 'val':
+                    self.data[key] = self.data[key][80000:]
 
         # reduce amount of data for preprocessing in fast mode
         if args.overfit:
