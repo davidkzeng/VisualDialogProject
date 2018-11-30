@@ -1,5 +1,6 @@
 import os
 import json
+import spacy
 from six import iteritems
 import collections
 
@@ -10,6 +11,7 @@ from tqdm import tqdm
 import torch
 import torch.nn.functional as F
 from torch.utils.data import Dataset
+from utils import convert_to_string
 
 
 class VisDialDataset(Dataset):
@@ -28,6 +30,8 @@ class VisDialDataset(Dataset):
         parser.add_argument('-size_limit', type=int, default=-1, help='maximum size of dataset')
         parser.add_argument('-breakdown_analysis', action='store_true',
                                 help='break down statistics by question type')
+        parser.add_argument('-similarities', action='store_true',
+                                help='compute similarities for options to ground truth')
         return parser
 
     def __init__(self, args, subsets):
@@ -117,6 +121,7 @@ class VisDialDataset(Dataset):
             self.data[dtype + '_img_fv'] = img_feats
             img_fnames = getattr(self, 'unique_img_' + underlying_dtype)
             self.data[dtype + '_img_fnames'] = img_fnames
+            #print(img_fnames)
 
             # record some stats, will be transferred to encoder/decoder later
             # assume similar stats across multiple data subsets
@@ -202,6 +207,50 @@ class VisDialDataset(Dataset):
                         self.data['val_type'][i][j] = "count"
                     else: 
                         self.data['val_type'][i][j] = "other"
+
+        if args.similarities:
+            nlp = spacy.load('en_core_web_lg', disable=['parser','tagger','ner'])
+            print ("REACHES HERE")
+            self.data['train_sim'] = [None] * self.data['train_ques'].size(0)
+            print (self.data['train_opt'].size())
+            print (self.data['train_opt_list'].size())
+            print (self.data['train_ques'].size(0))
+            
+            nlp_list = [None] * self.data['train_opt_list'].size(0)
+            for i in range(self.data['train_opt_list'].size(0)):
+                nlp_list[i] = convert_to_string(self.data['train_opt_list'][i],self.ind2word)
+                print (i)
+            print("REACHES AFTER NLP")
+        
+            #self.data['train_sim'] = torch.from_numpy(np.array([1,2,3]))
+            for i in range(self.data['train_ques'].size(0)):
+                self.data['train_sim'][i] = [None] * self.data['train_num_rounds'][i].item()
+                for j in range(self.data['train_num_rounds'][i]):
+                    self.data['train_sim'][i][j] = [None] * self.data['train_opt'][i][j].size(0)
+                    answer = convert_to_string(self.data['train_ans'][i][j], self.ind2word)
+                    answer_nlp = nlp(answer)
+                    #print(self.data['train_opt_list'].size())
+                    for k in range(self.data['train_opt'][i][j].size(0)):
+                        tens_ind = self.data['train_opt'][i][j][k].item()
+                        #option = convert_to_string(self.data['train_opt_list'][tens_ind], self.ind2word)
+                        option_nlp = nlp_list[tens_ind]
+                        similarity = answer_nlp.similarity(option_nlp)
+                        #only applies to spacy
+                        if (similarity < 0):
+                            similarity = 0
+                        self.data['train_sim'][i][j][k] = similarity
+                        #print (self.data['train_opt'][i][j][k])
+                                                
+                        
+                    '''
+                    for k in range(self.data['train_ans_len'][i][j]):
+                        word = self.ind2word[self.data['train_ans'][i][j][k].item()]
+                        self.data['train_sim'][i] = [1,2,3]
+                    '''
+                print (i)
+            print("REACHES AFTER")
+            self.data['train_sim'] = torch.tensor(self.data['train_sim'])
+
 		
         # default pytorch loader dtype is set to train
         if 'train' in subsets:
@@ -244,6 +293,9 @@ class VisDialDataset(Dataset):
 
         # get type tokens
         item['type'] =  self.data[dtype + '_type'][idx] if (dtype + '_type') in self.data else ''
+
+        #get sim tokens
+        item['sim'] = self.data[dtype + '_sim'][idx]
         
 
         # get options tokens
@@ -294,7 +346,7 @@ class VisDialDataset(Dataset):
         out['opt'] = out['opt'][:, :, :, :torch.max(out['opt_len'])].contiguous()
 
         batch_keys = ['img_fnames', 'num_rounds', 'img_feat', 'hist',
-                      'hist_len', 'ques', 'ques_len', 'opt', 'opt_len','type']
+                      'hist_len', 'ques', 'ques_len', 'opt', 'opt_len','type', 'sim']
         if dtype != 'test':
             batch_keys.append('ans_ind')
         return {key: out[key] for key in batch_keys}
