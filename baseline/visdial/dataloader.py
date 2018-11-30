@@ -217,9 +217,15 @@ class VisDialDataset(Dataset):
             print (self.data['train_ques'].size(0))
             
             nlp_list = [None] * self.data['train_opt_list'].size(0)
+            test =[]
             for i in range(self.data['train_opt_list'].size(0)):
                 nlp_list[i] = convert_to_string(self.data['train_opt_list'][i],self.ind2word)
                 print (i)
+            i = 0 
+            for doc in nlp.pipe(nlp_list):
+                test.append(doc)
+                i = i + 1
+                print(i)
             print("REACHES AFTER NLP")
         
             #self.data['train_sim'] = torch.from_numpy(np.array([1,2,3]))
@@ -233,7 +239,7 @@ class VisDialDataset(Dataset):
                     for k in range(self.data['train_opt'][i][j].size(0)):
                         tens_ind = self.data['train_opt'][i][j][k].item()
                         #option = convert_to_string(self.data['train_opt_list'][tens_ind], self.ind2word)
-                        option_nlp = nlp_list[tens_ind]
+                        option_nlp = test[tens_ind]
                         similarity = answer_nlp.similarity(option_nlp)
                         #only applies to spacy
                         if (similarity < 0):
