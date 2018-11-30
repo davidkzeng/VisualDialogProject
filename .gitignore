@@ -2,3 +2,4 @@
 **/dialogs/*
 **/__pycache__/*
 baseline/visdial/checkpoints/*
+baseline/visdial/metrics/pycocoevalcap/spice/lib/stanford-corenlp-3.6.0-models.jar
