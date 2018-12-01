@@ -270,10 +270,12 @@ class VisDialDataset(Dataset):
                     sum1 = 0
                     for k in range(len(self.data['train_sim'][i][j])):
                         sum1 += self.data['train_sim'][i][j][k]
-                    for k in range(self.data['train_sim'][i][j].size(0)):
+                    for k in range(len(self.data['train_sim'][i][j])):
                         self.data['train_sim'][i][j][k] = self.data['train_sim'][i][j][k] / sum1
 
             self.data['train_sim'] = torch.tensor(self.data['train_sim'])
+            print("size in dataloader")
+            print(self.data['train_sim'].size())
 
         # default pytorch loader dtype is set to train
         if 'train' in subsets:
@@ -318,7 +320,7 @@ class VisDialDataset(Dataset):
         item['type'] =  self.data[dtype + '_type'][idx] if (dtype + '_type') in self.data else ''
 
         #get sim tokens
-        item['sim'] = self.data[dtype + '_sim'][idx] if (dtype + '_type') in self.data else torch.zeros([100], dtype=torch.float32)
+        item['sim'] = self.data[dtype + '_sim'][idx] if (dtype + '_sim') in self.data else torch.zeros([100], dtype=torch.float32)
         
 
         # get options tokens
@@ -367,6 +369,7 @@ class VisDialDataset(Dataset):
         out['hist'] = out['hist'][:, :, :torch.max(out['hist_len'])].contiguous()
         out['ques'] = out['ques'][:, :, :torch.max(out['ques_len'])].contiguous()
         out['opt'] = out['opt'][:, :, :, :torch.max(out['opt_len'])].contiguous()
+        #out['sim'] = out['sim'][:, :, :, :torch.max(out['sim'])].contiguous()
 
         batch_keys = ['img_fnames', 'num_rounds', 'img_feat', 'hist',
                       'hist_len', 'ques', 'ques_len', 'opt', 'opt_len','type', 'sim']

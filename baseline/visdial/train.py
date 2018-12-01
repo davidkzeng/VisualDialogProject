@@ -42,6 +42,8 @@ parser.add_argument('-load_path', default='', help='Checkpoint to load path from
 parser.add_argument('-save_path', default='checkpoints/', help='Path to save checkpoints')
 parser.add_argument('-save_step', default=1, type=int,
                         help='Save checkpoint after every save_step epochs')
+parser.add_argument('-kld_loss', action='store_true', 
+                        help='Set loss criteria as KL Divergence with similarity metric')
 
 # ----------------------------------------------------------------------------
 # input arguments and options
@@ -115,8 +117,10 @@ print("{} iter per epoch.".format(args.iter_per_epoch))
 encoder = Encoder(model_args)
 
 decoder = Decoder(model_args, encoder)
-criterion = nn.CrossEntropyLoss()
-#criterion = nn.KLDivLoss()
+if (args.kld_loss):
+    criterion = nn.KLDivLoss()
+else:
+    criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(list(encoder.parameters()) + list(decoder.parameters()),
                        lr=args.lr)
 scheduler = lr_scheduler.StepLR(optimizer, step_size=1, gamma=args.lr_decay_rate)
@@ -162,12 +166,14 @@ for epoch in range(1, model_args.num_epochs + 1):
         enc_out = encoder(batch)
         dec_out = decoder(enc_out, batch)
         print (batch['sim'].size())
-        #print (batch['sim'])
+        print (batch['sim'])
         #print (batch['sim'].view(dec_out.size(0),dec_out.size(1)))
         #print (batch['ans
         #print (batch['ans_ind'])
-        cur_loss = criterion(dec_out, batch['ans_ind'].view(-1))
-        #cur_loss = criterion(dec_out, batch['sim'].view(dec_out.size(0), dec_out.size(1)))
+        if(args.kld_loss):
+            cur_loss = criterion(dec_out, batch['sim'].view(dec_out.size(0), dec_out.size(1)))
+        else:
+            cur_loss = criterion(dec_out, batch['ans_ind'].view(-1))
         cur_loss.backward()
 
         optimizer.step()
