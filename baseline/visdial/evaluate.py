@@ -216,9 +216,9 @@ if args.use_gt:
                         else:
                             top_rank_ans = top_rank_ans + word + " "
 
-                    if (gt_ans=="no-"):
+                    if (gt_ans == "no- "):
                         gt_ans = "no"
-                    if (top_rank_ans == "no-"):
+                    if (top_rank_ans == "no- "):
                         top_rank_ans = "no"
                     print(gt_ans)
                     print(top_rank_ans)
@@ -261,8 +261,8 @@ if args.use_gt:
         print("Average similarity: %f" % (avg_sim))
         avg_wmd = total_wmd / wmd_count
         print("Average Word Mover's Distance: %f" % (avg_wmd))
-    for k, v in total_metrics:
-        print("Average %s %.5f" % (k, v))
+        for k, v in total_metrics.items():
+            print("Average %s %.5f" % (k, v))
     if args.breakdown_analysis:
         yes_no_ranks = []
         color_ranks = []

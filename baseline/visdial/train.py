@@ -165,8 +165,8 @@ for epoch in range(1, model_args.num_epochs + 1):
         # --------------------------------------------------------------------
         enc_out = encoder(batch)
         dec_out = decoder(enc_out, batch)
-        print (batch['sim'].size())
-        print (batch['sim'])
+        #print (batch['sim'].size())
+        #print (batch['sim'])
         #print (batch['sim'].view(dec_out.size(0),dec_out.size(1)))
         #print (batch['ans
         #print (batch['ans_ind'])
