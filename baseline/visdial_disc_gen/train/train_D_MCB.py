@@ -55,7 +55,7 @@ parser.add_argument('--teacher_forcing', type=int, default=1, help='start of epo
 
 parser.add_argument('--workers', type=int, help='number of data loading workers', default=6)
 parser.add_argument('--batchSize', type=int, default=100, help='input batch size')
-parser.add_argument('--save_iter', type=int, default=5, help='number of epochs to train for')
+parser.add_argument('--save_iter', type=int, default=1, help='number of epochs to train for')
 
 parser.add_argument('--adam', action='store_true', help='Whether to use adam (default is rmsprop)')
 parser.add_argument('--lr', type=float, default=0.0004, help='learning rate for, default=0.00005')
@@ -397,7 +397,7 @@ for epoch in range(1, opt.niter):
 
     t = time.time()
     train_loss, lr = train(epoch)
-    train_loss = train_loss.data.cpu().numpy() if isinstance(train_loss, torch.Tensor) else train_loss
+    train_loss = train_loss.data.cpu().numpy().tolist() if isinstance(train_loss, torch.Tensor) else train_loss
     print ('Epoch: %d learningRate %4f train loss %4f Time: %3f' % (epoch, lr, train_loss, time.time()-t))
     train_his = {'loss': train_loss}
 
@@ -414,11 +414,16 @@ for epoch in range(1, opt.niter):
 
     # saving the model.
     if epoch % opt.save_iter == 0:
+        """
         torch.save({'epoch': epoch,
                     'opt': opt,
                     'netW': netW.state_dict(),
                     'netD': netD.state_dict(),
                     'netE': netE.state_dict()},
                     '%s/epoch_%d.pth' % (save_path, epoch))
+        """
+        torch.save(netW.state_dict(), '%s/netW_epoch_%d.pth' % (save_path, epoch))
+        torch.save(netD.state_dict(), '%s/netD_epoch_%d.pth' % (save_path, epoch))
+        torch.save(netE.state_dict(), '%s/netE_epoch_%d.pth' % (save_path, epoch))
 
         json.dump(history, open('%s/log.json' %(save_path), 'w'))

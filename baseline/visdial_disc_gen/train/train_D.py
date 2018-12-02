@@ -33,6 +33,7 @@ from misc.utils import repackage_hidden, clip_gradient, adjust_learning_rate, \
 import misc.dataLoader as dl
 import misc.model as model
 from misc.encoder_QIH import _netE
+from misc.encoder_MCB_QIH import _netE as _netE_MCB
 import datetime
 
 parser = argparse.ArgumentParser()
@@ -72,6 +73,7 @@ parser.add_argument('--dropout', type=int, default=0.5, help='number of layers')
 parser.add_argument('--clip', type=float, default=5, help='gradient clipping')
 parser.add_argument('--margin', type=float, default=2, help='number of epochs to train for')
 parser.add_argument('--log_interval', type=int, default=50, help='how many iterations show the log info')
+parser.add_argument('--mcb'  , action='store_true', help='uses mcb instead of concatenation')
 
 opt = parser.parse_args()
 print(opt)
@@ -135,6 +137,8 @@ itow = dataset.itow
 img_feat_size = 512
 
 netE = _netE(opt.model, opt.ninp, opt.nhid, opt.nlayers, opt.dropout, img_feat_size)
+netE_MCB = _netE_MCB(opt.model, opt.ninp, opt.nhid, opt.nlayers, opt.dropout,
+    img_feat_size)
 netW = model._netW(vocab_size, opt.ninp, opt.dropout)
 netD = model._netD(opt.model, opt.ninp, opt.nhid, opt.nlayers, vocab_size, opt.dropout)
 critD =model.nPairLoss(opt.ninp, opt.margin)
@@ -142,10 +146,11 @@ critD =model.nPairLoss(opt.ninp, opt.margin)
 if opt.model_path != '': # load the pre-trained model.
     netW.load_state_dict(checkpoint['netW'])
     netE.load_state_dict(checkpoint['netE'])
+    netE_MCB.load_state_dict(checkpoint['netE_MCB'])
     netD.load_state_dict(checkpoint['netD'])
 
 if opt.cuda: # ship to cuda, if has GPU
-    netW.cuda(), netE.cuda(),
+    netW.cuda(), netE.cuda(), netE_MCB.cuda(),
     netD.cuda(), critD.cuda()
 
 ####################################################################################
@@ -154,6 +159,7 @@ if opt.cuda: # ship to cuda, if has GPU
 def train(epoch):
     netW.train()
     netE.train()
+    netE_MCB.train()
     netD.train()
 
     lr = adjust_learning_rate(optimizer, epoch, opt.lr)
@@ -184,6 +190,7 @@ def train(epoch):
         for rnd in range(10):
             netW.zero_grad()
             netE.zero_grad()
+            netE_MCB.zero_grad()
             netD.zero_grad()
             # get the corresponding round QA and history.
             ques = question[:,rnd,:].t()
@@ -213,8 +220,14 @@ def train(epoch):
             ques_hidden = repackage_hidden(ques_hidden, batch_size)
             hist_hidden = repackage_hidden(hist_hidden, his_input.size(1))
 
-            featD, ques_hidden = netE(ques_emb, his_emb, img_input, \
-                                                ques_hidden, hist_hidden, rnd+1)
+            if opt.mcb:
+                if i == 0 and rnd == 0:
+                  print("Using MCB encoder that does MCB for question, attended history, attended input (instead of concatenation)")
+                featD, ques_hidden = netE_MCB(ques_emb, his_emb, img_input, \
+                                                    ques_hidden, hist_hidden, rnd+1)
+            else:
+                featD, ques_hidden = netE(ques_emb, his_emb, img_input, \
+                                                    ques_hidden, hist_hidden, rnd+1)
 
             ans_real_emb = netW(ans_target, format='index')
             ans_wrong_emb = netW(wrong_ans_input, format='index')
@@ -249,6 +262,7 @@ def train(epoch):
 
 def val():
     netE.eval()
+    netE_MCB.eval()
     netW.eval()
     netD.eval()
 
@@ -294,8 +308,14 @@ def val():
             ques_hidden = repackage_hidden(ques_hidden, batch_size)
             hist_hidden = repackage_hidden(hist_hidden, his_input.size(1))
 
-            featD, ques_hidden = netE(ques_emb, his_emb, img_input, \
-                                                ques_hidden, hist_hidden, rnd+1)
+            if opt.mcb:
+                if i == 0 and rnd == 0:
+                  print("Using MCB encoder that does MCB for question, attended history, attended image (instead of concatenation)")
+                featD, ques_hidden = netE_MCB(ques_emb, his_emb, img_input, \
+                                                    ques_hidden, hist_hidden, rnd+1)
+            else:
+                featD, ques_hidden = netE(ques_emb, his_emb, img_input, \
+                                                    ques_hidden, hist_hidden, rnd+1)
 
             opt_ans_emb = netW(opt_ans_input, format = 'index')
             opt_hidden = repackage_hidden(opt_hidden, opt_ans_input.size(1))
@@ -385,7 +405,7 @@ for epoch in range(1, opt.niter):
 
     t = time.time()
     train_loss, lr = train(epoch)
-    train_loss = train_loss.numpy() if isinstance(train_loss, torch.Tensor) else train_loss
+    train_loss = train_loss.data.cpu().numpy().tolist() if isinstance(train_loss, torch.Tensor) else train_loss
     print ('Epoch: %d learningRate %4f train loss %4f Time: %3f' % (epoch, lr, train_loss, time.time()-t))
     train_his = {'loss': train_loss}
 
