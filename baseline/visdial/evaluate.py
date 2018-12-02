@@ -179,6 +179,8 @@ if args.use_gt:
             trs = {}
             for b in range(batch_size):
                 for r in range(round_length):
+                    #print(batch['ques'].size())
+                    #print(batch['ques'])
                     ques_string = convert_to_string(batch['ques'][b][r], ind2word)
                     ans_ind = batch['ans_ind'][b][r]
                     gt_ans = convert_to_string(batch['opt'][b][r][ans_ind], ind2word)
@@ -214,6 +216,13 @@ if args.use_gt:
                         else:
                             top_rank_ans = top_rank_ans + word + " "
 
+                    if (gt_ans=="no-"):
+                        gt_ans = "no"
+                    if (top_rank_ans == "no-"):
+                        top_rank_ans = "no"
+                    print(gt_ans)
+                    print(top_rank_ans)
+
                     # wmd implementation does not allow for digits within answers so they are excluded from calculations
                     if (not(any(char.isdigit() for char in gt_ans) or any(char.isdigit() for char in top_rank_ans))):
                         wmd_gt_doc = wmd_nlp(gt_ans)
@@ -247,12 +256,13 @@ if args.use_gt:
              
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
-    avg_sim = total_sim / total_count
+    if args.compute_similarity:
+        avg_sim = total_sim / total_count
+        print("Average similarity: %f" % (avg_sim))
+        avg_wmd = total_wmd / wmd_count
+        print("Average Word Mover's Distance: %f" % (avg_wmd))
     for k, v in total_metrics:
         print("Average %s %.5f" % (k, v))
-    print("Average similarity: %f" % (avg_sim))
-    avg_wmd = total_wmd / wmd_count
-    print("Average Word Mover's Distance: %f" % (avg_wmd))
     if args.breakdown_analysis:
         yes_no_ranks = []
         color_ranks = []
