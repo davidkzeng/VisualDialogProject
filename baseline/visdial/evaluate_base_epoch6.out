@@ -1,0 +1,40 @@
+input_img           : data/0.9/data_img.h5
+input_ques          : data/0.9/visdial_data.h5
+input_json          : data/0.9/visdial_params.json
+img_norm            : 1
+size_limit          : -1
+breakdown_analysis  : False
+similarities        : False
+load_path           : checkpoints/30-Nov-2018-23:20:41/model_epoch_6.pth
+split               : val
+use_gt              : True
+batch_size          : 12
+gpuid               : 0
+overfit             : False
+save_ranks          : False
+save_path           : logs/ranks.json
+print_failures      : False
+compute_similarity  : False
+concat_history      : True
+partial_concat_history: False
+Dataloader loading json file: data/0.9/visdial_params.json
+Vocab size with <START>, <END>: 9795
+Dataloader loading h5 file: data/0.9/visdial_data.h5
+Dataloader loading h5 file: data/0.9/data_img.h5
+
+Processing split [val]...
+Reading image features...
+Normalizing image features...
+[val] no. of threads: 2783
+	Max no. of rounds: 10
+	Max ques len: 20
+	Max ans len: 20
+232 iter per epoch.
+Loaded model from checkpoints/30-Nov-2018-23:20:41/model_epoch_6.pth
+Evaluation start time: 02-Dec-2018-03:23:28
+	No. questions: 27830
+	r@1: 0.40463528566295365
+	r@5: 0.726697808120733
+	r@10: 0.8317642831476824
+	meanR: 6.121954917907715
+	meanRR: 0.5520257949829102

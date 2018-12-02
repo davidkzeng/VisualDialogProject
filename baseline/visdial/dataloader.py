@@ -25,6 +25,9 @@ class VisDialDataset(Dataset):
                                 help='HDF5 file with preprocessed questions')
         parser.add_argument('-input_json', default='data/0.9/visdial_params.json',
                                 help='JSON file with image paths and vocab')
+        parser.add_argument('-sim_file', default='data/0.9/sim_data.h5',
+                                help='HDF5 file with similaritiy scores')
+ 
         parser.add_argument('-img_norm', default=1, choices=[1, 0],
                                 help='normalize the image feature. 1=yes, 0=no')
         parser.add_argument('-size_limit', type=int, default=-1, help='maximum size of dataset')
@@ -211,20 +214,22 @@ class VisDialDataset(Dataset):
         if args.similarities:
             nlp = spacy.load('en_core_web_lg', disable=['parser','tagger','ner'])
             print ("REACHES HERE")
-            self.data['train_sim'] = [None] * self.data['train_ques'].size(0)
+            num_data_points = self.num_data_points['train']
+            self.data['train_sim'] = [None] * num_data_points
             print (self.data['train_opt'].size())
             print (self.data['train_opt_list'].size())
             print (self.data['train_ques'].size(0))
             
-            nlp_list = [None] * self.data['train_opt_list'].size(0)
-            test =[]
-            for i in range(self.data['train_opt_list'].size(0)):
+            opt_size = self.data['train_opt_list'].size(0)
+            nlp_list = [None] * opt_size
+            option_list = []
+            for i in range(opt_size):
                 nlp_list[i] = convert_to_string(self.data['train_opt_list'][i],self.ind2word)
             for doc in nlp.pipe(nlp_list):
-                test.append(doc)
+                option_list.append(doc)
 
             ans_list = []
-            for i in range(self.data['train_ques'].size(0)):
+            for i in range(num_data_points):
                 for j in range(self.data['train_num_rounds'][i]):
                     ans_list.append(convert_to_string(self.data['train_ans'][i][j], self.ind2word))
             ans_nlp_list = []
@@ -234,9 +239,8 @@ class VisDialDataset(Dataset):
             print("REACHES AFTER NLP")
 
             ans_index = 0
-            #self.data['train_sim'] = torch.from_numpy(np.array([1,2,3]))
             print(self.data['train_ques'].size(0))
-            for i in range(self.data['train_ques'].size(0)):
+            for i in range(num_data_points):
                 self.data['train_sim'][i] = [None] * self.data['train_num_rounds'][i].item()
                 for j in range(self.data['train_num_rounds'][i]):
                     self.data['train_sim'][i][j] = [None] * self.data['train_opt'][i][j].size(0)
@@ -247,7 +251,7 @@ class VisDialDataset(Dataset):
                     for k in range(self.data['train_opt'][i][j].size(0)):
                         tens_ind = self.data['train_opt'][i][j][k].item()
                         #option = convert_to_string(self.data['train_opt_list'][tens_ind], self.ind2word)
-                        option_nlp = test[tens_ind]
+                        option_nlp = option_list[tens_ind]
                         similarity = answer_nlp.similarity(option_nlp)
                         #only applies to spacy
                         if (similarity < 0):
@@ -261,21 +265,27 @@ class VisDialDataset(Dataset):
                         word = self.ind2word[self.data['train_ans'][i][j][k].item()]
                         self.data['train_sim'][i] = [1,2,3]
                     '''
-                #print (i)
+            
             print("REACHES AFTER")
+            self.data['train_sim'] = np.array(self.data['train_sim']) 
+            sim_file = h5py.File(args.sim_file, 'w')
+            sim_file.create_dataset('sim', data = self.data['train_sim'])
+            sim_file.close()
+            
+        sim_file = h5py.File(args.sim_file, 'r')
+        self.data['train_sim'] = sim_file.get('sim')
+        #generating probabilities
+        for i in range(num_data_points):
+            for j in range(len(self.data['train_sim'][i])):
+                sum1 = 0
+                for k in range(len(self.data['train_sim'][i][j])):
+                    sum1 += self.data['train_sim'][i][j][k]
+                for k in range(len(self.data['train_sim'][i][j])):
+                    self.data['train_sim'][i][j][k] = self.data['train_sim'][i][j][k] / sum1
 
-            #generating probabilities
-            for i in range(len(self.data['train_sim'])):
-                for j in range(len(self.data['train_sim'][i])):
-                    sum1 = 0
-                    for k in range(len(self.data['train_sim'][i][j])):
-                        sum1 += self.data['train_sim'][i][j][k]
-                    for k in range(len(self.data['train_sim'][i][j])):
-                        self.data['train_sim'][i][j][k] = self.data['train_sim'][i][j][k] / sum1
-
-            self.data['train_sim'] = torch.tensor(self.data['train_sim'])
-            print("size in dataloader")
-            print(self.data['train_sim'].size())
+        self.data['train_sim'] = torch.tensor(self.data['train_sim'])
+        print("size in dataloader")
+        print(self.data['train_sim'].size())
 
         # default pytorch loader dtype is set to train
         if 'train' in subsets:
