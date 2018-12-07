@@ -180,21 +180,21 @@ class VisDialDataset(Dataset):
             # in val_ques first index is rounds, second index is question, third index is words
             # print(self.data['val_ques'].size(0))
             # print(self.data['val_ans'].size())
-            self.data['val_type'] = collections.defaultdict(dict) 
-            for i in range(self.data['val_ques'].size(0)):
-                for j in range(self.data['val_num_rounds'][i]):
+            self.data[dtype +'_type'] = collections.defaultdict(dict) 
+            for i in range(self.data[dtype + '_ques'].size(0)):
+                for j in range(self.data[dtype + '_num_rounds'][i]):
                     is_color = False
                     is_yesno = False
                     is_count = False
                     question = ""
-                    for k in range(self.data['val_ques_len'][i][j]):
-                        word = self.ind2word[self.data['val_ques'][i][j][k].item()]
+                    for k in range(self.data[dtype + '_ques_len'][i][j]):
+                        word = self.ind2word[self.data[dtype + '_ques'][i][j][k].item()]
                         question = question + " " + word
                         if (word == "color"):
                             is_color = True
                     answer = ""
-                    for k in range(self.data['val_ans_len'][i][j]):
-                        word = self.ind2word[self.data['val_ans'][i][j][k].item()]
+                    for k in range(self.data[dtype + '_ans_len'][i][j]):
+                        word = self.ind2word[self.data[dtype + '_ans'][i][j][k].item()]
                         answer = answer + " " + word
                         if (word == "yes" or word == "no"):
                             is_yesno = True
@@ -205,13 +205,13 @@ class VisDialDataset(Dataset):
                     #    print(answer)
                     #    print(is_yesno)
                     if (is_yesno):
-                        self.data['val_type'][i][j] = "yn"
+                        self.data[dtype + '_type'][i][j] = "yn"
                     elif (is_color):
-                        self.data['val_type'][i][j] = "color"
+                        self.data[dtype + '_type'][i][j] = "color"
                     elif (is_count):
-                        self.data['val_type'][i][j] = "count"
+                        self.data[dtype + '_type'][i][j] = "count"
                     else: 
-                        self.data['val_type'][i][j] = "other"
+                        self.data[dtype +'_type'][i][j] = "other"
 
         if args.similarities:
             nlp = spacy.load('en_core_web_lg', disable=['parser','tagger','ner'])
@@ -345,9 +345,9 @@ class VisDialDataset(Dataset):
 
         item['opt'] = option_in
         item['opt_len'] = opt_len
-        if dtype != 'test':
-            ans_ind = self.data[dtype + '_ans_ind'][idx]
-            item['ans_ind'] = ans_ind.view(-1)
+        #if dtype != 'test':
+        ans_ind = self.data[dtype + '_ans_ind'][idx]
+        item['ans_ind'] = ans_ind.view(-1)
 
         # convert zero length sequences to one length
         # this is for handling empty rounds of v1.0 test, they will be dropped anyway
@@ -381,8 +381,8 @@ class VisDialDataset(Dataset):
 
         batch_keys = ['img_fnames', 'num_rounds', 'img_feat', 'hist',
                       'hist_len', 'ques', 'ques_len', 'opt', 'opt_len','type', 'sim']
-        if dtype != 'test':
-            batch_keys.append('ans_ind')
+        #if dtype != 'test':
+        batch_keys.append('ans_ind')
         return {key: out[key] for key in batch_keys}
 
     #-------------------------------------------------------------------------
