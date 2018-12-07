@@ -216,9 +216,6 @@ class VisDialDataset(Dataset):
             print ("REACHES HERE")
             num_data_points = self.num_data_points['train']
             self.data['train_sim'] = [None] * num_data_points
-            print (self.data['train_opt'].size())
-            print (self.data['train_opt_list'].size())
-            print (self.data['train_ques'].size(0))
             
             opt_size = self.data['train_opt_list'].size(0)
             nlp_list = [None] * opt_size
@@ -239,7 +236,6 @@ class VisDialDataset(Dataset):
             print("REACHES AFTER NLP")
 
             ans_index = 0
-            print(self.data['train_ques'].size(0))
             for i in range(num_data_points):
                 self.data['train_sim'][i] = [None] * self.data['train_num_rounds'][i].item()
                 for j in range(self.data['train_num_rounds'][i]):
@@ -274,16 +270,16 @@ class VisDialDataset(Dataset):
             
         sim_file = h5py.File(args.sim_file, 'r')
         self.data['train_sim'] = sim_file.get('sim')
+        print("READ FILE")
         #generating probabilities
-        for i in range(num_data_points):
-            for j in range(len(self.data['train_sim'][i])):
-                sum1 = 0
-                for k in range(len(self.data['train_sim'][i][j])):
-                    sum1 += self.data['train_sim'][i][j][k]
-                for k in range(len(self.data['train_sim'][i][j])):
-                    self.data['train_sim'][i][j][k] = self.data['train_sim'][i][j][k] / sum1
-
-        self.data['train_sim'] = torch.tensor(self.data['train_sim'])
+        theta = 20
+        sim_scores = self.data['train_sim']
+        sim_scores = np.multiply(theta, sim_scores)
+        sim_scores = np.exp(sim_scores)
+        sim_score_totals = np.sum(sim_scores, axis=2)
+        sim_scores_normal = sim_scores / sim_score_totals[:, :, np.newaxis]
+        self.data['train_sim'] = sim_scores_normal
+        self.data['train_sim'] = torch.tensor(self.data['train_sim']).type(torch.FloatTensor)
         print("size in dataloader")
         print(self.data['train_sim'].size())
 

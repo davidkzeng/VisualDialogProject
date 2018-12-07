@@ -146,6 +146,7 @@ if args.use_gt:
     total_sim = 0
     total_wmd = 0
     total_metrics = {}
+    total_metrics_count = {}
     tokenizer = PTBTokenizer()
     scorers = [ (Bleu(4), "Bleu4"),
                 # (Meteor(), "METEOR"),
@@ -153,6 +154,7 @@ if args.use_gt:
                 (Cider(), "CIDEr") ]
     for scorer in scorers:
         total_metrics[scorer[1]] = 0
+        total_metrics_count[scorer[1]] = 0
     wmd_count = 0
     for i, batch in enumerate(tqdm(dataloader)):
         for key in batch:
@@ -220,8 +222,8 @@ if args.use_gt:
                         gt_ans = "no"
                     if (top_rank_ans == "no- "):
                         top_rank_ans = "no"
-                    print(gt_ans)
-                    print(top_rank_ans)
+                    # print(gt_ans)
+                    # print(top_rank_ans)
 
                     # wmd implementation does not allow for digits within answers so they are excluded from calculations
                     if (not(any(char.isdigit() for char in gt_ans) or any(char.isdigit() for char in top_rank_ans))):
@@ -230,12 +232,12 @@ if args.use_gt:
                         wmd_sim = wmd_gt_doc.similarity(wmd_top_rank_doc) 
                         total_wmd += wmd_sim
                         wmd_count += 1 
-                        if (gt_rank > 1 and args.print_failures):
-                            print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f"
-                                    % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
-                    elif (gt_rank > 1 and args.print_failures):
-                        print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f"
-                                    % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
+                        # if (gt_rank > 1 and args.print_failures):
+                        #     print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f"
+                        #            % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
+                    # elif (gt_rank > 1 and args.print_failures):
+                    #    print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f"
+                    #                % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim))
                     total_sim += sim
                     count += 1
                     total_count += 1
@@ -245,9 +247,10 @@ if args.use_gt:
                 scorer, name = scorer_name
                 _, scores = scorer.compute_score(gt_tokens, tr_tokens)
                 if name == "Bleu4":
-                    scores = scores[3]
+                    scores = scores[0]
                 for score in scores:
                     total_metrics[name] += score
+                    total_metrics_count[name] += 1
                 
         all_ranks.append(gt_ranks)
         for j in range(len(batch['type'])):
@@ -262,7 +265,8 @@ if args.use_gt:
         avg_wmd = total_wmd / wmd_count
         print("Average Word Mover's Distance: %f" % (avg_wmd))
         for k, v in total_metrics.items():
-            print("Average %s %.5f" % (k, v))
+            v_avg = v / total_metrics_count[k]
+            print("Average %s %.5f" % (k, v_avg))
     if args.breakdown_analysis:
         yes_no_ranks = []
         color_ranks = []

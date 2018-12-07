@@ -118,7 +118,7 @@ encoder = Encoder(model_args)
 
 decoder = Decoder(model_args, encoder)
 if (args.kld_loss):
-    criterion = nn.KLDivLoss()
+    criterion = nn.KLDivLoss(size_average=False)
 else:
     criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(list(encoder.parameters()) + list(decoder.parameters()),
