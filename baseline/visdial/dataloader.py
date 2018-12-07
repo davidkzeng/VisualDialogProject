@@ -147,6 +147,8 @@ class VisDialDataset(Dataset):
                     self.data[key] = self.data[key][:70000]
                 if dtype == 'val':
                     self.data[key] = self.data[key][80000:]
+                if dtype == 'test':
+                    self.data[key] = self.data[key][:3000]
 
         # reduce amount of data for preprocessing in fast mode
         if args.overfit:
