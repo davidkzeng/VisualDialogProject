@@ -230,7 +230,8 @@ class VisDialDataset(Dataset):
             ans_list = []
             for i in range(num_data_points):
                 for j in range(self.data['train_num_rounds'][i]):
-                    ans_list.append(convert_to_string(self.data['train_ans'][i][j], self.ind2word))
+                    converted_string = convert_to_string(self.data['train_ans'][i][j], self.ind2word)
+                    ans_list.append(converted_string)
             ans_nlp_list = []
             for doc in nlp.pipe(ans_list):
                 ans_nlp_list.append(doc)
