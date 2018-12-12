@@ -396,6 +396,7 @@ gt_index = Variable(gt_index)
 
 optimizer = optim.Adam([{'params': netW.parameters()},
                         {'params': netE.parameters()},
+                        {'params': netE_MCB.parameters()},
                         {'params': netD.parameters()}], lr=opt.lr, betas=(opt.beta1, 0.999))
 
 
@@ -426,7 +427,8 @@ for epoch in range(1, opt.niter):
                     'opt': opt,
                     'netW': netW.state_dict(),
                     'netD': netD.state_dict(),
-                    'netE': netE.state_dict()},
+                    'netE': netE.state_dict(),
+                    'netE_MCB': netE_MCB.state_dict()},
                     '%s/epoch_%d.pth' % (save_path, epoch))
 
         json.dump(history, open('%s/log.json' %(save_path), 'w'))

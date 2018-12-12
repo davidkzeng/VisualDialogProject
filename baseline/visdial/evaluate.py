@@ -171,11 +171,11 @@ if args.use_gt:
         #print(ranks[0])
         gt_ranks = get_gt_ranks(ranks, batch['ans_ind'].data)
         #print(gt_ranks)
-       
-        if args.print_failures or args.compute_similarity: 
+
+        if args.print_failures or args.compute_similarity:
             batch_size = batch['ques'].size(0)
             round_length = batch['ques'].size(1)
-               
+
             count = 0
             gts = {}
             trs = {}
@@ -200,7 +200,7 @@ if args.use_gt:
                     trs[b * r + r] = [{ u'caption' : top_rank_ans }]
                     total_sim += sim
                     total_count += 1
-                    
+
                     # Converting numbers to their word representations
                     gt_ans_temp = gt_ans
                     gt_ans = ""
@@ -229,9 +229,9 @@ if args.use_gt:
                     if (not(any(char.isdigit() for char in gt_ans) or any(char.isdigit() for char in top_rank_ans))):
                         wmd_gt_doc = wmd_nlp(gt_ans)
                         wmd_top_rank_doc = wmd_nlp(top_rank_ans)
-                        wmd_sim = wmd_gt_doc.similarity(wmd_top_rank_doc) 
+                        wmd_sim = wmd_gt_doc.similarity(wmd_top_rank_doc)
                         total_wmd += wmd_sim
-                        wmd_count += 1 
+                        wmd_count += 1
                         # if (gt_rank > 1 and args.print_failures):
                         #     print("=====================\n%s\n%d %s\n%s\n%s\nspaCy sim: %f\nWMD sim: %f"
                         #            % (ques_string, gt_rank, gt_ans, top_rank_ans, image_fname, sim, wmd_sim))
@@ -251,12 +251,12 @@ if args.use_gt:
                 for score in scores:
                     total_metrics[name] += score
                     total_metrics_count[name] += 1
-                
+
         all_ranks.append(gt_ranks)
         for j in range(len(batch['type'])):
             for k in range(len(batch['type'][j])):
                 all_labels.append(batch['type'][j][k])
-             
+
     all_ranks = torch.cat(all_ranks, 0)
     #print (all_labels)
     if args.compute_similarity:
@@ -273,7 +273,7 @@ if args.use_gt:
         other_ranks = []
         count_ranks = []
         for j in range(len(all_ranks)):
-            if (all_labels[j] == "yn"): 
+            if (all_labels[j] == "yn"):
                 yes_no_ranks.append(all_ranks[j])
             if (all_labels[j] == "color"):
                 color_ranks.append(all_ranks[j])
@@ -319,7 +319,7 @@ else:
         ranks = ranks.view(-1, 10, 100)
         ranks = ranks.to(torch.device("cpu"))
         ranks = ranks.numpy().tolist()
- 
+
         for i in range(len(batch['img_fnames'])):
             # cast into types explicitly to ensure no errors in schema
             if args.split == 'test':
