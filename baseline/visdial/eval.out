@@ -1,0 +1,982 @@
+input_img           : data/0.9/data_img.h5
+input_ques          : data/0.9/visdial_data.h5
+input_json          : data/0.9/visdial_params.json
+sim_file            : data/0.9/sim_data.h5
+img_norm            : 1
+size_limit          : -1
+breakdown_analysis  : False
+similarities        : False
+load_path           : checkpoints/30-Nov-2018-23:20:41/model_epoch_6.pth
+split               : val
+use_gt              : True
+batch_size          : 12
+gpuid               : 0
+overfit             : False
+save_ranks          : False
+save_path           : logs/ranks.json
+print_failures      : True
+compute_similarity  : True
+concat_history      : True
+partial_concat_history: False
+Dataloader loading json file: data/0.9/visdial_params.json
+Vocab size with <START>, <END>: 9795
+Dataloader loading h5 file: data/0.9/visdial_data.h5
+Dataloader loading h5 file: data/0.9/data_img.h5
+
+Processing split [val]...
+Reading image features...
+Normalizing image features...
+[val] no. of threads: 2783
+	Max no. of rounds: 10
+	Max ques len: 20
+	Max ans len: 20
+READ FILE
+size in dataloader
+torch.Size([70000, 10, 100])
+232 iter per epoch.
+/home/ubuntu/project_copy/VisualDialogProject/baseline/visdial/encoders/lf.py:49: UserWarning: nn.init.xavier_uniform is now deprecated in favor of nn.init.xavier_uniform_.
+  nn.init.xavier_uniform(self.fusion.weight.data)
+/home/ubuntu/project_copy/VisualDialogProject/baseline/visdial/encoders/lf.py:52: UserWarning: nn.init.constant is now deprecated in favor of nn.init.constant_.
+  nn.init.constant(self.fusion.bias.data, 0)
+Loaded model from checkpoints/30-Nov-2018-23:20:41/model_epoch_6.pth
+Evaluation start time: 03-Dec-2018-04:07:50
+  0%|          | 0/232 [00:00<?, ?it/s]PTBTokenizer tokenized 201 tokens at 3831.16 tokens per second.
+PTBTokenizer tokenized 172 tokens at 3311.61 tokens per second.
+{'testlen': 118, 'reflen': 141, 'guess': [118, 64, 53, 43], 'correct': [44, 16, 13, 10]}
+('ratio:', 0.8368794326181782)
+  0%|          | 1/232 [00:23<1:32:15, 23.96s/it]PTBTokenizer tokenized 205 tokens at 3895.26 tokens per second.
+PTBTokenizer tokenized 167 tokens at 3098.39 tokens per second.
+{'testlen': 111, 'reflen': 144, 'guess': [111, 57, 44, 34], 'correct': [47, 16, 12, 10]}
+('ratio:', 0.7708333333279804)
+  1%|          | 2/232 [00:48<1:32:59, 24.26s/it]PTBTokenizer tokenized 267 tokens at 4794.79 tokens per second.
+PTBTokenizer tokenized 275 tokens at 5027.98 tokens per second.
+{'testlen': 214, 'reflen': 207, 'guess': [214, 160, 137, 115], 'correct': [67, 37, 30, 26]}
+('ratio:', 1.0338164251157786)
+  1%|▏         | 3/232 [01:13<1:33:48, 24.58s/it]PTBTokenizer tokenized 262 tokens at 4786.12 tokens per second.
+PTBTokenizer tokenized 227 tokens at 4168.08 tokens per second.
+{'testlen': 166, 'reflen': 196, 'guess': [166, 112, 89, 70], 'correct': [92, 52, 42, 36]}
+('ratio:', 0.846938775505883)
+  2%|▏         | 4/232 [01:38<1:33:18, 24.55s/it]PTBTokenizer tokenized 228 tokens at 4320.89 tokens per second.
+PTBTokenizer tokenized 200 tokens at 3624.42 tokens per second.
+{'testlen': 141, 'reflen': 167, 'guess': [141, 87, 69, 53], 'correct': [74, 37, 30, 24]}
+('ratio:', 0.8443113772404532)
+  2%|▏         | 5/232 [02:02<1:32:21, 24.41s/it]PTBTokenizer tokenized 205 tokens at 3810.26 tokens per second.
+PTBTokenizer tokenized 184 tokens at 3506.13 tokens per second.
+{'testlen': 129, 'reflen': 151, 'guess': [129, 75, 58, 43], 'correct': [46, 22, 17, 13]}
+('ratio:', 0.8543046357559319)
+  3%|▎         | 6/232 [02:25<1:31:05, 24.18s/it]PTBTokenizer tokenized 229 tokens at 3792.03 tokens per second.
+PTBTokenizer tokenized 190 tokens at 3524.56 tokens per second.
+{'testlen': 137, 'reflen': 174, 'guess': [137, 83, 67, 53], 'correct': [97, 60, 50, 42]}
+('ratio:', 0.7873563218345555)
+  3%|▎         | 7/232 [02:49<1:30:50, 24.22s/it]PTBTokenizer tokenized 271 tokens at 3769.57 tokens per second.
+PTBTokenizer tokenized 215 tokens at 3974.96 tokens per second.
+{'testlen': 154, 'reflen': 210, 'guess': [154, 100, 82, 66], 'correct': [57, 27, 22, 17]}
+('ratio:', 0.7333333333298413)
+  3%|▎         | 8/232 [03:13<1:30:24, 24.22s/it]PTBTokenizer tokenized 211 tokens at 3918.91 tokens per second.
+PTBTokenizer tokenized 209 tokens at 3904.12 tokens per second.
+{'testlen': 153, 'reflen': 151, 'guess': [153, 99, 79, 60], 'correct': [75, 40, 29, 19]}
+('ratio:', 1.0132450331058727)
+  4%|▍         | 9/232 [03:37<1:29:46, 24.15s/it]PTBTokenizer tokenized 204 tokens at 3714.74 tokens per second.
+PTBTokenizer tokenized 195 tokens at 3665.07 tokens per second.
+{'testlen': 136, 'reflen': 146, 'guess': [136, 82, 68, 55], 'correct': [47, 21, 18, 15]}
+('ratio:', 0.9315068493086883)
+  4%|▍         | 10/232 [04:00<1:29:07, 24.09s/it]PTBTokenizer tokenized 202 tokens at 3601.22 tokens per second.
+PTBTokenizer tokenized 174 tokens at 3284.46 tokens per second.
+{'testlen': 118, 'reflen': 146, 'guess': [118, 64, 45, 29], 'correct': [44, 7, 2, 0]}
+('ratio:', 0.8082191780766561)
+  5%|▍         | 11/232 [04:24<1:28:37, 24.06s/it]PTBTokenizer tokenized 250 tokens at 4556.19 tokens per second.
+PTBTokenizer tokenized 187 tokens at 3685.28 tokens per second.
+{'testlen': 130, 'reflen': 191, 'guess': [130, 76, 58, 41], 'correct': [90, 52, 41, 31]}
+('ratio:', 0.6806282722477455)
+  5%|▌         | 12/232 [04:48<1:28:13, 24.06s/it]PTBTokenizer tokenized 173 tokens at 3273.11 tokens per second.
+PTBTokenizer tokenized 161 tokens at 3052.34 tokens per second.
+{'testlen': 105, 'reflen': 119, 'guess': [105, 51, 38, 29], 'correct': [39, 11, 9, 7]}
+('ratio:', 0.8823529411690558)
+  6%|▌         | 13/232 [05:13<1:28:04, 24.13s/it]PTBTokenizer tokenized 202 tokens at 2846.48 tokens per second.
+PTBTokenizer tokenized 197 tokens at 3667.77 tokens per second.
+{'testlen': 140, 'reflen': 145, 'guess': [140, 86, 65, 45], 'correct': [58, 25, 16, 12]}
+('ratio:', 0.9655172413726517)
+  6%|▌         | 14/232 [05:40<1:28:19, 24.31s/it]PTBTokenizer tokenized 179 tokens at 3321.31 tokens per second.
+PTBTokenizer tokenized 220 tokens at 3212.53 tokens per second.
+{'testlen': 162, 'reflen': 123, 'guess': [162, 108, 84, 64], 'correct': [55, 19, 13, 9]}
+('ratio:', 1.3170731707209993)
+  6%|▋         | 15/232 [06:05<1:28:06, 24.36s/it]PTBTokenizer tokenized 284 tokens at 5184.98 tokens per second.
+PTBTokenizer tokenized 233 tokens at 4346.10 tokens per second.
+{'testlen': 173, 'reflen': 222, 'guess': [173, 119, 94, 72], 'correct': [66, 26, 19, 14]}
+('ratio:', 0.779279279275769)
+  7%|▋         | 16/232 [06:30<1:27:54, 24.42s/it]PTBTokenizer tokenized 262 tokens at 4505.14 tokens per second.
+PTBTokenizer tokenized 227 tokens at 4092.03 tokens per second.
+{'testlen': 171, 'reflen': 205, 'guess': [171, 117, 94, 73], 'correct': [68, 35, 27, 19]}
+('ratio:', 0.8341463414593456)
+  7%|▋         | 17/232 [06:55<1:27:38, 24.46s/it]PTBTokenizer tokenized 258 tokens at 4837.61 tokens per second.
+PTBTokenizer tokenized 240 tokens at 4379.24 tokens per second.
+{'testlen': 176, 'reflen': 197, 'guess': [176, 122, 99, 78], 'correct': [57, 18, 11, 6]}
+('ratio:', 0.8934010152238914)
+  8%|▊         | 18/232 [07:20<1:27:11, 24.45s/it]PTBTokenizer tokenized 239 tokens at 4511.23 tokens per second.
+PTBTokenizer tokenized 171 tokens at 2501.24 tokens per second.
+{'testlen': 112, 'reflen': 181, 'guess': [112, 58, 45, 35], 'correct': [52, 18, 13, 11]}
+('ratio:', 0.6187845303833217)
+  8%|▊         | 19/232 [07:43<1:26:35, 24.39s/it]PTBTokenizer tokenized 271 tokens at 4908.55 tokens per second.
+PTBTokenizer tokenized 239 tokens at 4345.79 tokens per second.
+{'testlen': 175, 'reflen': 212, 'guess': [175, 121, 102, 85], 'correct': [90, 58, 52, 48]}
+('ratio:', 0.8254716981093139)
+  9%|▊         | 20/232 [08:08<1:26:18, 24.43s/it]PTBTokenizer tokenized 231 tokens at 4306.42 tokens per second.
+PTBTokenizer tokenized 184 tokens at 3436.65 tokens per second.
+{'testlen': 127, 'reflen': 172, 'guess': [127, 73, 58, 45], 'correct': [55, 20, 15, 12]}
+('ratio:', 0.738372093018963)
+  9%|▉         | 21/232 [08:33<1:25:56, 24.44s/it]PTBTokenizer tokenized 238 tokens at 4358.18 tokens per second.
+PTBTokenizer tokenized 181 tokens at 3458.21 tokens per second.
+{'testlen': 122, 'reflen': 177, 'guess': [122, 68, 50, 33], 'correct': [54, 20, 15, 11]}
+('ratio:', 0.6892655367192697)
+  9%|▉         | 22/232 [08:58<1:25:36, 24.46s/it]PTBTokenizer tokenized 224 tokens at 4181.58 tokens per second.
+PTBTokenizer tokenized 139 tokens at 2571.77 tokens per second.
+{'testlen': 84, 'reflen': 166, 'guess': [84, 30, 23, 18], 'correct': [31, 3, 0, 0]}
+('ratio:', 0.5060240963824939)
+ 10%|▉         | 23/232 [09:22<1:25:15, 24.47s/it]PTBTokenizer tokenized 203 tokens at 3834.35 tokens per second.
+PTBTokenizer tokenized 204 tokens at 3738.20 tokens per second.
+{'testlen': 144, 'reflen': 141, 'guess': [144, 90, 74, 59], 'correct': [59, 27, 21, 16]}
+('ratio:', 1.021276595737438)
+ 10%|█         | 24/232 [09:47<1:24:55, 24.50s/it]PTBTokenizer tokenized 228 tokens at 4219.99 tokens per second.
+PTBTokenizer tokenized 237 tokens at 4390.35 tokens per second.
+{'testlen': 179, 'reflen': 174, 'guess': [179, 125, 99, 77], 'correct': [78, 44, 33, 26]}
+('ratio:', 1.028735632177996)
+ 11%|█         | 25/232 [10:11<1:24:22, 24.45s/it]PTBTokenizer tokenized 294 tokens at 5449.46 tokens per second.
+PTBTokenizer tokenized 238 tokens at 4387.75 tokens per second.
+{'testlen': 179, 'reflen': 228, 'guess': [179, 125, 103, 82], 'correct': [69, 38, 31, 24]}
+('ratio:', 0.7850877192948023)
+ 11%|█         | 26/232 [10:35<1:23:56, 24.45s/it]PTBTokenizer tokenized 243 tokens at 4610.81 tokens per second.
+PTBTokenizer tokenized 209 tokens at 3949.12 tokens per second.
+{'testlen': 148, 'reflen': 180, 'guess': [148, 94, 74, 56], 'correct': [56, 21, 15, 12]}
+('ratio:', 0.8222222222176544)
+ 12%|█▏        | 27/232 [10:59<1:23:29, 24.43s/it]PTBTokenizer tokenized 288 tokens at 5517.43 tokens per second.
+PTBTokenizer tokenized 276 tokens at 5039.68 tokens per second.
+{'testlen': 212, 'reflen': 223, 'guess': [212, 158, 133, 109], 'correct': [102, 61, 51, 44]}
+('ratio:', 0.9506726457356472)
+ 12%|█▏        | 28/232 [11:24<1:23:10, 24.46s/it]PTBTokenizer tokenized 211 tokens at 3917.84 tokens per second.
+PTBTokenizer tokenized 185 tokens at 3545.55 tokens per second.
+{'testlen': 130, 'reflen': 153, 'guess': [130, 76, 63, 50], 'correct': [67, 30, 24, 19]}
+('ratio:', 0.8496732026088257)
+ 12%|█▎        | 29/232 [11:49<1:22:44, 24.46s/it]PTBTokenizer tokenized 242 tokens at 3358.52 tokens per second.
+PTBTokenizer tokenized 215 tokens at 4071.66 tokens per second.
+{'testlen': 156, 'reflen': 177, 'guess': [156, 102, 81, 60], 'correct': [88, 54, 41, 30]}
+('ratio:', 0.8813559321984105)
+ 13%|█▎        | 30/232 [12:14<1:22:24, 24.48s/it]PTBTokenizer tokenized 216 tokens at 3842.73 tokens per second.
+PTBTokenizer tokenized 282 tokens at 5056.37 tokens per second.
+{'testlen': 224, 'reflen': 162, 'guess': [224, 170, 147, 126], 'correct': [72, 38, 30, 25]}
+('ratio:', 1.3827160493741808)
+ 13%|█▎        | 31/232 [12:39<1:22:04, 24.50s/it]PTBTokenizer tokenized 227 tokens at 4247.14 tokens per second.
+PTBTokenizer tokenized 207 tokens at 3771.30 tokens per second.
+{'testlen': 150, 'reflen': 166, 'guess': [150, 96, 75, 56], 'correct': [61, 26, 18, 12]}
+('ratio:', 0.9036144578258819)
+ 14%|█▍        | 32/232 [13:03<1:21:37, 24.49s/it]PTBTokenizer tokenized 214 tokens at 3994.16 tokens per second.
+PTBTokenizer tokenized 165 tokens at 3155.34 tokens per second.
+{'testlen': 107, 'reflen': 157, 'guess': [107, 53, 40, 29], 'correct': [44, 13, 6, 3]}
+('ratio:', 0.6815286624160413)
+ 14%|█▍        | 33/232 [13:27<1:21:07, 24.46s/it]PTBTokenizer tokenized 223 tokens at 4332.15 tokens per second.
+PTBTokenizer tokenized 215 tokens at 3870.49 tokens per second.
+{'testlen': 158, 'reflen': 164, 'guess': [158, 104, 84, 65], 'correct': [68, 27, 19, 15]}
+('ratio:', 0.963414634140467)
+ 15%|█▍        | 34/232 [13:51<1:20:42, 24.45s/it]PTBTokenizer tokenized 212 tokens at 3965.47 tokens per second.
+PTBTokenizer tokenized 186 tokens at 3487.25 tokens per second.
+{'testlen': 129, 'reflen': 153, 'guess': [129, 75, 60, 50], 'correct': [45, 13, 9, 6]}
+('ratio:', 0.8431372548964502)
+ 15%|█▌        | 35/232 [14:15<1:20:16, 24.45s/it]PTBTokenizer tokenized 226 tokens at 4308.38 tokens per second.
+PTBTokenizer tokenized 211 tokens at 4020.12 tokens per second.
+{'testlen': 153, 'reflen': 167, 'guess': [153, 99, 79, 60], 'correct': [79, 44, 34, 25]}
+('ratio:', 0.9161676646651727)
+ 16%|█▌        | 36/232 [14:40<1:19:53, 24.46s/it]PTBTokenizer tokenized 237 tokens at 4343.22 tokens per second.
+PTBTokenizer tokenized 208 tokens at 3757.55 tokens per second.
+{'testlen': 150, 'reflen': 178, 'guess': [150, 96, 73, 53], 'correct': [80, 43, 34, 27]}
+('ratio:', 0.842696629208749)
+ 16%|█▌        | 37/232 [15:05<1:19:30, 24.46s/it]PTBTokenizer tokenized 243 tokens at 4426.44 tokens per second.
+PTBTokenizer tokenized 208 tokens at 3773.71 tokens per second.
+{'testlen': 153, 'reflen': 187, 'guess': [153, 99, 77, 57], 'correct': [81, 48, 40, 33]}
+('ratio:', 0.818181818177443)
+ 16%|█▋        | 38/232 [15:30<1:19:11, 24.49s/it]PTBTokenizer tokenized 218 tokens at 4177.16 tokens per second.
+PTBTokenizer tokenized 183 tokens at 3672.91 tokens per second.
+{'testlen': 128, 'reflen': 159, 'guess': [128, 74, 55, 40], 'correct': [59, 23, 17, 14]}
+('ratio:', 0.8050314465358175)
+ 17%|█▋        | 39/232 [15:55<1:18:48, 24.50s/it]PTBTokenizer tokenized 169 tokens at 3300.53 tokens per second.
+PTBTokenizer tokenized 128 tokens at 2436.90 tokens per second.
+{'testlen': 73, 'reflen': 112, 'guess': [73, 19, 13, 10], 'correct': [34, 3, 1, 0]}
+('ratio:', 0.6517857142798947)
+ 17%|█▋        | 40/232 [16:20<1:18:25, 24.51s/it]PTBTokenizer tokenized 273 tokens at 5197.72 tokens per second.
+PTBTokenizer tokenized 231 tokens at 4285.16 tokens per second.
+{'testlen': 171, 'reflen': 207, 'guess': [171, 117, 98, 81], 'correct': [108, 67, 56, 45]}
+('ratio:', 0.8260869565177484)
+ 18%|█▊        | 41/232 [16:44<1:17:57, 24.49s/it]PTBTokenizer tokenized 237 tokens at 4355.71 tokens per second.
+PTBTokenizer tokenized 216 tokens at 4185.01 tokens per second.
+{'testlen': 154, 'reflen': 174, 'guess': [154, 100, 80, 62], 'correct': [72, 44, 33, 25]}
+('ratio:', 0.8850574712592814)
+ 18%|█▊        | 42/232 [17:08<1:17:31, 24.48s/it]PTBTokenizer tokenized 375 tokens at 6799.59 tokens per second.
+PTBTokenizer tokenized 340 tokens at 6017.94 tokens per second.
+{'testlen': 275, 'reflen': 305, 'guess': [275, 221, 181, 143], 'correct': [128, 86, 72, 60]}
+('ratio:', 0.9016393442593389)
+ 19%|█▊        | 43/232 [17:33<1:17:10, 24.50s/it]PTBTokenizer tokenized 205 tokens at 3787.13 tokens per second.
+PTBTokenizer tokenized 247 tokens at 4444.15 tokens per second.
+{'testlen': 186, 'reflen': 149, 'guess': [186, 132, 110, 91], 'correct': [59, 34, 31, 28]}
+('ratio:', 1.2483221476426287)
+ 19%|█▉        | 44/232 [17:57<1:16:45, 24.50s/it]PTBTokenizer tokenized 223 tokens at 4300.12 tokens per second.
+PTBTokenizer tokenized 209 tokens at 3834.65 tokens per second.
+{'testlen': 147, 'reflen': 163, 'guess': [147, 93, 74, 59], 'correct': [64, 34, 29, 25]}
+('ratio:', 0.9018404907920133)
+ 19%|█▉        | 45/232 [18:22<1:16:19, 24.49s/it]PTBTokenizer tokenized 201 tokens at 3843.27 tokens per second.
+PTBTokenizer tokenized 132 tokens at 2443.38 tokens per second.
+{'testlen': 78, 'reflen': 144, 'guess': [78, 24, 16, 10], 'correct': [41, 8, 5, 3]}
+('ratio:', 0.5416666666629051)
+ 20%|█▉        | 46/232 [18:45<1:15:51, 24.47s/it]PTBTokenizer tokenized 261 tokens at 4784.59 tokens per second.
+PTBTokenizer tokenized 222 tokens at 4146.64 tokens per second.
+{'testlen': 164, 'reflen': 203, 'guess': [164, 110, 92, 74], 'correct': [55, 33, 29, 25]}
+('ratio:', 0.8078817733950351)
+ 20%|██        | 47/232 [19:09<1:15:26, 24.47s/it]PTBTokenizer tokenized 187 tokens at 3457.48 tokens per second.
+PTBTokenizer tokenized 177 tokens at 3408.86 tokens per second.
+{'testlen': 120, 'reflen': 131, 'guess': [120, 66, 49, 37], 'correct': [52, 16, 10, 7]}
+('ratio:', 0.9160305343441525)
+ 21%|██        | 48/232 [19:33<1:14:59, 24.45s/it]PTBTokenizer tokenized 293 tokens at 5463.39 tokens per second.
+PTBTokenizer tokenized 289 tokens at 5371.49 tokens per second.
+{'testlen': 230, 'reflen': 235, 'guess': [230, 176, 150, 127], 'correct': [155, 120, 105, 92]}
+('ratio:', 0.9787234042511544)
+ 21%|██        | 49/232 [19:58<1:14:35, 24.46s/it]PTBTokenizer tokenized 186 tokens at 3178.17 tokens per second.
+PTBTokenizer tokenized 179 tokens at 2575.70 tokens per second.
+{'testlen': 119, 'reflen': 133, 'guess': [119, 65, 54, 45], 'correct': [47, 10, 8, 7]}
+('ratio:', 0.8947368420985359)
+ 22%|██▏       | 50/232 [20:22<1:14:11, 24.46s/it]PTBTokenizer tokenized 262 tokens at 4734.54 tokens per second.
+PTBTokenizer tokenized 209 tokens at 3863.58 tokens per second.
+{'testlen': 150, 'reflen': 202, 'guess': [150, 96, 72, 54], 'correct': [92, 54, 41, 32]}
+('ratio:', 0.7425742574220665)
+ 22%|██▏       | 51/232 [20:47<1:13:46, 24.46s/it]PTBTokenizer tokenized 227 tokens at 4167.52 tokens per second.
+PTBTokenizer tokenized 196 tokens at 3470.11 tokens per second.
+{'testlen': 139, 'reflen': 170, 'guess': [139, 85, 61, 41], 'correct': [52, 21, 12, 6]}
+('ratio:', 0.8176470588187198)
+ 22%|██▏       | 52/232 [21:11<1:13:20, 24.45s/it]PTBTokenizer tokenized 188 tokens at 3631.84 tokens per second.
+PTBTokenizer tokenized 178 tokens at 3345.05 tokens per second.
+{'testlen': 120, 'reflen': 130, 'guess': [120, 66, 54, 43], 'correct': [60, 25, 20, 15]}
+('ratio:', 0.9230769230698226)
+ 23%|██▎       | 53/232 [21:35<1:12:54, 24.44s/it]PTBTokenizer tokenized 265 tokens at 3761.89 tokens per second.
+PTBTokenizer tokenized 226 tokens at 4161.60 tokens per second.
+{'testlen': 167, 'reflen': 202, 'guess': [167, 113, 93, 75], 'correct': [44, 13, 9, 6]}
+('ratio:', 0.8267326732632341)
+ 23%|██▎       | 54/232 [21:59<1:12:30, 24.44s/it]PTBTokenizer tokenized 259 tokens at 4708.13 tokens per second.
+PTBTokenizer tokenized 238 tokens at 3363.68 tokens per second.
+{'testlen': 183, 'reflen': 206, 'guess': [183, 129, 101, 76], 'correct': [92, 50, 33, 23]}
+('ratio:', 0.8883495145587945)
+ 24%|██▎       | 55/232 [22:24<1:12:08, 24.45s/it]PTBTokenizer tokenized 192 tokens at 3571.69 tokens per second.
+PTBTokenizer tokenized 211 tokens at 3922.61 tokens per second.
+{'testlen': 156, 'reflen': 136, 'guess': [156, 102, 80, 62], 'correct': [59, 27, 22, 18]}
+('ratio:', 1.1470588235209775)
+ 24%|██▍       | 56/232 [22:48<1:11:41, 24.44s/it]PTBTokenizer tokenized 159 tokens at 3054.16 tokens per second.
+PTBTokenizer tokenized 172 tokens at 3225.16 tokens per second.
+{'testlen': 113, 'reflen': 101, 'guess': [113, 59, 48, 38], 'correct': [63, 25, 19, 14]}
+('ratio:', 1.1188118811770413)
+ 25%|██▍       | 57/232 [23:13<1:11:17, 24.44s/it]PTBTokenizer tokenized 241 tokens at 4384.06 tokens per second.
+PTBTokenizer tokenized 250 tokens at 4666.76 tokens per second.
+{'testlen': 192, 'reflen': 182, 'guess': [192, 138, 115, 93], 'correct': [55, 25, 19, 15]}
+('ratio:', 1.0549450549392585)
+ 25%|██▌       | 58/232 [23:37<1:10:51, 24.43s/it]PTBTokenizer tokenized 174 tokens at 3276.69 tokens per second.
+PTBTokenizer tokenized 160 tokens at 3043.21 tokens per second.
+{'testlen': 104, 'reflen': 120, 'guess': [104, 50, 39, 28], 'correct': [40, 7, 4, 1]}
+('ratio:', 0.8666666666594445)
+ 25%|██▌       | 59/232 [24:01<1:10:27, 24.44s/it]PTBTokenizer tokenized 196 tokens at 3709.80 tokens per second.
+PTBTokenizer tokenized 156 tokens at 2896.43 tokens per second.
+{'testlen': 98, 'reflen': 137, 'guess': [98, 44, 31, 21], 'correct': [44, 17, 13, 10]}
+('ratio:', 0.7153284671480633)
+ 26%|██▌       | 60/232 [24:26<1:10:04, 24.44s/it]PTBTokenizer tokenized 210 tokens at 4003.53 tokens per second.
+PTBTokenizer tokenized 201 tokens at 3700.66 tokens per second.
+{'testlen': 138, 'reflen': 146, 'guess': [138, 84, 60, 39], 'correct': [47, 15, 10, 6]}
+('ratio:', 0.9452054794455809)
+ 26%|██▋       | 61/232 [24:50<1:09:37, 24.43s/it]PTBTokenizer tokenized 285 tokens at 5058.31 tokens per second.
+PTBTokenizer tokenized 303 tokens at 5472.08 tokens per second.
+{'testlen': 239, 'reflen': 219, 'guess': [239, 185, 159, 134], 'correct': [102, 58, 48, 41]}
+('ratio:', 1.0913242009082589)
+ 27%|██▋       | 62/232 [25:14<1:09:13, 24.43s/it]PTBTokenizer tokenized 192 tokens at 3697.32 tokens per second.
+PTBTokenizer tokenized 227 tokens at 4242.49 tokens per second.
+{'testlen': 172, 'reflen': 136, 'guess': [172, 118, 102, 87], 'correct': [51, 21, 18, 16]}
+('ratio:', 1.264705882343642)
+ 27%|██▋       | 63/232 [25:38<1:08:47, 24.42s/it]PTBTokenizer tokenized 176 tokens at 3229.81 tokens per second.
+PTBTokenizer tokenized 169 tokens at 2644.55 tokens per second.
+{'testlen': 116, 'reflen': 121, 'guess': [116, 62, 50, 38], 'correct': [33, 7, 4, 1]}
+('ratio:', 0.9586776859424903)
+ 28%|██▊       | 64/232 [26:03<1:08:23, 24.42s/it]PTBTokenizer tokenized 240 tokens at 4411.80 tokens per second.
+PTBTokenizer tokenized 223 tokens at 4149.83 tokens per second.
+{'testlen': 162, 'reflen': 180, 'guess': [162, 108, 89, 71], 'correct': [60, 22, 18, 14]}
+('ratio:', 0.899999999995)
+ 28%|██▊       | 65/232 [26:27<1:07:59, 24.43s/it]PTBTokenizer tokenized 200 tokens at 3783.42 tokens per second.
+PTBTokenizer tokenized 202 tokens at 2871.19 tokens per second.
+{'testlen': 143, 'reflen': 143, 'guess': [143, 89, 75, 64], 'correct': [44, 14, 11, 9]}
+('ratio:', 0.999999999993007)
+ 28%|██▊       | 66/232 [26:52<1:07:34, 24.43s/it]PTBTokenizer tokenized 205 tokens at 3834.78 tokens per second.
+PTBTokenizer tokenized 169 tokens at 3180.63 tokens per second.
+{'testlen': 113, 'reflen': 148, 'guess': [113, 59, 45, 33], 'correct': [32, 1, 0, 0]}
+('ratio:', 0.7635135135083547)
+ 29%|██▉       | 67/232 [27:15<1:07:08, 24.42s/it]PTBTokenizer tokenized 262 tokens at 4731.76 tokens per second.
+PTBTokenizer tokenized 237 tokens at 4383.48 tokens per second.
+{'testlen': 177, 'reflen': 197, 'guess': [177, 123, 102, 83], 'correct': [79, 44, 33, 24]}
+('ratio:', 0.8984771573558453)
+ 29%|██▉       | 68/232 [27:41<1:06:46, 24.43s/it]PTBTokenizer tokenized 235 tokens at 4149.70 tokens per second.
+PTBTokenizer tokenized 206 tokens at 3773.32 tokens per second.
+{'testlen': 148, 'reflen': 172, 'guess': [148, 94, 78, 65], 'correct': [59, 14, 7, 3]}
+('ratio:', 0.8604651162740671)
+ 30%|██▉       | 69/232 [28:05<1:06:22, 24.43s/it]PTBTokenizer tokenized 326 tokens at 6001.34 tokens per second.
+PTBTokenizer tokenized 268 tokens at 4862.27 tokens per second.
+{'testlen': 206, 'reflen': 264, 'guess': [206, 152, 126, 102], 'correct': [130, 100, 87, 74]}
+('ratio:', 0.7803030303000746)
+ 30%|███       | 70/232 [28:30<1:05:58, 24.43s/it]PTBTokenizer tokenized 228 tokens at 4260.48 tokens per second.
+PTBTokenizer tokenized 270 tokens at 3751.37 tokens per second.
+{'testlen': 209, 'reflen': 170, 'guess': [209, 155, 132, 109], 'correct': [50, 24, 15, 9]}
+('ratio:', 1.2294117646986507)
+ 31%|███       | 71/232 [28:55<1:05:34, 24.44s/it]PTBTokenizer tokenized 271 tokens at 4899.00 tokens per second.
+PTBTokenizer tokenized 214 tokens at 4062.12 tokens per second.
+{'testlen': 153, 'reflen': 205, 'guess': [153, 99, 75, 52], 'correct': [84, 45, 35, 25]}
+('ratio:', 0.7463414634109935)
+ 31%|███       | 72/232 [29:20<1:05:12, 24.45s/it]PTBTokenizer tokenized 204 tokens at 3786.73 tokens per second.
+PTBTokenizer tokenized 174 tokens at 3233.22 tokens per second.
+{'testlen': 119, 'reflen': 146, 'guess': [119, 65, 55, 46], 'correct': [48, 18, 15, 12]}
+('ratio:', 0.8150684931451023)
+ 31%|███▏      | 73/232 [29:44<1:04:47, 24.45s/it]PTBTokenizer tokenized 200 tokens at 3769.72 tokens per second.
+PTBTokenizer tokenized 158 tokens at 3108.07 tokens per second.
+{'testlen': 99, 'reflen': 139, 'guess': [99, 45, 35, 27], 'correct': [57, 20, 17, 15]}
+('ratio:', 0.7122302158222142)
+ 32%|███▏      | 74/232 [30:08<1:04:21, 24.44s/it]PTBTokenizer tokenized 230 tokens at 4182.38 tokens per second.
+PTBTokenizer tokenized 232 tokens at 4336.36 tokens per second.
+{'testlen': 177, 'reflen': 170, 'guess': [177, 123, 108, 94], 'correct': [54, 24, 20, 17]}
+('ratio:', 1.0411764705821107)
+ 32%|███▏      | 75/232 [30:33<1:03:58, 24.45s/it]PTBTokenizer tokenized 205 tokens at 3931.04 tokens per second.
+PTBTokenizer tokenized 210 tokens at 3877.48 tokens per second.
+{'testlen': 152, 'reflen': 148, 'guess': [152, 98, 80, 66], 'correct': [77, 37, 30, 24]}
+('ratio:', 1.0270270270200876)
+ 33%|███▎      | 76/232 [30:58<1:03:34, 24.45s/it]PTBTokenizer tokenized 222 tokens at 3190.97 tokens per second.
+PTBTokenizer tokenized 179 tokens at 3379.25 tokens per second.
+{'testlen': 121, 'reflen': 160, 'guess': [121, 67, 54, 41], 'correct': [66, 33, 28, 24]}
+('ratio:', 0.7562499999952735)
+ 33%|███▎      | 77/232 [31:24<1:03:13, 24.47s/it]PTBTokenizer tokenized 157 tokens at 2887.02 tokens per second.
+PTBTokenizer tokenized 145 tokens at 2690.38 tokens per second.
+{'testlen': 91, 'reflen': 102, 'guess': [91, 37, 25, 17], 'correct': [48, 19, 13, 8]}
+('ratio:', 0.8921568627363514)
+ 34%|███▎      | 78/232 [31:49<1:02:49, 24.48s/it]PTBTokenizer tokenized 224 tokens at 3950.41 tokens per second.
+PTBTokenizer tokenized 192 tokens at 3545.83 tokens per second.
+{'testlen': 136, 'reflen': 168, 'guess': [136, 82, 64, 48], 'correct': [69, 37, 30, 25]}
+('ratio:', 0.8095238095189909)
+ 34%|███▍      | 79/232 [32:13<1:02:24, 24.47s/it]PTBTokenizer tokenized 207 tokens at 3792.76 tokens per second.
+PTBTokenizer tokenized 211 tokens at 3947.66 tokens per second.
+{'testlen': 153, 'reflen': 147, 'guess': [153, 99, 78, 61], 'correct': [61, 30, 24, 19]}
+('ratio:', 1.040816326523532)
+ 34%|███▍      | 80/232 [32:37<1:01:59, 24.47s/it]PTBTokenizer tokenized 239 tokens at 4641.46 tokens per second.
+PTBTokenizer tokenized 249 tokens at 4178.82 tokens per second.
+{'testlen': 190, 'reflen': 177, 'guess': [190, 136, 119, 102], 'correct': [74, 42, 36, 31]}
+('ratio:', 1.0734463276775512)
+ 35%|███▍      | 81/232 [33:02<1:01:34, 24.47s/it]PTBTokenizer tokenized 196 tokens at 3591.68 tokens per second.
+PTBTokenizer tokenized 174 tokens at 3215.31 tokens per second.
+{'testlen': 120, 'reflen': 139, 'guess': [120, 66, 55, 45], 'correct': [38, 7, 4, 2]}
+('ratio:', 0.8633093525117748)
+ 35%|███▌      | 82/232 [33:26<1:01:09, 24.47s/it]PTBTokenizer tokenized 232 tokens at 4255.20 tokens per second.
+PTBTokenizer tokenized 167 tokens at 3137.32 tokens per second.
+{'testlen': 111, 'reflen': 173, 'guess': [111, 57, 43, 34], 'correct': [35, 4, 0, 0]}
+('ratio:', 0.6416184971061178)
+ 36%|███▌      | 83/232 [33:51<1:00:46, 24.47s/it]PTBTokenizer tokenized 194 tokens at 2849.57 tokens per second.
+PTBTokenizer tokenized 170 tokens at 2926.09 tokens per second.
+{'testlen': 116, 'reflen': 138, 'guess': [116, 62, 49, 37], 'correct': [33, 10, 5, 2]}
+('ratio:', 0.8405797101388365)
+ 36%|███▌      | 84/232 [34:15<1:00:21, 24.47s/it]PTBTokenizer tokenized 197 tokens at 3624.11 tokens per second.
+PTBTokenizer tokenized 164 tokens at 2313.51 tokens per second.
+{'testlen': 111, 'reflen': 141, 'guess': [111, 57, 43, 31], 'correct': [48, 13, 9, 6]}
+('ratio:', 0.7872340425476083)
+ 37%|███▋      | 85/232 [34:39<59:56, 24.47s/it]  PTBTokenizer tokenized 272 tokens at 5010.26 tokens per second.
+PTBTokenizer tokenized 246 tokens at 4545.10 tokens per second.
+{'testlen': 188, 'reflen': 211, 'guess': [188, 134, 105, 77], 'correct': [73, 49, 40, 31]}
+('ratio:', 0.8909952606592845)
+ 37%|███▋      | 86/232 [35:04<59:32, 24.47s/it]PTBTokenizer tokenized 299 tokens at 5659.30 tokens per second.
+PTBTokenizer tokenized 243 tokens at 4465.61 tokens per second.
+{'testlen': 187, 'reflen': 239, 'guess': [187, 133, 117, 103], 'correct': [96, 60, 53, 49]}
+('ratio:', 0.7824267782394041)
+ 38%|███▊      | 87/232 [35:28<59:06, 24.46s/it]PTBTokenizer tokenized 213 tokens at 3951.50 tokens per second.
+PTBTokenizer tokenized 183 tokens at 3441.69 tokens per second.
+{'testlen': 127, 'reflen': 154, 'guess': [127, 73, 51, 31], 'correct': [39, 10, 4, 1]}
+('ratio:', 0.8246753246699697)
+ 38%|███▊      | 88/232 [35:51<58:40, 24.45s/it]PTBTokenizer tokenized 294 tokens at 5237.48 tokens per second.
+PTBTokenizer tokenized 304 tokens at 5481.52 tokens per second.
+{'testlen': 244, 'reflen': 233, 'guess': [244, 190, 164, 139], 'correct': [119, 78, 69, 62]}
+('ratio:', 1.0472103004246902)
+ 38%|███▊      | 89/232 [36:15<58:16, 24.45s/it]PTBTokenizer tokenized 230 tokens at 4076.05 tokens per second.
+PTBTokenizer tokenized 181 tokens at 3377.04 tokens per second.
+{'testlen': 126, 'reflen': 173, 'guess': [126, 72, 53, 35], 'correct': [73, 40, 29, 18]}
+('ratio:', 0.7283236994177554)
+ 39%|███▉      | 90/232 [36:40<57:51, 24.45s/it]PTBTokenizer tokenized 208 tokens at 3890.56 tokens per second.
+PTBTokenizer tokenized 212 tokens at 3987.56 tokens per second.
+{'testlen': 152, 'reflen': 145, 'guess': [152, 98, 81, 67], 'correct': [58, 29, 24, 19]}
+('ratio:', 1.048275862061736)
+ 39%|███▉      | 91/232 [37:05<57:28, 24.46s/it]PTBTokenizer tokenized 206 tokens at 3836.34 tokens per second.
+PTBTokenizer tokenized 158 tokens at 3119.20 tokens per second.
+{'testlen': 103, 'reflen': 148, 'guess': [103, 49, 35, 24], 'correct': [63, 29, 20, 13]}
+('ratio:', 0.6959459459412437)
+ 40%|███▉      | 92/232 [37:29<57:03, 24.46s/it]PTBTokenizer tokenized 269 tokens at 4988.52 tokens per second.
+PTBTokenizer tokenized 250 tokens at 4551.84 tokens per second.
+{'testlen': 188, 'reflen': 204, 'guess': [188, 134, 112, 92], 'correct': [79, 50, 42, 35]}
+('ratio:', 0.921568627446463)
+ 40%|████      | 93/232 [37:54<56:39, 24.46s/it]PTBTokenizer tokenized 213 tokens at 3902.06 tokens per second.
+PTBTokenizer tokenized 198 tokens at 3749.00 tokens per second.
+{'testlen': 143, 'reflen': 160, 'guess': [143, 89, 70, 53], 'correct': [51, 25, 18, 13]}
+('ratio:', 0.8937499999944141)
+ 41%|████      | 94/232 [38:18<56:14, 24.45s/it]PTBTokenizer tokenized 272 tokens at 5141.10 tokens per second.
+PTBTokenizer tokenized 284 tokens at 5203.86 tokens per second.
+{'testlen': 226, 'reflen': 214, 'guess': [226, 172, 147, 125], 'correct': [120, 84, 74, 65]}
+('ratio:', 1.0560747663502053)
+ 41%|████      | 95/232 [38:43<55:50, 24.46s/it]PTBTokenizer tokenized 203 tokens at 3797.53 tokens per second.
+PTBTokenizer tokenized 164 tokens at 3119.25 tokens per second.
+{'testlen': 105, 'reflen': 146, 'guess': [105, 51, 37, 27], 'correct': [44, 10, 3, 1]}
+('ratio:', 0.719178082186855)
+ 41%|████▏     | 96/232 [39:07<55:25, 24.45s/it]PTBTokenizer tokenized 218 tokens at 3895.31 tokens per second.
+PTBTokenizer tokenized 172 tokens at 3085.77 tokens per second.
+{'testlen': 118, 'reflen': 160, 'guess': [118, 64, 41, 27], 'correct': [43, 13, 6, 2]}
+('ratio:', 0.7374999999953906)
+ 42%|████▏     | 97/232 [39:31<55:00, 24.45s/it]PTBTokenizer tokenized 248 tokens at 4540.58 tokens per second.
+PTBTokenizer tokenized 207 tokens at 3981.00 tokens per second.
+{'testlen': 141, 'reflen': 178, 'guess': [141, 87, 67, 49], 'correct': [65, 32, 25, 19]}
+('ratio:', 0.792134831456224)
+ 42%|████▏     | 98/232 [39:56<54:36, 24.46s/it]PTBTokenizer tokenized 172 tokens at 3188.39 tokens per second.
+PTBTokenizer tokenized 207 tokens at 3853.02 tokens per second.
+{'testlen': 146, 'reflen': 117, 'guess': [146, 92, 76, 62], 'correct': [32, 8, 5, 4]}
+('ratio:', 1.2478632478525824)
+ 43%|████▎     | 99/232 [40:20<54:11, 24.45s/it]PTBTokenizer tokenized 218 tokens at 4060.31 tokens per second.
+PTBTokenizer tokenized 173 tokens at 3272.28 tokens per second.
+{'testlen': 119, 'reflen': 163, 'guess': [119, 65, 53, 42], 'correct': [56, 26, 19, 14]}
+('ratio:', 0.7300613496887727)
+ 43%|████▎     | 100/232 [40:44<53:46, 24.44s/it]PTBTokenizer tokenized 181 tokens at 3310.27 tokens per second.
+PTBTokenizer tokenized 146 tokens at 2760.71 tokens per second.
+{'testlen': 93, 'reflen': 127, 'guess': [93, 39, 28, 19], 'correct': [37, 5, 3, 1]}
+('ratio:', 0.7322834645611631)
+ 44%|████▎     | 101/232 [41:07<53:20, 24.43s/it]PTBTokenizer tokenized 235 tokens at 4293.33 tokens per second.
+PTBTokenizer tokenized 218 tokens at 3989.62 tokens per second.
+{'testlen': 162, 'reflen': 176, 'guess': [162, 108, 90, 73], 'correct': [77, 38, 31, 25]}
+('ratio:', 0.9204545454493157)
+ 44%|████▍     | 102/232 [41:31<52:55, 24.43s/it]PTBTokenizer tokenized 226 tokens at 4218.29 tokens per second.
+PTBTokenizer tokenized 210 tokens at 3858.84 tokens per second.
+{'testlen': 153, 'reflen': 166, 'guess': [153, 99, 77, 57], 'correct': [62, 27, 17, 12]}
+('ratio:', 0.9216867469823995)
+ 44%|████▍     | 103/232 [41:56<52:31, 24.43s/it]PTBTokenizer tokenized 246 tokens at 4587.43 tokens per second.
+PTBTokenizer tokenized 207 tokens at 3789.65 tokens per second.
+{'testlen': 146, 'reflen': 177, 'guess': [146, 92, 74, 57], 'correct': [56, 25, 19, 13]}
+('ratio:', 0.8248587570574867)
+ 45%|████▍     | 104/232 [42:19<52:06, 24.42s/it]PTBTokenizer tokenized 222 tokens at 4139.11 tokens per second.
+PTBTokenizer tokenized 186 tokens at 3465.92 tokens per second.
+{'testlen': 128, 'reflen': 165, 'guess': [128, 74, 54, 37], 'correct': [49, 25, 18, 12]}
+('ratio:', 0.7757575757528743)
+ 45%|████▌     | 105/232 [42:44<51:41, 24.42s/it]PTBTokenizer tokenized 262 tokens at 4985.08 tokens per second.
+PTBTokenizer tokenized 263 tokens at 4809.20 tokens per second.
+{'testlen': 200, 'reflen': 199, 'guess': [200, 146, 116, 89], 'correct': [86, 50, 40, 32]}
+('ratio:', 1.0050251256230904)
+ 46%|████▌     | 106/232 [43:08<51:17, 24.42s/it]PTBTokenizer tokenized 245 tokens at 4592.21 tokens per second.
+PTBTokenizer tokenized 223 tokens at 4317.37 tokens per second.
+{'testlen': 164, 'reflen': 181, 'guess': [164, 110, 89, 69], 'correct': [95, 51, 41, 31]}
+('ratio:', 0.9060773480612925)
+ 46%|████▌     | 107/232 [43:32<50:51, 24.41s/it]PTBTokenizer tokenized 281 tokens at 5236.95 tokens per second.
+PTBTokenizer tokenized 210 tokens at 4034.82 tokens per second.
+{'testlen': 153, 'reflen': 218, 'guess': [153, 99, 77, 57], 'correct': [78, 38, 29, 22]}
+('ratio:', 0.7018348623821017)
+ 47%|████▋     | 108/232 [43:55<50:26, 24.41s/it]PTBTokenizer tokenized 168 tokens at 3189.63 tokens per second.
+PTBTokenizer tokenized 129 tokens at 2427.50 tokens per second.
+{'testlen': 74, 'reflen': 112, 'guess': [74, 20, 11, 4], 'correct': [45, 10, 5, 1]}
+('ratio:', 0.6607142857083864)
+ 47%|████▋     | 109/232 [44:19<50:00, 24.40s/it]PTBTokenizer tokenized 274 tokens at 4764.58 tokens per second.
+PTBTokenizer tokenized 213 tokens at 3822.60 tokens per second.
+{'testlen': 158, 'reflen': 215, 'guess': [158, 104, 84, 67], 'correct': [74, 47, 40, 33]}
+('ratio:', 0.7348837209268145)
+ 47%|████▋     | 110/232 [44:43<49:35, 24.39s/it]PTBTokenizer tokenized 265 tokens at 4962.38 tokens per second.
+PTBTokenizer tokenized 220 tokens at 4200.33 tokens per second.
+{'testlen': 157, 'reflen': 199, 'guess': [157, 103, 83, 66], 'correct': [73, 40, 30, 22]}
+('ratio:', 0.7889447236141259)
+ 48%|████▊     | 111/232 [45:06<49:10, 24.39s/it]PTBTokenizer tokenized 274 tokens at 5120.11 tokens per second.
+PTBTokenizer tokenized 231 tokens at 4441.87 tokens per second.
+{'testlen': 171, 'reflen': 211, 'guess': [171, 117, 95, 73], 'correct': [86, 55, 45, 36]}
+('ratio:', 0.8104265402805193)
+ 48%|████▊     | 112/232 [45:30<48:45, 24.38s/it]PTBTokenizer tokenized 239 tokens at 4343.42 tokens per second.
+PTBTokenizer tokenized 219 tokens at 4049.62 tokens per second.
+{'testlen': 156, 'reflen': 177, 'guess': [156, 102, 84, 68], 'correct': [77, 39, 31, 25]}
+('ratio:', 0.8813559321984105)
+ 49%|████▊     | 113/232 [45:54<48:20, 24.37s/it]PTBTokenizer tokenized 277 tokens at 5263.90 tokens per second.
+PTBTokenizer tokenized 242 tokens at 4408.87 tokens per second.
+{'testlen': 185, 'reflen': 221, 'guess': [185, 131, 108, 88], 'correct': [89, 61, 52, 44]}
+('ratio:', 0.8371040723944023)
+ 49%|████▉     | 114/232 [46:18<47:55, 24.37s/it]PTBTokenizer tokenized 183 tokens at 3304.65 tokens per second.
+PTBTokenizer tokenized 151 tokens at 2967.62 tokens per second.
+{'testlen': 96, 'reflen': 130, 'guess': [96, 42, 31, 22], 'correct': [31, 0, 0, 0]}
+('ratio:', 0.738461538455858)
+ 50%|████▉     | 115/232 [46:41<47:30, 24.36s/it]PTBTokenizer tokenized 308 tokens at 5808.15 tokens per second.
+PTBTokenizer tokenized 212 tokens at 3899.03 tokens per second.
+{'testlen': 154, 'reflen': 249, 'guess': [154, 100, 83, 68], 'correct': [74, 39, 34, 30]}
+('ratio:', 0.6184738955798456)
+ 50%|█████     | 116/232 [47:06<47:06, 24.36s/it]PTBTokenizer tokenized 268 tokens at 3789.87 tokens per second.
+PTBTokenizer tokenized 179 tokens at 3337.37 tokens per second.
+{'testlen': 124, 'reflen': 201, 'guess': [124, 70, 54, 40], 'correct': [45, 21, 14, 9]}
+('ratio:', 0.6169154228825029)
+ 50%|█████     | 117/232 [47:31<46:42, 24.37s/it]PTBTokenizer tokenized 191 tokens at 3685.22 tokens per second.
+PTBTokenizer tokenized 177 tokens at 3176.27 tokens per second.
+{'testlen': 121, 'reflen': 131, 'guess': [121, 67, 57, 48], 'correct': [35, 2, 1, 0]}
+('ratio:', 0.9236641221303538)
+ 51%|█████     | 118/232 [47:55<46:18, 24.37s/it]PTBTokenizer tokenized 279 tokens at 5004.63 tokens per second.
+PTBTokenizer tokenized 271 tokens at 4942.82 tokens per second.
+{'testlen': 206, 'reflen': 219, 'guess': [206, 152, 128, 106], 'correct': [88, 57, 49, 44]}
+('ratio:', 0.9406392694020976)
+ 51%|█████▏    | 119/232 [48:19<45:53, 24.37s/it]PTBTokenizer tokenized 209 tokens at 3850.27 tokens per second.
+PTBTokenizer tokenized 211 tokens at 3938.59 tokens per second.
+{'testlen': 147, 'reflen': 148, 'guess': [147, 93, 76, 60], 'correct': [61, 22, 15, 10]}
+('ratio:', 0.9932432432365322)
+ 52%|█████▏    | 120/232 [48:44<45:29, 24.37s/it]PTBTokenizer tokenized 191 tokens at 3653.73 tokens per second.
+PTBTokenizer tokenized 183 tokens at 3364.10 tokens per second.
+{'testlen': 126, 'reflen': 135, 'guess': [126, 72, 55, 38], 'correct': [57, 24, 16, 8]}
+('ratio:', 0.9333333333264199)
+ 52%|█████▏    | 121/232 [49:07<45:03, 24.36s/it]PTBTokenizer tokenized 275 tokens at 4928.31 tokens per second.
+PTBTokenizer tokenized 229 tokens at 4395.34 tokens per second.
+{'testlen': 173, 'reflen': 216, 'guess': [173, 119, 92, 68], 'correct': [77, 43, 33, 26]}
+('ratio:', 0.800925925922218)
+ 53%|█████▎    | 122/232 [49:31<44:39, 24.35s/it]PTBTokenizer tokenized 289 tokens at 5196.44 tokens per second.
+PTBTokenizer tokenized 238 tokens at 4454.72 tokens per second.
+{'testlen': 178, 'reflen': 223, 'guess': [178, 124, 99, 77], 'correct': [114, 79, 65, 52]}
+('ratio:', 0.7982062780233264)
+ 53%|█████▎    | 123/232 [49:55<44:14, 24.36s/it]PTBTokenizer tokenized 262 tokens at 4765.11 tokens per second.
+PTBTokenizer tokenized 248 tokens at 4623.85 tokens per second.
+{'testlen': 188, 'reflen': 201, 'guess': [188, 134, 110, 90], 'correct': [113, 74, 65, 57]}
+('ratio:', 0.9353233830799238)
+ 53%|█████▎    | 124/232 [50:20<43:50, 24.36s/it]PTBTokenizer tokenized 359 tokens at 6346.52 tokens per second.
+PTBTokenizer tokenized 343 tokens at 6248.40 tokens per second.
+{'testlen': 273, 'reflen': 293, 'guess': [273, 219, 196, 173], 'correct': [176, 144, 131, 119]}
+('ratio:', 0.9317406143312911)
+ 54%|█████▍    | 125/232 [50:45<43:26, 24.36s/it]PTBTokenizer tokenized 217 tokens at 4037.03 tokens per second.
+PTBTokenizer tokenized 178 tokens at 2736.60 tokens per second.
+{'testlen': 124, 'reflen': 159, 'guess': [124, 70, 51, 36], 'correct': [71, 33, 24, 18]}
+('ratio:', 0.7798742138315732)
+ 54%|█████▍    | 126/232 [51:09<43:01, 24.36s/it]PTBTokenizer tokenized 309 tokens at 5569.94 tokens per second.
+PTBTokenizer tokenized 276 tokens at 5021.84 tokens per second.
+{'testlen': 213, 'reflen': 239, 'guess': [213, 159, 138, 117], 'correct': [120, 79, 65, 54]}
+('ratio:', 0.89121338911761)
+ 55%|█████▍    | 127/232 [51:32<42:37, 24.35s/it]PTBTokenizer tokenized 200 tokens at 3256.62 tokens per second.
+PTBTokenizer tokenized 196 tokens at 3700.54 tokens per second.
+{'testlen': 138, 'reflen': 143, 'guess': [138, 84, 63, 44], 'correct': [27, 7, 4, 2]}
+('ratio:', 0.9650349650282166)
+ 55%|█████▌    | 128/232 [51:56<42:11, 24.34s/it]PTBTokenizer tokenized 187 tokens at 3490.56 tokens per second.
+PTBTokenizer tokenized 167 tokens at 3112.15 tokens per second.
+{'testlen': 111, 'reflen': 131, 'guess': [111, 57, 44, 33], 'correct': [56, 12, 6, 3]}
+('ratio:', 0.8473282442683411)
+ 56%|█████▌    | 129/232 [52:19<41:47, 24.34s/it]PTBTokenizer tokenized 301 tokens at 5518.97 tokens per second.
+PTBTokenizer tokenized 270 tokens at 4952.44 tokens per second.
+{'testlen': 211, 'reflen': 233, 'guess': [211, 157, 131, 108], 'correct': [69, 30, 24, 19]}
+('ratio:', 0.9055793991377443)
+ 56%|█████▌    | 130/232 [52:44<41:22, 24.34s/it]PTBTokenizer tokenized 235 tokens at 4445.79 tokens per second.
+PTBTokenizer tokenized 171 tokens at 3227.79 tokens per second.
+{'testlen': 117, 'reflen': 176, 'guess': [117, 63, 46, 31], 'correct': [53, 22, 17, 12]}
+('ratio:', 0.6647727272689502)
+ 56%|█████▋    | 131/232 [53:07<40:57, 24.34s/it]PTBTokenizer tokenized 308 tokens at 5863.03 tokens per second.
+PTBTokenizer tokenized 291 tokens at 5492.91 tokens per second.
+{'testlen': 229, 'reflen': 249, 'guess': [229, 175, 143, 113], 'correct': [90, 59, 49, 41]}
+('ratio:', 0.9196787148557443)
+ 57%|█████▋    | 132/232 [53:32<40:33, 24.33s/it]PTBTokenizer tokenized 207 tokens at 4132.04 tokens per second.
+PTBTokenizer tokenized 199 tokens at 3768.26 tokens per second.
+{'testlen': 140, 'reflen': 149, 'guess': [140, 86, 66, 49], 'correct': [51, 26, 22, 18]}
+('ratio:', 0.9395973154299356)
+ 57%|█████▋    | 133/232 [53:56<40:09, 24.34s/it]PTBTokenizer tokenized 147 tokens at 2739.25 tokens per second.
+PTBTokenizer tokenized 166 tokens at 3086.08 tokens per second.
+{'testlen': 113, 'reflen': 94, 'guess': [113, 59, 48, 38], 'correct': [57, 18, 13, 9]}
+('ratio:', 1.2021276595616794)
+ 58%|█████▊    | 134/232 [54:21<39:45, 24.34s/it]PTBTokenizer tokenized 227 tokens at 4310.78 tokens per second.
+PTBTokenizer tokenized 188 tokens at 3536.41 tokens per second.
+{'testlen': 135, 'reflen': 172, 'guess': [135, 81, 64, 48], 'correct': [78, 44, 36, 29]}
+('ratio:', 0.7848837209256694)
+ 58%|█████▊    | 135/232 [54:45<39:20, 24.34s/it]PTBTokenizer tokenized 186 tokens at 3744.84 tokens per second.
+PTBTokenizer tokenized 166 tokens at 3049.72 tokens per second.
+{'testlen': 109, 'reflen': 128, 'guess': [109, 55, 40, 30], 'correct': [38, 8, 5, 3]}
+('ratio:', 0.8515624999933472)
+ 59%|█████▊    | 136/232 [55:09<38:55, 24.33s/it]PTBTokenizer tokenized 286 tokens at 5384.52 tokens per second.
+PTBTokenizer tokenized 227 tokens at 4221.93 tokens per second.
+{'testlen': 167, 'reflen': 222, 'guess': [167, 113, 92, 72], 'correct': [96, 56, 45, 35]}
+('ratio:', 0.7522522522488637)
+ 59%|█████▉    | 137/232 [55:33<38:31, 24.34s/it]PTBTokenizer tokenized 206 tokens at 3964.08 tokens per second.
+PTBTokenizer tokenized 185 tokens at 3428.73 tokens per second.
+{'testlen': 130, 'reflen': 145, 'guess': [130, 76, 62, 49], 'correct': [60, 28, 23, 19]}
+('ratio:', 0.896551724131748)
+ 59%|█████▉    | 138/232 [55:57<38:07, 24.33s/it]PTBTokenizer tokenized 238 tokens at 4303.74 tokens per second.
+PTBTokenizer tokenized 242 tokens at 4467.00 tokens per second.
+{'testlen': 179, 'reflen': 176, 'guess': [179, 125, 105, 87], 'correct': [93, 53, 43, 34]}
+('ratio:', 1.0170454545396759)
+ 60%|█████▉    | 139/232 [56:21<37:42, 24.33s/it]PTBTokenizer tokenized 213 tokens at 4055.71 tokens per second.
+PTBTokenizer tokenized 172 tokens at 3413.34 tokens per second.
+{'testlen': 118, 'reflen': 155, 'guess': [118, 64, 45, 31], 'correct': [38, 8, 4, 2]}
+('ratio:', 0.7612903225757337)
+ 60%|██████    | 140/232 [56:46<37:18, 24.33s/it]PTBTokenizer tokenized 205 tokens at 3894.89 tokens per second.
+PTBTokenizer tokenized 222 tokens at 4148.21 tokens per second.
+{'testlen': 164, 'reflen': 150, 'guess': [164, 110, 93, 78], 'correct': [59, 21, 15, 12]}
+('ratio:', 1.0933333333260444)
+ 61%|██████    | 141/232 [57:10<36:54, 24.33s/it]PTBTokenizer tokenized 231 tokens at 4373.94 tokens per second.
+PTBTokenizer tokenized 204 tokens at 3833.32 tokens per second.
+{'testlen': 144, 'reflen': 168, 'guess': [144, 90, 69, 51], 'correct': [45, 21, 13, 8]}
+('ratio:', 0.8571428571377552)
+ 61%|██████    | 142/232 [57:35<36:29, 24.33s/it]PTBTokenizer tokenized 219 tokens at 3963.32 tokens per second.
+PTBTokenizer tokenized 143 tokens at 2049.84 tokens per second.
+{'testlen': 87, 'reflen': 160, 'guess': [87, 33, 26, 19], 'correct': [42, 5, 4, 3]}
+('ratio:', 0.5437499999966016)
+ 62%|██████▏   | 143/232 [57:58<36:04, 24.32s/it]PTBTokenizer tokenized 241 tokens at 4683.06 tokens per second.
+PTBTokenizer tokenized 208 tokens at 3877.23 tokens per second.
+{'testlen': 151, 'reflen': 182, 'guess': [151, 97, 75, 56], 'correct': [60, 32, 23, 15]}
+('ratio:', 0.8296703296657711)
+ 62%|██████▏   | 144/232 [58:21<35:39, 24.32s/it]PTBTokenizer tokenized 188 tokens at 3625.55 tokens per second.
+PTBTokenizer tokenized 186 tokens at 2798.81 tokens per second.
+{'testlen': 129, 'reflen': 132, 'guess': [129, 75, 59, 43], 'correct': [71, 36, 28, 21]}
+('ratio:', 0.9772727272653238)
+ 62%|██████▎   | 145/232 [58:45<35:15, 24.31s/it]PTBTokenizer tokenized 188 tokens at 3524.15 tokens per second.
+PTBTokenizer tokenized 182 tokens at 3440.41 tokens per second.
+{'testlen': 116, 'reflen': 120, 'guess': [116, 62, 50, 40], 'correct': [56, 26, 21, 16]}
+('ratio:', 0.9666666666586111)
+ 63%|██████▎   | 146/232 [59:09<34:50, 24.31s/it]PTBTokenizer tokenized 207 tokens at 3688.32 tokens per second.
+PTBTokenizer tokenized 177 tokens at 3354.79 tokens per second.
+{'testlen': 119, 'reflen': 145, 'guess': [119, 65, 49, 34], 'correct': [38, 5, 2, 0]}
+('ratio:', 0.820689655166754)
+ 63%|██████▎   | 147/232 [59:33<34:26, 24.31s/it]PTBTokenizer tokenized 265 tokens at 4744.05 tokens per second.
+PTBTokenizer tokenized 188 tokens at 3657.34 tokens per second.
+{'testlen': 128, 'reflen': 201, 'guess': [128, 74, 56, 41], 'correct': [60, 23, 18, 15]}
+('ratio:', 0.6368159203948417)
+ 64%|██████▍   | 148/232 [59:56<34:01, 24.30s/it]PTBTokenizer tokenized 234 tokens at 4031.76 tokens per second.
+PTBTokenizer tokenized 202 tokens at 3933.73 tokens per second.
+{'testlen': 143, 'reflen': 179, 'guess': [143, 89, 68, 50], 'correct': [63, 27, 21, 17]}
+('ratio:', 0.7988826815597828)
+ 64%|██████▍   | 149/232 [1:00:20<33:36, 24.30s/it]PTBTokenizer tokenized 244 tokens at 4369.85 tokens per second.
+PTBTokenizer tokenized 195 tokens at 3561.14 tokens per second.
+{'testlen': 136, 'reflen': 185, 'guess': [136, 82, 67, 53], 'correct': [68, 31, 26, 22]}
+('ratio:', 0.7351351351311615)
+ 65%|██████▍   | 150/232 [1:00:44<33:12, 24.30s/it]PTBTokenizer tokenized 184 tokens at 2765.59 tokens per second.
+PTBTokenizer tokenized 227 tokens at 4180.86 tokens per second.
+{'testlen': 170, 'reflen': 127, 'guess': [170, 116, 101, 86], 'correct': [58, 23, 19, 15]}
+('ratio:', 1.3385826771548144)
+ 65%|██████▌   | 151/232 [1:01:08<32:48, 24.30s/it]PTBTokenizer tokenized 218 tokens at 3953.15 tokens per second.
+PTBTokenizer tokenized 158 tokens at 3015.81 tokens per second.
+{'testlen': 102, 'reflen': 149, 'guess': [102, 48, 36, 25], 'correct': [44, 5, 3, 1]}
+('ratio:', 0.6845637583846674)
+ 66%|██████▌   | 152/232 [1:01:32<32:23, 24.29s/it]PTBTokenizer tokenized 235 tokens at 4397.62 tokens per second.
+PTBTokenizer tokenized 238 tokens at 3401.58 tokens per second.
+{'testlen': 179, 'reflen': 175, 'guess': [179, 125, 107, 91], 'correct': [104, 65, 55, 47]}
+('ratio:', 1.022857142851298)
+ 66%|██████▌   | 153/232 [1:01:56<31:58, 24.29s/it]PTBTokenizer tokenized 192 tokens at 3165.48 tokens per second.
+PTBTokenizer tokenized 179 tokens at 3374.34 tokens per second.
+{'testlen': 123, 'reflen': 138, 'guess': [123, 69, 48, 30], 'correct': [53, 22, 15, 9]}
+('ratio:', 0.8913043478196283)
+ 66%|██████▋   | 154/232 [1:02:19<31:34, 24.29s/it]PTBTokenizer tokenized 276 tokens at 4834.61 tokens per second.
+PTBTokenizer tokenized 262 tokens at 4896.11 tokens per second.
+{'testlen': 203, 'reflen': 218, 'guess': [203, 149, 126, 105], 'correct': [68, 35, 28, 23]}
+('ratio:', 0.9311926605461872)
+ 67%|██████▋   | 155/232 [1:02:44<31:10, 24.29s/it]PTBTokenizer tokenized 253 tokens at 4912.77 tokens per second.
+PTBTokenizer tokenized 158 tokens at 2935.30 tokens per second.
+{'testlen': 103, 'reflen': 199, 'guess': [103, 49, 34, 22], 'correct': [36, 7, 4, 2]}
+('ratio:', 0.5175879396958916)
+ 67%|██████▋   | 156/232 [1:03:08<30:45, 24.28s/it]PTBTokenizer tokenized 211 tokens at 4126.72 tokens per second.
+PTBTokenizer tokenized 150 tokens at 2820.79 tokens per second.
+{'testlen': 92, 'reflen': 149, 'guess': [92, 38, 27, 22], 'correct': [56, 22, 17, 14]}
+('ratio:', 0.6174496644253863)
+ 68%|██████▊   | 157/232 [1:03:32<30:21, 24.28s/it]PTBTokenizer tokenized 281 tokens at 5066.40 tokens per second.
+PTBTokenizer tokenized 226 tokens at 4578.83 tokens per second.
+{'testlen': 162, 'reflen': 216, 'guess': [162, 108, 86, 68], 'correct': [43, 9, 4, 2]}
+('ratio:', 0.7499999999965278)
+ 68%|██████▊   | 158/232 [1:03:56<29:56, 24.28s/it]PTBTokenizer tokenized 214 tokens at 4198.61 tokens per second.
+PTBTokenizer tokenized 179 tokens at 2924.43 tokens per second.
+{'testlen': 121, 'reflen': 153, 'guess': [121, 67, 48, 34], 'correct': [43, 13, 7, 4]}
+('ratio:', 0.7908496731974455)
+ 69%|██████▊   | 159/232 [1:04:20<29:32, 24.28s/it]PTBTokenizer tokenized 211 tokens at 4110.49 tokens per second.
+PTBTokenizer tokenized 216 tokens at 3980.63 tokens per second.
+{'testlen': 161, 'reflen': 157, 'guess': [161, 107, 86, 68], 'correct': [67, 39, 31, 23]}
+('ratio:', 1.0254777069998378)
+ 69%|██████▉   | 160/232 [1:04:45<29:08, 24.29s/it]PTBTokenizer tokenized 245 tokens at 4410.73 tokens per second.
+PTBTokenizer tokenized 165 tokens at 3048.54 tokens per second.
+{'testlen': 110, 'reflen': 187, 'guess': [110, 56, 44, 34], 'correct': [56, 22, 15, 11]}
+('ratio:', 0.5882352941145015)
+ 69%|██████▉   | 161/232 [1:05:10<28:44, 24.29s/it]PTBTokenizer tokenized 244 tokens at 4563.33 tokens per second.
+PTBTokenizer tokenized 244 tokens at 4461.81 tokens per second.
+{'testlen': 183, 'reflen': 184, 'guess': [183, 129, 112, 95], 'correct': [51, 20, 18, 17]}
+('ratio:', 0.9945652173858992)
+ 70%|██████▉   | 162/232 [1:05:33<28:19, 24.28s/it]PTBTokenizer tokenized 222 tokens at 4204.24 tokens per second.
+PTBTokenizer tokenized 220 tokens at 4108.39 tokens per second.
+{'testlen': 161, 'reflen': 163, 'guess': [161, 107, 91, 75], 'correct': [91, 60, 51, 43]}
+('ratio:', 0.9877300613436336)
+ 70%|███████   | 163/232 [1:05:58<27:55, 24.28s/it]PTBTokenizer tokenized 246 tokens at 4239.04 tokens per second.
+PTBTokenizer tokenized 240 tokens at 4613.20 tokens per second.
+{'testlen': 180, 'reflen': 186, 'guess': [180, 126, 101, 80], 'correct': [67, 33, 27, 21]}
+('ratio:', 0.9677419354786682)
+ 71%|███████   | 164/232 [1:06:21<27:30, 24.28s/it]PTBTokenizer tokenized 323 tokens at 5750.49 tokens per second.
+PTBTokenizer tokenized 301 tokens at 5372.16 tokens per second.
+{'testlen': 238, 'reflen': 255, 'guess': [238, 184, 153, 124], 'correct': [121, 78, 62, 50]}
+('ratio:', 0.9333333333296733)
+ 71%|███████   | 165/232 [1:06:46<27:06, 24.28s/it]PTBTokenizer tokenized 259 tokens at 4974.53 tokens per second.
+PTBTokenizer tokenized 216 tokens at 4072.40 tokens per second.
+{'testlen': 157, 'reflen': 196, 'guess': [157, 103, 81, 62], 'correct': [48, 19, 12, 6]}
+('ratio:', 0.8010204081591785)
+ 72%|███████▏  | 166/232 [1:07:11<26:42, 24.28s/it]PTBTokenizer tokenized 272 tokens at 4961.13 tokens per second.
+PTBTokenizer tokenized 246 tokens at 4463.92 tokens per second.
+{'testlen': 184, 'reflen': 211, 'guess': [184, 130, 104, 78], 'correct': [91, 60, 45, 32]}
+('ratio:', 0.8720379146878103)
+ 72%|███████▏  | 167/232 [1:07:36<26:18, 24.29s/it]PTBTokenizer tokenized 242 tokens at 4393.79 tokens per second.
+PTBTokenizer tokenized 204 tokens at 3767.81 tokens per second.
+{'testlen': 147, 'reflen': 183, 'guess': [147, 93, 74, 57], 'correct': [65, 30, 23, 18]}
+('ratio:', 0.8032786885202007)
+ 72%|███████▏  | 168/232 [1:08:00<25:54, 24.29s/it]PTBTokenizer tokenized 240 tokens at 4388.31 tokens per second.
+PTBTokenizer tokenized 204 tokens at 3838.10 tokens per second.
+{'testlen': 145, 'reflen': 182, 'guess': [145, 91, 74, 59], 'correct': [64, 28, 21, 15]}
+('ratio:', 0.7967032966989193)
+ 73%|███████▎  | 169/232 [1:08:25<25:30, 24.29s/it]PTBTokenizer tokenized 209 tokens at 3865.34 tokens per second.
+PTBTokenizer tokenized 188 tokens at 3581.54 tokens per second.
+{'testlen': 130, 'reflen': 144, 'guess': [130, 76, 63, 52], 'correct': [64, 30, 24, 18]}
+('ratio:', 0.9027777777715086)
+ 73%|███████▎  | 170/232 [1:08:49<25:05, 24.29s/it]PTBTokenizer tokenized 243 tokens at 4421.29 tokens per second.
+PTBTokenizer tokenized 224 tokens at 4054.96 tokens per second.
+{'testlen': 167, 'reflen': 187, 'guess': [167, 113, 97, 81], 'correct': [87, 49, 43, 37]}
+('ratio:', 0.8930481283374704)
+ 74%|███████▎  | 171/232 [1:09:12<24:41, 24.29s/it]PTBTokenizer tokenized 243 tokens at 4451.28 tokens per second.
+PTBTokenizer tokenized 283 tokens at 5296.88 tokens per second.
+{'testlen': 219, 'reflen': 185, 'guess': [219, 165, 137, 111], 'correct': [105, 75, 60, 49]}
+('ratio:', 1.183783783777385)
+ 74%|███████▍  | 172/232 [1:09:36<24:17, 24.28s/it]PTBTokenizer tokenized 202 tokens at 3653.30 tokens per second.
+PTBTokenizer tokenized 161 tokens at 3093.86 tokens per second.
+{'testlen': 104, 'reflen': 144, 'guess': [104, 50, 40, 31], 'correct': [46, 21, 17, 13]}
+('ratio:', 0.7222222222172069)
+ 75%|███████▍  | 173/232 [1:10:00<23:52, 24.28s/it]PTBTokenizer tokenized 247 tokens at 4545.18 tokens per second.
+PTBTokenizer tokenized 173 tokens at 3280.41 tokens per second.
+{'testlen': 117, 'reflen': 190, 'guess': [117, 63, 48, 35], 'correct': [53, 19, 13, 9]}
+('ratio:', 0.6157894736809696)
+ 75%|███████▌  | 174/232 [1:10:24<23:28, 24.28s/it]PTBTokenizer tokenized 264 tokens at 4589.22 tokens per second.
+PTBTokenizer tokenized 227 tokens at 4198.33 tokens per second.
+{'testlen': 160, 'reflen': 197, 'guess': [160, 106, 83, 63], 'correct': [62, 28, 18, 12]}
+('ratio:', 0.8121827411126286)
+ 75%|███████▌  | 175/232 [1:10:48<23:03, 24.27s/it]PTBTokenizer tokenized 170 tokens at 2428.14 tokens per second.
+PTBTokenizer tokenized 186 tokens at 3378.85 tokens per second.
+{'testlen': 130, 'reflen': 114, 'guess': [130, 76, 58, 42], 'correct': [41, 13, 7, 4]}
+('ratio:', 1.1403508771829793)
+ 76%|███████▌  | 176/232 [1:11:11<22:39, 24.27s/it]PTBTokenizer tokenized 281 tokens at 5080.62 tokens per second.
+PTBTokenizer tokenized 164 tokens at 3091.69 tokens per second.
+{'testlen': 109, 'reflen': 222, 'guess': [109, 55, 41, 33], 'correct': [37, 12, 8, 7]}
+('ratio:', 0.49099099098877935)
+ 76%|███████▋  | 177/232 [1:11:35<22:14, 24.27s/it]PTBTokenizer tokenized 205 tokens at 3964.50 tokens per second.
+PTBTokenizer tokenized 173 tokens at 3266.22 tokens per second.
+{'testlen': 115, 'reflen': 144, 'guess': [115, 61, 44, 30], 'correct': [59, 21, 15, 11]}
+('ratio:', 0.7986111111055653)
+ 77%|███████▋  | 178/232 [1:11:59<21:50, 24.27s/it]PTBTokenizer tokenized 232 tokens at 4167.21 tokens per second.
+PTBTokenizer tokenized 210 tokens at 3907.84 tokens per second.
+{'testlen': 148, 'reflen': 168, 'guess': [148, 94, 80, 67], 'correct': [57, 26, 22, 18]}
+('ratio:', 0.8809523809471372)
+ 77%|███████▋  | 179/232 [1:12:22<21:25, 24.26s/it]PTBTokenizer tokenized 159 tokens at 2982.76 tokens per second.
+PTBTokenizer tokenized 164 tokens at 3003.12 tokens per second.
+{'testlen': 110, 'reflen': 103, 'guess': [110, 56, 39, 24], 'correct': [37, 5, 1, 0]}
+('ratio:', 1.067961165038175)
+ 78%|███████▊  | 180/232 [1:12:46<21:01, 24.26s/it]PTBTokenizer tokenized 256 tokens at 4667.66 tokens per second.
+PTBTokenizer tokenized 248 tokens at 4611.39 tokens per second.
+{'testlen': 190, 'reflen': 189, 'guess': [190, 136, 117, 98], 'correct': [70, 34, 28, 22]}
+('ratio:', 1.0052910052856863)
+ 78%|███████▊  | 181/232 [1:13:10<20:37, 24.26s/it]PTBTokenizer tokenized 197 tokens at 2811.94 tokens per second.
+PTBTokenizer tokenized 194 tokens at 3676.35 tokens per second.
+{'testlen': 139, 'reflen': 142, 'guess': [139, 85, 71, 58], 'correct': [50, 19, 15, 12]}
+('ratio:', 0.9788732394297264)
+ 78%|███████▊  | 182/232 [1:13:34<20:12, 24.25s/it]PTBTokenizer tokenized 235 tokens at 4358.65 tokens per second.
+PTBTokenizer tokenized 198 tokens at 3700.07 tokens per second.
+{'testlen': 143, 'reflen': 178, 'guess': [143, 89, 73, 57], 'correct': [50, 21, 15, 9]}
+('ratio:', 0.8033707865123406)
+ 79%|███████▉  | 183/232 [1:13:59<19:48, 24.26s/it]PTBTokenizer tokenized 204 tokens at 3021.04 tokens per second.
+PTBTokenizer tokenized 148 tokens at 2750.93 tokens per second.
+{'testlen': 91, 'reflen': 145, 'guess': [91, 37, 27, 19], 'correct': [36, 16, 13, 10]}
+('ratio:', 0.6275862068922236)
+ 79%|███████▉  | 184/232 [1:14:23<19:24, 24.26s/it]PTBTokenizer tokenized 221 tokens at 4053.21 tokens per second.
+PTBTokenizer tokenized 203 tokens at 3752.59 tokens per second.
+{'testlen': 146, 'reflen': 160, 'guess': [146, 92, 74, 57], 'correct': [41, 9, 5, 3]}
+('ratio:', 0.912499999994297)
+ 80%|███████▉  | 185/232 [1:14:48<19:00, 24.26s/it]PTBTokenizer tokenized 273 tokens at 4995.72 tokens per second.
+PTBTokenizer tokenized 183 tokens at 3599.83 tokens per second.
+{'testlen': 126, 'reflen': 209, 'guess': [126, 72, 52, 35], 'correct': [64, 33, 26, 20]}
+('ratio:', 0.6028708133942446)
+ 80%|████████  | 186/232 [1:15:12<18:35, 24.26s/it]PTBTokenizer tokenized 257 tokens at 4681.45 tokens per second.
+PTBTokenizer tokenized 200 tokens at 3760.19 tokens per second.
+{'testlen': 139, 'reflen': 200, 'guess': [139, 85, 66, 49], 'correct': [49, 17, 10, 5]}
+('ratio:', 0.6949999999965251)
+ 81%|████████  | 187/232 [1:15:36<18:11, 24.26s/it]PTBTokenizer tokenized 286 tokens at 5296.83 tokens per second.
+PTBTokenizer tokenized 260 tokens at 4845.31 tokens per second.
+{'testlen': 200, 'reflen': 225, 'guess': [200, 146, 117, 92], 'correct': [76, 38, 27, 19]}
+('ratio:', 0.8888888888849383)
+ 81%|████████  | 188/232 [1:16:00<17:47, 24.26s/it]PTBTokenizer tokenized 278 tokens at 5179.74 tokens per second.
+PTBTokenizer tokenized 246 tokens at 4486.24 tokens per second.
+{'testlen': 185, 'reflen': 220, 'guess': [185, 131, 114, 98], 'correct': [98, 63, 55, 47]}
+('ratio:', 0.8409090909052687)
+ 81%|████████▏ | 189/232 [1:16:23<17:22, 24.25s/it]PTBTokenizer tokenized 200 tokens at 3884.79 tokens per second.
+PTBTokenizer tokenized 193 tokens at 3875.60 tokens per second.
+{'testlen': 134, 'reflen': 143, 'guess': [134, 80, 61, 43], 'correct': [49, 11, 7, 4]}
+('ratio:', 0.9370629370563842)
+ 82%|████████▏ | 190/232 [1:16:47<16:58, 24.25s/it]PTBTokenizer tokenized 280 tokens at 4247.38 tokens per second.
+PTBTokenizer tokenized 272 tokens at 4940.23 tokens per second.
+{'testlen': 208, 'reflen': 216, 'guess': [208, 154, 127, 103], 'correct': [90, 58, 47, 38]}
+('ratio:', 0.9629629629585048)
+ 82%|████████▏ | 191/232 [1:17:11<16:34, 24.25s/it]PTBTokenizer tokenized 193 tokens at 3582.76 tokens per second.
+PTBTokenizer tokenized 180 tokens at 3408.45 tokens per second.
+{'testlen': 127, 'reflen': 136, 'guess': [127, 73, 59, 46], 'correct': [38, 8, 7, 6]}
+('ratio:', 0.9338235294048984)
+ 83%|████████▎ | 192/232 [1:17:34<16:09, 24.24s/it]PTBTokenizer tokenized 188 tokens at 3500.29 tokens per second.
+PTBTokenizer tokenized 170 tokens at 3216.42 tokens per second.
+{'testlen': 112, 'reflen': 130, 'guess': [112, 58, 44, 30], 'correct': [53, 13, 9, 5]}
+('ratio:', 0.8615384615318344)
+ 83%|████████▎ | 193/232 [1:17:59<15:45, 24.24s/it]PTBTokenizer tokenized 248 tokens at 4628.08 tokens per second.
+PTBTokenizer tokenized 239 tokens at 4427.19 tokens per second.
+{'testlen': 182, 'reflen': 192, 'guess': [182, 128, 110, 94], 'correct': [68, 35, 32, 29]}
+('ratio:', 0.9479166666617297)
+ 84%|████████▎ | 194/232 [1:18:23<15:21, 24.24s/it]PTBTokenizer tokenized 263 tokens at 4861.52 tokens per second.
+PTBTokenizer tokenized 222 tokens at 4254.84 tokens per second.
+{'testlen': 165, 'reflen': 205, 'guess': [165, 111, 89, 72], 'correct': [53, 16, 12, 9]}
+('ratio:', 0.8048780487765617)
+ 84%|████████▍ | 195/232 [1:18:47<14:56, 24.24s/it]PTBTokenizer tokenized 237 tokens at 4413.41 tokens per second.
+PTBTokenizer tokenized 207 tokens at 3860.49 tokens per second.
+{'testlen': 147, 'reflen': 171, 'guess': [147, 93, 74, 55], 'correct': [56, 23, 17, 12]}
+('ratio:', 0.8596491228019905)
+ 84%|████████▍ | 196/232 [1:19:10<14:32, 24.24s/it]PTBTokenizer tokenized 383 tokens at 6775.30 tokens per second.
+PTBTokenizer tokenized 309 tokens at 5475.27 tokens per second.
+{'testlen': 243, 'reflen': 319, 'guess': [243, 189, 164, 141], 'correct': [162, 120, 106, 94]}
+('ratio:', 0.761755485891029)
+ 85%|████████▍ | 197/232 [1:19:35<14:08, 24.24s/it]PTBTokenizer tokenized 173 tokens at 3091.93 tokens per second.
+PTBTokenizer tokenized 155 tokens at 2908.04 tokens per second.
+{'testlen': 101, 'reflen': 119, 'guess': [101, 47, 35, 26], 'correct': [52, 20, 15, 11]}
+('ratio:', 0.848739495791187)
+ 85%|████████▌ | 198/232 [1:20:00<13:44, 24.25s/it]PTBTokenizer tokenized 236 tokens at 4429.15 tokens per second.
+PTBTokenizer tokenized 185 tokens at 3448.75 tokens per second.
+{'testlen': 130, 'reflen': 180, 'guess': [130, 76, 56, 40], 'correct': [48, 23, 19, 16]}
+('ratio:', 0.7222222222182099)
+ 86%|████████▌ | 199/232 [1:20:25<13:20, 24.25s/it]PTBTokenizer tokenized 187 tokens at 3541.53 tokens per second.
+PTBTokenizer tokenized 159 tokens at 2882.31 tokens per second.
+{'testlen': 103, 'reflen': 131, 'guess': [103, 49, 35, 26], 'correct': [38, 10, 7, 5]}
+('ratio:', 0.7862595419787309)
+ 86%|████████▌ | 200/232 [1:20:49<12:55, 24.25s/it]PTBTokenizer tokenized 217 tokens at 3929.71 tokens per second.
+PTBTokenizer tokenized 163 tokens at 3053.76 tokens per second.
+{'testlen': 105, 'reflen': 154, 'guess': [105, 51, 40, 31], 'correct': [41, 9, 6, 4]}
+('ratio:', 0.6818181818137544)
+ 87%|████████▋ | 201/232 [1:21:13<12:31, 24.24s/it]PTBTokenizer tokenized 270 tokens at 5234.64 tokens per second.
+PTBTokenizer tokenized 245 tokens at 4431.73 tokens per second.
+{'testlen': 187, 'reflen': 210, 'guess': [187, 133, 111, 95], 'correct': [102, 75, 66, 58]}
+('ratio:', 0.8904761904719501)
+ 87%|████████▋ | 202/232 [1:21:37<12:07, 24.24s/it]PTBTokenizer tokenized 269 tokens at 4880.37 tokens per second.
+PTBTokenizer tokenized 247 tokens at 4568.07 tokens per second.
+{'testlen': 187, 'reflen': 214, 'guess': [187, 133, 103, 75], 'correct': [79, 52, 40, 28]}
+('ratio:', 0.8738317756968513)
+ 88%|████████▊ | 203/232 [1:22:00<11:42, 24.24s/it]PTBTokenizer tokenized 198 tokens at 3695.75 tokens per second.
+PTBTokenizer tokenized 181 tokens at 3364.14 tokens per second.
+{'testlen': 125, 'reflen': 138, 'guess': [125, 71, 56, 45], 'correct': [32, 10, 7, 6]}
+('ratio:', 0.9057971014427116)
+ 88%|████████▊ | 204/232 [1:22:24<11:18, 24.24s/it]PTBTokenizer tokenized 242 tokens at 4383.03 tokens per second.
+PTBTokenizer tokenized 198 tokens at 3681.77 tokens per second.
+{'testlen': 140, 'reflen': 183, 'guess': [140, 86, 70, 56], 'correct': [63, 29, 23, 18]}
+('ratio:', 0.7650273224001911)
+ 88%|████████▊ | 205/232 [1:22:48<10:54, 24.24s/it]PTBTokenizer tokenized 306 tokens at 5544.52 tokens per second.
+PTBTokenizer tokenized 285 tokens at 5149.74 tokens per second.
+{'testlen': 219, 'reflen': 238, 'guess': [219, 165, 138, 112], 'correct': [115, 75, 66, 57]}
+('ratio:', 0.9201680672230246)
+ 89%|████████▉ | 206/232 [1:23:13<10:30, 24.24s/it]PTBTokenizer tokenized 229 tokens at 4229.80 tokens per second.
+PTBTokenizer tokenized 195 tokens at 3657.23 tokens per second.
+{'testlen': 138, 'reflen': 173, 'guess': [138, 84, 69, 54], 'correct': [57, 24, 19, 14]}
+('ratio:', 0.7976878612670655)
+ 89%|████████▉ | 207/232 [1:23:37<10:05, 24.24s/it]PTBTokenizer tokenized 187 tokens at 3541.89 tokens per second.
+PTBTokenizer tokenized 223 tokens at 4200.58 tokens per second.
+{'testlen': 167, 'reflen': 129, 'guess': [167, 113, 92, 74], 'correct': [61, 27, 18, 13]}
+('ratio:', 1.2945736434008173)
+ 90%|████████▉ | 208/232 [1:24:01<09:41, 24.24s/it]PTBTokenizer tokenized 214 tokens at 3446.23 tokens per second.
+PTBTokenizer tokenized 192 tokens at 3818.38 tokens per second.
+{'testlen': 134, 'reflen': 159, 'guess': [134, 80, 61, 44], 'correct': [64, 27, 17, 12]}
+('ratio:', 0.8427672955921839)
+ 90%|█████████ | 209/232 [1:24:26<09:17, 24.24s/it]PTBTokenizer tokenized 274 tokens at 5122.98 tokens per second.
+PTBTokenizer tokenized 256 tokens at 4590.88 tokens per second.
+{'testlen': 195, 'reflen': 209, 'guess': [195, 141, 118, 96], 'correct': [61, 34, 28, 24]}
+('ratio:', 0.9330143540625215)
+ 91%|█████████ | 210/232 [1:24:50<08:53, 24.24s/it]PTBTokenizer tokenized 237 tokens at 4357.98 tokens per second.
+PTBTokenizer tokenized 187 tokens at 3526.46 tokens per second.
+{'testlen': 128, 'reflen': 175, 'guess': [128, 74, 57, 43], 'correct': [37, 14, 8, 5]}
+('ratio:', 0.7314285714243919)
+ 91%|█████████ | 211/232 [1:25:13<08:28, 24.23s/it]PTBTokenizer tokenized 203 tokens at 3782.91 tokens per second.
+PTBTokenizer tokenized 191 tokens at 3558.56 tokens per second.
+{'testlen': 132, 'reflen': 141, 'guess': [132, 78, 58, 41], 'correct': [48, 14, 9, 5]}
+('ratio:', 0.936170212759318)
+ 91%|█████████▏| 212/232 [1:25:37<08:04, 24.23s/it]PTBTokenizer tokenized 197 tokens at 3690.73 tokens per second.
+PTBTokenizer tokenized 193 tokens at 3585.61 tokens per second.
+{'testlen': 134, 'reflen': 139, 'guess': [134, 80, 63, 49], 'correct': [50, 18, 13, 10]}
+('ratio:', 0.9640287769714819)
+ 92%|█████████▏| 213/232 [1:26:02<07:40, 24.24s/it]PTBTokenizer tokenized 240 tokens at 4374.85 tokens per second.
+PTBTokenizer tokenized 209 tokens at 3857.06 tokens per second.
+{'testlen': 154, 'reflen': 177, 'guess': [154, 100, 81, 65], 'correct': [37, 9, 5, 3]}
+('ratio:', 0.8700564971702257)
+ 92%|█████████▏| 214/232 [1:26:27<07:16, 24.24s/it]PTBTokenizer tokenized 248 tokens at 4711.26 tokens per second.
+PTBTokenizer tokenized 233 tokens at 4219.47 tokens per second.
+{'testlen': 167, 'reflen': 188, 'guess': [167, 113, 94, 77], 'correct': [43, 15, 11, 8]}
+('ratio:', 0.8882978723357006)
+ 93%|█████████▎| 215/232 [1:26:51<06:52, 24.24s/it]PTBTokenizer tokenized 154 tokens at 2892.49 tokens per second.
+PTBTokenizer tokenized 160 tokens at 3036.15 tokens per second.
+{'testlen': 105, 'reflen': 99, 'guess': [105, 51, 40, 30], 'correct': [47, 7, 3, 0]}
+('ratio:', 1.0606060605953473)
+ 93%|█████████▎| 216/232 [1:27:15<06:27, 24.24s/it]PTBTokenizer tokenized 232 tokens at 4595.39 tokens per second.
+PTBTokenizer tokenized 187 tokens at 3517.57 tokens per second.
+{'testlen': 131, 'reflen': 175, 'guess': [131, 77, 61, 48], 'correct': [79, 40, 31, 26]}
+('ratio:', 0.7485714285671511)
+ 94%|█████████▎| 217/232 [1:27:38<06:03, 24.23s/it]PTBTokenizer tokenized 133 tokens at 2577.30 tokens per second.
+PTBTokenizer tokenized 122 tokens at 2335.98 tokens per second.
+{'testlen': 69, 'reflen': 80, 'guess': [69, 15, 12, 9], 'correct': [30, 0, 0, 0]}
+('ratio:', 0.8624999999892187)
+ 94%|█████████▍| 218/232 [1:28:02<05:39, 24.23s/it]PTBTokenizer tokenized 273 tokens at 4976.74 tokens per second.
+PTBTokenizer tokenized 223 tokens at 3950.36 tokens per second.
+{'testlen': 164, 'reflen': 208, 'guess': [164, 110, 86, 67], 'correct': [63, 27, 21, 16]}
+('ratio:', 0.7884615384577478)
+ 94%|█████████▍| 219/232 [1:28:26<05:15, 24.23s/it]PTBTokenizer tokenized 228 tokens at 4213.95 tokens per second.
+PTBTokenizer tokenized 182 tokens at 3412.90 tokens per second.
+{'testlen': 122, 'reflen': 166, 'guess': [122, 68, 56, 47], 'correct': [47, 13, 9, 7]}
+('ratio:', 0.7349397590317173)
+ 95%|█████████▍| 220/232 [1:28:50<04:50, 24.23s/it]PTBTokenizer tokenized 226 tokens at 4091.64 tokens per second.
+PTBTokenizer tokenized 204 tokens at 3832.04 tokens per second.
+{'testlen': 147, 'reflen': 164, 'guess': [147, 93, 74, 58], 'correct': [50, 21, 15, 10]}
+('ratio:', 0.8963414634091688)
+ 95%|█████████▌| 221/232 [1:29:14<04:26, 24.23s/it]PTBTokenizer tokenized 260 tokens at 4650.16 tokens per second.
+PTBTokenizer tokenized 234 tokens at 4277.70 tokens per second.
+{'testlen': 175, 'reflen': 197, 'guess': [175, 121, 101, 83], 'correct': [103, 72, 62, 53]}
+('ratio:', 0.8883248730919375)
+ 96%|█████████▌| 222/232 [1:29:38<04:02, 24.23s/it]PTBTokenizer tokenized 185 tokens at 3533.64 tokens per second.
+PTBTokenizer tokenized 158 tokens at 2944.16 tokens per second.
+{'testlen': 102, 'reflen': 132, 'guess': [102, 48, 36, 25], 'correct': [29, 1, 0, 0]}
+('ratio:', 0.7727272727214188)
+ 96%|█████████▌| 223/232 [1:30:02<03:38, 24.23s/it]PTBTokenizer tokenized 236 tokens at 4239.48 tokens per second.
+PTBTokenizer tokenized 231 tokens at 4167.86 tokens per second.
+{'testlen': 172, 'reflen': 180, 'guess': [172, 118, 98, 80], 'correct': [63, 30, 24, 19]}
+('ratio:', 0.955555555550247)
+ 97%|█████████▋| 224/232 [1:30:26<03:13, 24.23s/it]PTBTokenizer tokenized 242 tokens at 4516.55 tokens per second.
+PTBTokenizer tokenized 242 tokens at 4496.84 tokens per second.
+{'testlen': 185, 'reflen': 183, 'guess': [185, 131, 108, 89], 'correct': [89, 52, 41, 33]}
+('ratio:', 1.0109289617431096)
+ 97%|█████████▋| 225/232 [1:30:52<02:49, 24.23s/it]PTBTokenizer tokenized 300 tokens at 5423.20 tokens per second.
+PTBTokenizer tokenized 250 tokens at 4491.38 tokens per second.
+{'testlen': 190, 'reflen': 234, 'guess': [190, 136, 118, 100], 'correct': [99, 65, 57, 49]}
+('ratio:', 0.8119658119623421)
+ 97%|█████████▋| 226/232 [1:31:16<02:25, 24.23s/it]PTBTokenizer tokenized 250 tokens at 4563.88 tokens per second.
+PTBTokenizer tokenized 262 tokens at 4964.04 tokens per second.
+{'testlen': 203, 'reflen': 187, 'guess': [203, 149, 121, 99], 'correct': [94, 57, 47, 40]}
+('ratio:', 1.0855614973203982)
+ 98%|█████████▊| 227/232 [1:31:40<02:01, 24.23s/it]PTBTokenizer tokenized 259 tokens at 4739.41 tokens per second.
+PTBTokenizer tokenized 209 tokens at 3880.26 tokens per second.
+{'testlen': 147, 'reflen': 199, 'guess': [147, 93, 72, 57], 'correct': [63, 37, 30, 26]}
+('ratio:', 0.7386934673329715)
+ 98%|█████████▊| 228/232 [1:32:03<01:36, 24.23s/it]PTBTokenizer tokenized 215 tokens at 4111.84 tokens per second.
+PTBTokenizer tokenized 170 tokens at 3211.00 tokens per second.
+{'testlen': 112, 'reflen': 154, 'guess': [112, 58, 43, 28], 'correct': [67, 30, 23, 16]}
+('ratio:', 0.7272727272680047)
+ 99%|█████████▊| 229/232 [1:32:27<01:12, 24.23s/it]PTBTokenizer tokenized 361 tokens at 6533.27 tokens per second.
+PTBTokenizer tokenized 305 tokens at 5681.33 tokens per second.
+{'testlen': 237, 'reflen': 286, 'guess': [237, 183, 158, 134], 'correct': [122, 88, 78, 68]}
+('ratio:', 0.8286713286684313)
+ 99%|█████████▉| 230/232 [1:32:51<00:48, 24.22s/it]PTBTokenizer tokenized 227 tokens at 4333.11 tokens per second.
+PTBTokenizer tokenized 210 tokens at 4108.92 tokens per second.
+{'testlen': 146, 'reflen': 161, 'guess': [146, 92, 75, 60], 'correct': [82, 52, 42, 34]}
+('ratio:', 0.9068322981310135)
+100%|█████████▉| 231/232 [1:33:15<00:24, 24.22s/it]PTBTokenizer tokenized 193 tokens at 3689.82 tokens per second.
+PTBTokenizer tokenized 173 tokens at 3375.13 tokens per second.
+{'testlen': 118, 'reflen': 141, 'guess': [118, 67, 50, 35], 'correct': [50, 17, 11, 7]}
+('ratio:', 0.8368794326181782)
+100%|██████████| 232/232 [1:33:37<00:00, 24.21s/it]
+Average similarity: 0.775944
+Average Word Mover's Distance: 3.131781
+Average Bleu4 0.43724
+Average ROUGE_L 0.46225
+Average CIDEr 1.80268
+	No. questions: 27830
+	r@1: 0.40463528566295365
+	r@5: 0.726697808120733
+	r@10: 0.8317642831476824
+	meanR: 6.121954917907715
+	meanRR: 0.5520257949829102

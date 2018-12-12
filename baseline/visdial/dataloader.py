@@ -212,18 +212,21 @@ class VisDialDataset(Dataset):
                         self.data['val_type'][i][j] = "count"
                     else: 
                         self.data['val_type'][i][j] = "other"
-
         if args.similarities:
+            num_data_points = self.num_data_points['train']
+            # n * 10 * 100
+            self.data['train_words'] = [None] * num_data_points
+
             nlp = spacy.load('en_core_web_lg', disable=['parser','tagger','ner'])
             print ("REACHES HERE")
-            num_data_points = self.num_data_points['train']
             self.data['train_sim'] = [None] * num_data_points
             
             opt_size = self.data['train_opt_list'].size(0)
             nlp_list = [None] * opt_size
             option_list = []
             for i in range(opt_size):
-                nlp_list[i] = convert_to_string(self.data['train_opt_list'][i],self.ind2word)
+                converted_string = convert_to_string(self.data['train_opt_list'][i],self.ind2word)
+                nlp_list[i] = converted_string
             for doc in nlp.pipe(nlp_list):
                 option_list.append(doc)
 
@@ -241,8 +244,10 @@ class VisDialDataset(Dataset):
             ans_index = 0
             for i in range(num_data_points):
                 self.data['train_sim'][i] = [None] * self.data['train_num_rounds'][i].item()
+                self.data['train_words'][i] = [None] * self.data['train_num_rounds'][i].item()
                 for j in range(self.data['train_num_rounds'][i]):
                     self.data['train_sim'][i][j] = [None] * self.data['train_opt'][i][j].size(0)
+                    self.data['train_words'][i][j] = [None] * self.data['train_opt'][i][j].size(0)
                     #answer = convert_to_string(self.data['train_ans'][i][j], self.ind2word)
                     #answer_nlp = nlp(answer)
                     answer_nlp = ans_nlp_list[ans_index]
@@ -252,6 +257,7 @@ class VisDialDataset(Dataset):
                         #option = convert_to_string(self.data['train_opt_list'][tens_ind], self.ind2word)
                         option_nlp = option_list[tens_ind]
                         similarity = answer_nlp.similarity(option_nlp)
+                        # self.data['train_words'][i][j][k] = option_nlp.text
                         #only applies to spacy
                         if (similarity < 0):
                             similarity = 0
@@ -266,10 +272,15 @@ class VisDialDataset(Dataset):
                     '''
             
             print("REACHES AFTER")
+            """
             self.data['train_sim'] = np.array(self.data['train_sim']) 
             sim_file = h5py.File(args.sim_file, 'w')
             sim_file.create_dataset('sim', data = self.data['train_sim'])
             sim_file.close()
+            """
+            # array_train_words = self.data['train_words']
+            # with open('data/0.9/words.json', 'w') as outfile:
+            #     json.dump({ 'data': array_train_words }, outfile)
             
         sim_file = h5py.File(args.sim_file, 'r')
         self.data['train_sim'] = sim_file.get('sim')
@@ -277,10 +288,18 @@ class VisDialDataset(Dataset):
         #generating probabilities
         theta = 20
         sim_scores = self.data['train_sim']
-        sim_scores = np.multiply(theta, sim_scores)
-        sim_scores = np.exp(sim_scores)
-        sim_score_totals = np.sum(sim_scores, axis=2)
-        sim_scores_normal = sim_scores / sim_score_totals[:, :, np.newaxis]
+        print(sim_scores.shape)
+        order = np.argsort(sim_scores, axis=2)
+        print(order.shape)
+        order = np.flip(order, 2)
+        weights = [0.5, 0.2, 0.1, 0.1, 0.1]
+        sim_scores_normal = np.zeros(sim_scores.shape)
+        for i in range(5):
+            top_order_i = order[:,:,i]
+            for j in range(sim_scores_normal.shape[0]):
+                for k in range(sim_scores_normal.shape[1]):
+                    sim_scores_normal[j][k][top_order_i[j][k]] = weights[i]
+        print(sim_scores_normal[0][0])
         self.data['train_sim'] = sim_scores_normal
         self.data['train_sim'] = torch.tensor(self.data['train_sim']).type(torch.FloatTensor)
         print("size in dataloader")
