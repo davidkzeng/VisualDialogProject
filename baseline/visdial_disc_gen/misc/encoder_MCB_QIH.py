@@ -37,7 +37,6 @@ class _netE(nn.Module):
         print("Using MCB for image attention and final fusion of question, attended image, and attended history")
         self.mcb_QH = CompactBilinearPooling(nhid, nhid, nhid).cuda()
         self.mcb_QI = CompactBilinearPooling(nhid, nhid, nhid).cuda()
-        self.mcb_QIH = CompactBilinearPooling(nhid, nhid, nhid*2).cuda()
 
         self.fc1 = nn.Linear(self.nhid*2, self.ninp)
 
@@ -77,11 +76,9 @@ class _netE(nn.Module):
                                         img_emb.view(-1, 49, self.nhid))
 
         qi_feat = self.mcb_QI(ques_feat,img_attn_feat.view(-1,self.nhid))
-        qih_feat = self.mcb_QIH(qi_feat,his_attn_feat.view(-1,self.nhid))
-        # concat_feat = torch.cat((ques_feat, his_attn_feat.view(-1, self.nhid), \
-        #                          img_attn_feat.view(-1, self.nhid)),1)
+        concat_feat = torch.cat((qi_feat, his_attn_feat.view(-1, self.nhid)),1)
 
-        encoder_feat = F.tanh(self.fc1(F.dropout(qih_feat, self.d, training=self.training)))
+        encoder_feat = F.tanh(self.fc1(F.dropout(concat_feat, self.d, training=self.training)))
 
         return encoder_feat, ques_hidden
 
